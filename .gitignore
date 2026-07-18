@@ -1,0 +1,13 @@
+# Planning / source docs — kept local, not published
+info.md
+design.md
+structure.md
+claude.md
+assets/README.md
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+*.log
