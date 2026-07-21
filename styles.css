@@ -176,6 +176,81 @@ img { max-width: 100%; display: block; }
 .project--compact .project__name { font-size: 1.15rem; }
 .project--compact .project__desc { font-size: 0.9rem; }
 
+/* ---------- Project media (thumbnail + gallery trigger) ---------- */
+.project--has-media { cursor: pointer; }
+.project__thumb {
+  position: relative; display: block; width: 100%; margin: 0; padding: 0;
+  aspect-ratio: 16 / 10; overflow: hidden; cursor: pointer;
+  background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+  transition: border-color 0.2s ease;
+}
+.project--has-media:hover .project__thumb { border-color: var(--accent); }
+.project__thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.project--has-media:hover .project__thumb img { transform: scale(1.04); }
+.project__thumb-badge {
+  position: absolute; right: 0.6rem; bottom: 0.6rem;
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  background: color-mix(in srgb, #000 62%, transparent); color: #fff;
+  font-size: 0.72rem; letter-spacing: 0.02em; padding: 0.25rem 0.6rem;
+  border-radius: 100px; backdrop-filter: blur(4px);
+}
+.project__gallery-btn {
+  background: transparent; border: 0; padding: 0; cursor: pointer;
+  font-size: 0.82rem; color: var(--muted); transition: color 0.2s ease;
+}
+.project__gallery-btn:hover { color: var(--accent); }
+.project--compact .project__gallery-btn { align-self: flex-start; }
+
+/* ---------- Lightbox (pop-up image viewer) ---------- */
+.lightbox {
+  position: fixed; inset: 0; z-index: 300;
+  display: flex; align-items: center; justify-content: center;
+  padding: clamp(1rem, 4vw, 3rem);
+}
+.lightbox[hidden] { display: none; }
+.lightbox__backdrop {
+  position: absolute; inset: 0; border: 0; padding: 0; cursor: zoom-out;
+  background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(6px);
+}
+.lightbox__figure {
+  position: relative; z-index: 1; margin: 0;
+  display: flex; flex-direction: column; align-items: center; gap: 1rem; max-width: 100%;
+}
+.lightbox__img {
+  max-width: min(90vw, 1200px); max-height: 80vh; width: auto; height: auto;
+  object-fit: contain; border-radius: var(--radius);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55); background: #111;
+}
+.lightbox__caption { color: #d4d4d4; font-size: 0.92rem; text-align: center; max-width: 72ch; }
+.lightbox__caption[hidden] { display: none; }
+.lightbox__counter {
+  position: absolute; z-index: 2; top: clamp(1rem, 3vw, 1.75rem); left: clamp(1rem, 4vw, 2rem);
+  color: #cfcfcf; font-size: 0.8rem;
+}
+.lightbox__close, .lightbox__nav {
+  position: absolute; z-index: 2; display: inline-flex; align-items: center; justify-content: center;
+  color: #fff; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%; cursor: pointer; backdrop-filter: blur(4px);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+.lightbox__close:hover, .lightbox__nav:hover {
+  background: var(--accent); border-color: var(--accent); color: var(--accent-ink);
+}
+.lightbox__close { top: clamp(1rem, 3vw, 1.75rem); right: clamp(1rem, 4vw, 2rem); width: 44px; height: 44px; font-size: 1.05rem; }
+.lightbox__nav { top: 50%; transform: translateY(-50%); width: 52px; height: 52px; font-size: 1.9rem; line-height: 1; }
+.lightbox__nav:hover { transform: translateY(-50%) scale(1.06); }
+.lightbox__prev { left: clamp(0.5rem, 3vw, 2rem); }
+.lightbox__next { right: clamp(0.5rem, 3vw, 2rem); }
+.lightbox__nav[hidden], .lightbox__counter[hidden] { display: none; }
+body.no-scroll { overflow: hidden; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .lightbox { animation: lb-fade 0.25s ease; }
+  .lightbox__figure { animation: lb-pop 0.28s ease; }
+}
+@keyframes lb-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes lb-pop { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: none; } }
+
 /* ---------- Timeline ---------- */
 .timeline { display: flex; flex-direction: column; }
 .timeline__item {
@@ -253,4 +328,8 @@ img { max-width: 100%; display: block; }
   .stats { grid-template-columns: 1fr 1fr; }
   .timeline__item, .edu__item, .community__item { grid-template-columns: 1fr; gap: 0.75rem; }
   .timeline__meta { flex-direction: row; gap: 0.75rem; align-items: baseline; }
+}
+@media (max-width: 560px) {
+  .lightbox__nav { width: 42px; height: 42px; font-size: 1.5rem; }
+  .lightbox__img { max-height: 74vh; }
 }
