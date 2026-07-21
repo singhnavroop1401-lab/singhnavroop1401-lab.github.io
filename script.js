@@ -97,4 +97,143 @@
     }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
     sections.forEach(function (s) { spyObserver.observe(s); });
   }
+
+  /* ---------- Project galleries + lightbox ---------- */
+  var media = window.PROJECT_MEDIA || {};
+  var galleryCards = Array.prototype.slice.call(document.querySelectorAll("[data-gallery]"));
+
+  function mediaBase(slug, file) { return "assets/projects/" + slug + "/" + file; }
+
+  function normalizeItems(list, slug) {
+    if (!Array.isArray(list)) return [];
+    return list.map(function (it) {
+      if (typeof it === "string") return { src: mediaBase(slug, it), alt: "", caption: "" };
+      if (it && it.src) return { src: mediaBase(slug, it.src), alt: it.alt || "", caption: it.caption || it.alt || "" };
+      return null;
+    }).filter(Boolean);
+  }
+
+  var active = [];      // items in the currently open gallery
+  var current = 0;      // active index
+  var lastFocused = null;
+  var overlay = null, lbImg, lbCap, lbCount, lbPrev, lbNext, lbClose;
+
+  function buildOverlay() {
+    overlay = document.createElement("div");
+    overlay.className = "lightbox";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.setAttribute("aria-label", "Project image viewer");
+    overlay.hidden = true;
+    overlay.innerHTML =
+      '<button class="lightbox__backdrop" type="button" tabindex="-1" aria-label="Close gallery" data-close></button>' +
+      '<span class="lightbox__counter mono" aria-hidden="true"></span>' +
+      '<button class="lightbox__close" type="button" aria-label="Close gallery">✕</button>' +
+      '<button class="lightbox__nav lightbox__prev" type="button" aria-label="Previous image">‹</button>' +
+      '<figure class="lightbox__figure">' +
+        '<img class="lightbox__img" alt="" />' +
+        '<figcaption class="lightbox__caption"></figcaption>' +
+      '</figure>' +
+      '<button class="lightbox__nav lightbox__next" type="button" aria-label="Next image">›</button>';
+    document.body.appendChild(overlay);
+
+    lbImg = overlay.querySelector(".lightbox__img");
+    lbCap = overlay.querySelector(".lightbox__caption");
+    lbCount = overlay.querySelector(".lightbox__counter");
+    lbPrev = overlay.querySelector(".lightbox__prev");
+    lbNext = overlay.querySelector(".lightbox__next");
+    lbClose = overlay.querySelector(".lightbox__close");
+
+    overlay.addEventListener("click", function (e) {
+      if (e.target.hasAttribute("data-close")) closeLightbox();
+    });
+    lbClose.addEventListener("click", closeLightbox);
+    lbPrev.addEventListener("click", function () { step(-1); });
+    lbNext.addEventListener("click", function () { step(1); });
+    overlay.addEventListener("keydown", onLightboxKeydown);
+  }
+
+  function showImage(i) {
+    current = (i + active.length) % active.length;
+    var item = active[current];
+    lbImg.src = item.src;
+    lbImg.alt = item.alt || ("Project image " + (current + 1) + " of " + active.length);
+    lbCap.textContent = item.caption || "";
+    lbCap.hidden = !item.caption;
+    lbCount.textContent = (current + 1) + " / " + active.length;
+    var multi = active.length > 1;
+    lbPrev.hidden = !multi;
+    lbNext.hidden = !multi;
+    lbCount.hidden = !multi;
+  }
+
+  function step(delta) { showImage(current + delta); }
+
+  function openLightbox(items, start) {
+    if (!items || !items.length) return;
+    if (!overlay) buildOverlay();
+    active = items;
+    lastFocused = document.activeElement;
+    overlay.hidden = false;
+    document.body.classList.add("no-scroll");
+    showImage(start || 0);
+    lbClose.focus();
+  }
+
+  function closeLightbox() {
+    if (!overlay || overlay.hidden) return;
+    overlay.hidden = true;
+    document.body.classList.remove("no-scroll");
+    lbImg.removeAttribute("src");
+    if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
+  }
+
+  function onLightboxKeydown(e) {
+    if (e.key === "Escape") { e.preventDefault(); closeLightbox(); }
+    else if (e.key === "ArrowLeft" && active.length > 1) { e.preventDefault(); step(-1); }
+    else if (e.key === "ArrowRight" && active.length > 1) { e.preventDefault(); step(1); }
+    else if (e.key === "Tab") {
+      var focusable = Array.prototype.slice
+        .call(overlay.querySelectorAll("button:not([hidden])"))
+        .filter(function (b) { return !b.hasAttribute("data-close"); });
+      if (!focusable.length) return;
+      var first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  }
+
+  galleryCards.forEach(function (card) {
+    var slug = card.getAttribute("data-gallery");
+    var items = normalizeItems(media[slug], slug);
+    if (!items.length) return; // no registered images — leave the card untouched
+
+    card.classList.add("project--has-media");
+    var nameEl = card.querySelector(".project__name");
+    var name = nameEl ? nameEl.textContent.trim() : "project";
+    var count = items.length;
+    var plural = count > 1 ? "s" : "";
+
+    // Small text cue — replaces the "media soon" placeholder, or is appended.
+    // (No thumbnail: the whole card is the trigger; this keeps the gallery
+    // discoverable and gives keyboard/screen-reader users an accessible control.)
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "project__gallery-btn mono";
+    btn.textContent = "◲ View " + count + " image" + plural;
+    btn.setAttribute("aria-label", "Open image gallery for " + name);
+    btn.addEventListener("click", function (e) { e.stopPropagation(); openLightbox(items, 0); });
+
+    var pending = card.querySelector(".project__pending");
+    var linksWrap = card.querySelector(".project__links");
+    if (pending) { pending.replaceWith(btn); }
+    else if (linksWrap) { linksWrap.appendChild(btn); }
+    else { card.appendChild(btn); }
+
+    // Convenience: clicking anywhere on the card (except a link/button) opens the gallery
+    card.addEventListener("click", function (e) {
+      if (e.target.closest("a, button")) return;
+      openLightbox(items, 0);
+    });
+  });
 })();
