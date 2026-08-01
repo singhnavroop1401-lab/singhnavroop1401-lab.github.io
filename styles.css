@@ -176,28 +176,14 @@ img { max-width: 100%; display: block; }
 .project--compact .project__name { font-size: 1.15rem; }
 .project--compact .project__desc { font-size: 0.9rem; }
 
-/* ---------- Project media (thumbnail + gallery trigger) ---------- */
+/* ---------- Project media (click-to-open gallery, no thumbnail) ---------- */
 .project--has-media { cursor: pointer; }
-.project__thumb {
-  position: relative; display: block; width: 100%; margin: 0; padding: 0;
-  aspect-ratio: 16 / 10; overflow: hidden; cursor: pointer;
-  background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
-  transition: border-color 0.2s ease;
-}
-.project--has-media:hover .project__thumb { border-color: var(--accent); }
-.project__thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-.project--has-media:hover .project__thumb img { transform: scale(1.04); }
-.project__thumb-badge {
-  position: absolute; right: 0.6rem; bottom: 0.6rem;
-  display: inline-flex; align-items: center; gap: 0.3rem;
-  background: color-mix(in srgb, #000 62%, transparent); color: #fff;
-  font-size: 0.72rem; letter-spacing: 0.02em; padding: 0.25rem 0.6rem;
-  border-radius: 100px; backdrop-filter: blur(4px);
-}
+.project--has-media:hover { border-color: var(--accent); }
 .project__gallery-btn {
   background: transparent; border: 0; padding: 0; cursor: pointer;
   font-size: 0.82rem; color: var(--muted); transition: color 0.2s ease;
 }
+.project--has-media:hover .project__gallery-btn { color: var(--accent); }
 .project__gallery-btn:hover { color: var(--accent); }
 .project--compact .project__gallery-btn { align-self: flex-start; }
 

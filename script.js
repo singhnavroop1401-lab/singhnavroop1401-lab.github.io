@@ -214,32 +214,13 @@
     var count = items.length;
     var plural = count > 1 ? "s" : "";
 
-    // Thumbnail (first image) — doubles as an accessible gallery trigger
-    var thumb = document.createElement("button");
-    thumb.type = "button";
-    thumb.className = "project__thumb";
-    thumb.setAttribute("aria-label", "Open image gallery for " + name + " (" + count + " image" + plural + ")");
-    var thumbImg = document.createElement("img");
-    thumbImg.src = items[0].src;
-    thumbImg.alt = items[0].alt || (name + " preview");
-    thumbImg.loading = "lazy";
-    thumbImg.decoding = "async";
-    thumb.appendChild(thumbImg);
-    if (count > 1) {
-      var badge = document.createElement("span");
-      badge.className = "project__thumb-badge mono";
-      badge.textContent = count + " photos";
-      badge.setAttribute("aria-hidden", "true");
-      thumb.appendChild(badge);
-    }
-    thumb.addEventListener("click", function (e) { e.stopPropagation(); openLightbox(items, 0); });
-    card.insertBefore(thumb, card.firstChild);
-
-    // Text trigger — replaces the "media soon" placeholder, or is appended
+    // Small text cue — replaces the "media soon" placeholder, or is appended.
+    // (No thumbnail: the whole card is the trigger; this keeps the gallery
+    // discoverable and gives keyboard/screen-reader users an accessible control.)
     var btn = document.createElement("button");
     btn.type = "button";
     btn.className = "project__gallery-btn mono";
-    btn.textContent = "View " + count + " image" + plural + " ◲";
+    btn.textContent = "◲ View " + count + " image" + plural;
     btn.setAttribute("aria-label", "Open image gallery for " + name);
     btn.addEventListener("click", function (e) { e.stopPropagation(); openLightbox(items, 0); });
 
