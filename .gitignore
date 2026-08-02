@@ -25,8 +25,11 @@ assets/Lower Limb Exoskeleton Final Signed report.docx
 # matriculation numbers and teammates' full names, and two of them still have
 # the figure defects the case-study charts correct.
 assets/*.pdf
+# ...except the generated CV, which the résumé's download button serves.
+!assets/Navroop-Singh-CV.pdf
 assets/Quick-hitch coupler.jpeg
 assets/My Picture.jpeg
+assets/Professional photo.png
 
 # Claude Code tooling — never part of the published site.
 # Holds the local dev-server config and any nested git worktrees.

@@ -135,10 +135,12 @@
   .cv__foot { display: none !important; }
 
   html, body { background: #fff !important; color: #000 !important; }
-  /* Density tuned to fill two A4 pages without spilling to a third.
-     Measured at 184mm content width: total ~1.7 pages, leaving slack for
-     the break-inside rules below to push items onto page 2. */
-  body { font-size: 9.6pt; line-height: 1.4; }
+  /* Density tuned to fill two A4 pages without spilling to a third. Retuned
+     after the availability line, the expanded project entries and the second
+     society entry were added — those pushed it onto a third page carrying a
+     single item. Verify the page count after editing content:
+     scripts/build-cv.sh regenerates the PDF. */
+  body { font-size: 9.35pt; line-height: 1.36; }
 
   .cv { max-width: none; margin: 0; padding: 0; }
 
@@ -148,7 +150,8 @@
   .cv__contact { font-size: 8.4pt; gap: 2pt 14pt; margin-top: 7pt; }
   .cv__contact a { color: #000; text-decoration: none; }
 
-  .cv__section { padding-top: 11pt; break-inside: auto; }
+  .cv__section { padding-top: 9pt; break-inside: auto; }
+  .cv__availability { font-size: 8.6pt; margin-top: 4pt; }
   .cv__h {
     font-size: 8pt; color: #000; border-bottom: 0.5pt solid #999;
     margin-bottom: 6.5pt; padding-bottom: 3pt;
@@ -157,7 +160,7 @@
   .cv__lede, .cv__points li, .cv__org, .cv__course,
   .cv__projects p, .cv__skills dd { color: #222; }
 
-  .cv__item { grid-template-columns: 9rem 1fr; gap: 1rem; padding-block: 4.5pt; }
+  .cv__item { grid-template-columns: 9rem 1fr; gap: 1rem; padding-block: 3.5pt; }
   .cv__title { font-size: 10.5pt; }
   .cv__org { font-size: 9pt; margin-top: 1.5pt; }
   .cv__course { font-size: 8.4pt; margin-top: 4pt; }
@@ -169,7 +172,7 @@
   .cv__date, .cv__points li::before { color: #000; }
   .cv__points li::before { background: #000; width: 4px; height: 4px; }
 
-  .cv__projects { gap: 8pt; }
+  .cv__projects { gap: 6pt; }
   .cv__projects p { font-size: 9pt; margin-top: 2pt; max-width: none; }
   .cv__tag { font-size: 6.8pt; padding: 0.5pt 5pt; border-color: #999; }
 
