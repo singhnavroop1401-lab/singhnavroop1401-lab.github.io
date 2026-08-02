@@ -382,9 +382,9 @@ body.no-scroll { overflow: hidden; }
 .hero__frame { position: relative; padding: 10px; border: 1px solid var(--border); background: var(--surface); }
 .hero__frame img {
   width: 100%; height: auto;
-  /* Native crop is 685×1400 — far too tall for the hero. Frame it to 2:3 and
-     bias upward so both Heidelberg Castle and the face stay in shot. */
-  aspect-ratio: 2 / 3; object-fit: cover; object-position: 50% 12%;
+  /* The asset is exported at exactly 2:3 (800×1200), so nothing is cropped
+     here. object-position only comes into play at the mobile 4:5 frame below. */
+  aspect-ratio: 2 / 3; object-fit: cover; object-position: 50% 50%;
   filter: grayscale(1) contrast(1.04); transition: filter 0.5s ease;
 }
 .hero__figure:hover .hero__frame img { filter: grayscale(0) contrast(1); }
@@ -483,7 +483,8 @@ body.no-scroll { overflow: hidden; }
   .projects--compact { grid-template-columns: 1fr 1fr; }
   .hero__grid { grid-template-columns: 1fr; gap: 2.25rem; }
   .hero__figure { max-width: 22rem; }
-  .hero__frame img { aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 24%; }
+  /* 4:5 crops height off a 2:3 source — bias upward to keep the face framed */
+  .hero__frame img { aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 15%; }
 }
 @media (max-width: 720px) {
   .nav__burger { display: inline-flex; }
