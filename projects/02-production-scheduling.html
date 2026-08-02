@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Production Scheduling &amp; Lot-Sizing Study — Navroop Singh</title>
+  <meta name="description" content="Five order-release strategies benchmarked on a six-product, five-stage line in Tecnomatix Plant Simulation — makespan, tardiness and on-time delivery over 100 orders." />
+  <meta name="author" content="Navroop Singh" />
+  <meta name="theme-color" content="#0A0A0A" />
+
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../styles.css" />
+
+  <!-- No-flash theme bootstrap: set theme before first paint -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#case">Skip to content</a>
+
+  <header class="nav">
+    <div class="nav__inner container">
+      <a href="../index.html#work" class="nav__brand">← Navroop&nbsp;Singh</a>
+      <div class="nav__actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="case container" id="case">
+    <p class="case__eyebrow mono"><a href="../index.html#work">Work</a> / P.02 · Case study</p>
+    <h1 class="case__title">Production Scheduling &amp; Lot-Sizing Study</h1>
+    <p class="case__thesis">Five order-release strategies on one deterministic demand realisation. The simplest rule won the objective outright — and the search that beat it on throughput lost on delivery reliability.</p>
+
+    <div class="titleblock mono" aria-hidden="true">
+      <span class="titleblock__cell"><b>Sheet</b>P.02</span>
+      <span class="titleblock__cell"><b>Tool</b>Plant Simulation 2404</span>
+      <span class="titleblock__cell"><b>Orders</b>100 / 1,050 units</span>
+      <span class="titleblock__cell"><b>Strategies</b>5</span>
+    </div>
+
+    <dl class="case__facts">
+      <div><dt class="mono">Context</dt><dd>Simulation Modeling in Logistics Planning — M.Sc. Systems Engineering for Manufacturing, OVGU Magdeburg</dd></div>
+      <div><dt class="mono">Date</dt><dd>Summer Semester 2026</dd></div>
+      <div><dt class="mono">Team</dt><dd>Individual assignment — conceptual model, simulation model, experiments and report</dd></div>
+      <div><dt class="mono">Tools</dt><dd>Tecnomatix Plant Simulation 2404 · SimTalk · random-key encoding</dd></div>
+    </dl>
+
+    <section class="case__section">
+      <h2 class="case__h">The requirement</h2>
+      <p>A medium-sized manufacturer of OEM parts wants to raise <b>delivery reliability</b> — the share of customer orders completed on or before the customer-required completion time. That is the requirement the study has to answer, and it is deliberately not the same thing as throughput.</p>
+      <p>The line makes six product types (A–F) across five stages — Press → Laser → Bending → Profiling → Welding — with product-specific skip routings: A and F skip Laser, B and E skip Welding, D skips Profiling, C visits all five. Buffers between stages are uncapacitated, so no stage ever blocks its upstream neighbour. Set-up time is product-dependent and is triggered whenever a machine sees a different product type than the unit it just processed.</p>
+      <p>Demand is 100 customer orders generated at simulation start: 1–6 distinct product types per order, 1–5 units of each, and a required completion time uniform between 4 hours and 4 days. Every strategy was run against the same fixed-seed realisation, so the comparison is like-for-like rather than a sampling artefact.</p>
+    </section>
+
+    <section class="case__section">
+      <h2 class="case__h">What the hand calculation settled before any run</h2>
+      <p>The conceptual model was written and closed out before the simulation was built, which is what makes the simulation auditable afterwards. Expected demand follows from the order-generation rules: a given product appears in an order with probability 7/12 and averages 3 units when present, so 1.75 units per order per product → 175 units per product → <b>1,050 units</b> across the six types. The realised seeds produced exactly 1,050.</p>
+      <p>Stage workload at that demand identifies the constraint, and it is worth being precise about which stage that is:</p>
+      <div class="case__scroll">
+        <table class="case__table">
+          <thead>
+            <tr><th scope="col">Stage</th><th scope="col">Machines</th><th scope="col">Total work (s)</th><th scope="col">Load / machine</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Press</td><td class="is-num">3</td><td class="is-num">228,725</td><td class="is-num">21.18 h</td></tr>
+            <tr><td>Laser</td><td class="is-num">3</td><td class="is-num">156,275</td><td class="is-num">14.47 h</td></tr>
+            <tr class="is-best"><td>Bending</td><td class="is-num">3</td><td class="is-num">264,075</td><td class="is-num">24.45 h</td></tr>
+            <tr><td>Profiling</td><td class="is-num">2</td><td class="is-num">163,275</td><td class="is-num">22.68 h</td></tr>
+            <tr><td>Welding</td><td class="is-num">3</td><td class="is-num">112,700</td><td class="is-num">10.44 h</td></tr>
+          </tbody>
+          <caption>Profiling is the thinnest stage by machine count — two machines against three everywhere else — but at expected demand <b>Bending</b> carries the heaviest load per machine and is the binding constraint.</caption>
+        </table>
+      </div>
+      <p>Adding the family rule's set-up overhead at Bending (1,715 s — only 1.95% of that stage's processing load, which is exactly the point of family production) gives a deterministic lower-bound makespan of 89,740 s ≈ <b>24.93 h</b>, and a predicted realistic band of 26–32 h. Due dates are uniform on [4, 96] h, so roughly 22% of orders have a deadline inside 24 h and are near-certain to miss it — an on-time ceiling of about 78%.</p>
+    </section>
+
+    <section class="case__section">
+      <h2 class="case__h">Approach</h2>
+      <p>The model was built in Plant Simulation 2404 and validated incrementally — frame and tables, order generation in <span class="mono">Init</span>, skip routing, processing and set-up times with ±10% triangular noise, then sink-side KPI collection — each step checked before the next was added. Each stage is a <span class="mono">ParallelProc</span> with its machine count; routing uses per-product skip lists held in table files; set-up fires from a triangular distribution when the product type changes on a machine. A <span class="mono">Sink_EntryCtrl</span> method writes completions and tracks makespan, total tardiness and on-time count incrementally.</p>
+      <p>Only the release-list builder changes between strategies, which keeps the comparison honest:</p>
+      <ul class="case__list">
+        <li><b>S1 — family rule (the baseline).</b> All units of A across all 100 orders, then all of B, and so on. Five product transitions per machine for the whole run.</li>
+        <li><b>S2 — priority rules.</b> Every customer order released as its own manufacturing order, sorted by Earliest Due Date, Shortest Processing Time or Longest Processing Time.</li>
+        <li><b>S3 — lot-based search.</b> Lot size and release sequence as decision variables, minimising z = 0.8 × total tardiness + 0.2 × makespan.</li>
+      </ul>
+      <p>The S3 chromosome is a 12-tuple: six integer lot sizes (1–200) and six real-valued sequence keys decoded by the random-key technique (Bean 1994), so every chromosome decodes to a valid permutation without repair operators. The decoder cycles the permutation, releasing one lot of <span class="mono">min(lotSize[P], remaining demand)</span> per visit until demand is exhausted — always producing a feasible 1,050-row release list that respects per-order composition.</p>
+      <figure class="case__figure">
+        <img src="../assets/projects/02-production-scheduling/plant-model.jpg" width="1200" height="750" loading="lazy" decoding="async"
+             alt="Manufacturing line modeled in Siemens Tecnomatix Plant Simulation, showing the five process stages with parallel machines and buffers between them" />
+        <figcaption>The five-stage line in Plant Simulation. Buffers decouple the stages; Profiling runs two machines against three elsewhere.</figcaption>
+      </figure>
+    </section>
+
+    <section class="case__section">
+      <h2 class="case__h">Result</h2>
+      <p>All figures below are simulation output from fixed seeds — re-running any submitted model reproduces them to the last decimal. z is the weighted objective in seconds.</p>
+      <div class="case__scroll">
+        <table class="case__table">
+          <thead>
+            <tr><th scope="col">Strategy</th><th scope="col">Makespan (h)</th><th scope="col">Tardiness (h)</th><th scope="col">On-time</th><th scope="col">z = 0.8T + 0.2M</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>S1 Family</td><td class="is-num">37.39</td><td class="is-num">453.23</td><td class="is-num">67 / 100</td><td class="is-num">1,332,235</td></tr>
+            <tr class="is-best"><td>S2 EDD</td><td class="is-num">66.85</td><td class="is-num">0.00</td><td class="is-num">100 / 100</td><td class="is-num">48,131</td></tr>
+            <tr><td>S2 SPT</td><td class="is-num">67.53</td><td class="is-num">535.89</td><td class="is-num">75 / 100</td><td class="is-num">1,591,990</td></tr>
+            <tr><td>S2 LPT</td><td class="is-num">66.17</td><td class="is-num">1,045.88</td><td class="is-num">61 / 100</td><td class="is-num">3,059,768</td></tr>
+            <tr class="is-best"><td>S3 B1 (best found)</td><td class="is-num">30.04</td><td class="is-num">162.87</td><td class="is-num">80 / 100</td><td class="is-num">490,694</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Three things fall out of that table, and only the first one is obvious.</p>
+      <p><b>Per-order release costs about 30 hours of makespan, whichever priority key you use.</b> All three S2 rules inflate makespan by roughly 79% over the family rule. Under S1 each machine sees five product transitions for the entire 1,050-unit batch; under per-order release almost every order ends one product family and begins another, so the line absorbs on the order of 100 extra inter-order transitions per machine. Makespan is dominated by the <em>number</em> of set-ups, not by their sequence — which is why the priority key barely moves it.</p>
+      <p><b>EDD wins the objective by an order of magnitude, and it is the simplest rule tested.</b> Zero tardiness, 100 on-time, worst-scheduled order still finishing four hours inside its deadline. Multiplied by the 0.8 tardiness weight, that gives z = 48,131 against the best lot-based run's 490,694. SPT shows the textbook pathology instead — good average, terrible tail: it clears small orders fast and pushes large ones to the end of the run, where the worst finishes 52.7 h late, nearly twice S1's worst case. LPT ignores due dates altogether and is worst on every customer-facing metric; it is a load-balancing rule, not a delivery-reliability rule.</p>
+      <p><b>The lot-based search dominates the baseline on everything</b> — makespan −20%, tardiness −64%, on-time +13 ppt, z −63% — and posts the lowest makespan of any strategy at 30.04 h, less than half of EDD's. It just cannot compete on the tardiness-weighted objective, because any lot-based release keeps some orders waiting for their constituent products while EDD prioritises each order individually.</p>
+
+      <figure class="case__figure case__figure--chart">
+        <img src="../assets/projects/02-production-scheduling/lot-size-response.svg" width="1200" height="777" loading="lazy" decoding="async"
+             alt="Line chart of the weighted objective z against uniform lot size on a log scale, U-shaped with its minimum at lot size 50" />
+        <figcaption>Lot size has a U-shaped response. Lots of 200 reproduce the family rule; lots of 5 explode the set-up count. The optimum sits at 50, where interleaved lots keep all five stages busy but each product still runs in chunks large enough to dilute per-unit set-up cost. <span class="mono">Redrawn — the report's own figure plots run index, not lot size.</span></figcaption>
+      </figure>
+
+      <figure class="case__figure case__figure--chart">
+        <img src="../assets/projects/02-production-scheduling/pareto-makespan-tardiness.svg" width="1200" height="777" loading="lazy" decoding="async"
+             alt="Scatter chart of makespan against total tardiness for five order-release strategies. EDD sits on the zero-tardiness axis at 67 hours makespan; the best lot-based search run sits at 30 hours makespan and 163 hours tardiness; LPT is worst at 1,046 hours tardiness" />
+        <figcaption>The trade-off front is two points wide: EDD buys perfect reliability with makespan, S3-B1 buys throughput with tardiness. Everything else is dominated. <span class="mono">Redrawn — the report's own figure has its axis labels swapped.</span></figcaption>
+      </figure>
+
+      <p>Sequence turned out to be a second, independent axis: at a fixed lot size of 50, reverse-alphabetical release (F→A) beat alphabetical by 15% on z, almost entirely through lower tardiness. Phase C then tested the hypothesis that the bottleneck-skipping product D could absorb larger lots to relieve Profiling. <b>It was refuted.</b> D's long lot idles Profiling while the other five products wait, more than offsetting the local set-up saving. The winning chromosome is the plain one: every lot 50, sequence F→E→D→C→B→A.</p>
+      <p>Re-weighting the objective does not rescue anything. Because EDD's tardiness is zero, its z scales purely with the makespan weight — it is only displaced once that weight passes roughly 0.82, which is not a realistic weighting for a company whose stated goal is delivery reliability. Re-weighting can trade reliability against makespan; it cannot manufacture more reliability than EDD already delivers.</p>
+      <div class="case__note">
+        <b>Recommendation, staged rather than single-winner.</b> Adopt lot-based release now: it beats today's family rule on every KPI and needs no capital. Move to EDD after a SMED set-up-reduction programme, because EDD's 30-hour makespan penalty is purely set-up cost. The precedent is Shingo's original programme at Toyota, where a 1,000-ton stamping press die change came down from about four hours in the early 1970s to under ten minutes by 1973. Halve the set-ups and the penalty halves; cut them by 90% and per-order release beats the family rule outright.
+      </div>
+    </section>
+
+    <section class="case__section">
+      <h2 class="case__h">What I'd do differently</h2>
+      <ul class="case__list">
+        <li><b>Call the search what it is.</b> The Plant Simulation 2404 <span class="mono">GAOptimization</span> toolkit replaced the older wizard, and configuring it for a custom 12-gene fitness loop inside the deadline was not realistic — so what I ran is a structured grid sweep with deterministic best-so-far selection, not a generational GA. Eleven evaluations cannot cover a 12-dimensional space; z = 490,694 is almost certainly a local optimum, and a real generational GA on the same encoding would likely improve it 5–15%.</li>
+        <li><b>My pre-simulation band was wrong, and I'd want to know why.</b> The hand calculation predicted 26–32 h for the baseline; the simulation returned 37.39 h. The lower bound (24.93 h) held, but my allowance for pipeline fill, drain and non-bottleneck idling was too small. The fix is not a wider band — it is a fill/drain term derived from the routing rather than guessed.</li>
+        <li><b>One demand realisation is one data point.</b> Fixed seeds make the comparison clean and reproducible, but every KPI here is a single sample. Replications across seeds would give confidence intervals and show whether the S3-vs-EDD ordering is robust or an artefact of this particular set of 100 orders.</li>
+        <li><b>The objective measures the wrong thing for the stated goal.</b> z minimises tardiness in seconds, so it punishes one very late order harder than many slightly late ones, and never directly rewards the count of on-time orders. EDD wins both here only because zero tardiness implies 100% on-time — the alignment is incidental. If delivery reliability is the goal, on-time percentage belongs in the objective.</li>
+      </ul>
+    </section>
+
+    <p class="case__back"><a href="../index.html#work">← Back to all work</a></p>
+  </main>
+
+  <footer class="footer container">
+    <div class="footer__inner">
+      <span class="footer__name">Navroop Singh</span>
+      <span class="footer__meta mono">Systems Engineer · Magdeburg, DE</span>
+      <span class="footer__copy mono">© 2026 — Built with care.</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var toggle = document.getElementById('theme-toggle');
+      function sync() {
+        var isDark = root.getAttribute('data-theme') === 'dark';
+        if (toggle) toggle.setAttribute('aria-pressed', String(isDark));
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', isDark ? '#0a0a0a' : '#f2f1ed');
+      }
+      sync();
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-theme', next);
+          try { localStorage.setItem('theme', next); } catch (e) {}
+          sync();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
