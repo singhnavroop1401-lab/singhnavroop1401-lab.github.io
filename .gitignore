@@ -5,6 +5,10 @@ structure.md
 claude.md
 assets/README.md
 
+# Staging content for the separate GitHub project repos — never part of the
+# Pages site. READMEs and prepared assets live here until uploaded elsewhere.
+_github-repos/
+
 # Unredacted originals — NEVER publish.
 # Contains Escorts Kubota internal R&D data (competitor benchmarking, ram
 # specs, a named colleague) and the signed exoskeleton report. Only the
