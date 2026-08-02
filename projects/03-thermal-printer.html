@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Thermal Printer MBSE Model (RAMI 4.0) — Navroop Singh</title>
-  <meta name="description" content="A thermal printer modelled in Enterprise Architect against RAMI 4.0 — two hierarchy levels, seven layers, and traceability from workstation goals to physical realisation." />
+  <meta name="description" content="A thermal printer modelled in Enterprise Architect against RAMI 4.0 — workstation goals refined down to the motor that satisfies them, with traceability intact." />
   <meta name="author" content="Navroop Singh" />
   <meta name="theme-color" content="#0A0A0A" />
 
@@ -36,7 +36,7 @@
 
   <header class="nav">
     <div class="nav__inner container">
-      <a href="../index.html#work" class="nav__brand">← Navroop&nbsp;Singh</a>
+      <a href="../index.html#p03" class="nav__brand">← Navroop&nbsp;Singh</a>
       <div class="nav__actions">
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">
           <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
@@ -49,75 +49,66 @@
   <main class="case container" id="case">
     <p class="case__eyebrow mono"><a href="../index.html#work">Work</a> / P.03 · Case study</p>
     <h1 class="case__title">Thermal Printer MBSE Model (RAMI 4.0)</h1>
-    <p class="case__thesis">One printer modelled twice — once as a set of workstation goals with no implementation in them, then again as executable control logic — with the traceability holding across the refinement.</p>
-
-    <div class="titleblock mono" aria-hidden="true">
-      <span class="titleblock__cell"><b>Sheet</b>P.03</span>
-      <span class="titleblock__cell"><b>Tool</b>Enterprise Architect</span>
-      <span class="titleblock__cell"><b>Levels</b>2</span>
-      <span class="titleblock__cell"><b>Layers</b>7</span>
-    </div>
+    <p class="case__thesis">Model the workstation's goals with no implementation in them. Then refine downward until you reach the motor. If a reader can follow one requirement the whole way, the model works.</p>
 
     <dl class="case__facts">
-      <div><dt class="mono">Context</dt><dd>Enterprise Architecture &amp; RAMI 4.0 — M.Sc. Systems Engineering for Manufacturing, OVGU Magdeburg</dd></div>
-      <div><dt class="mono">Date</dt><dd>Winter Semester 2025/26</dd></div>
-      <div><dt class="mono">Team</dt><dd>Group project, two members</dd></div>
-      <div><dt class="mono">My scope</dt><dd>Business, Function and Information layers at Work Station level, and the Sheet Feed Controller end to end — all seven layers, every diagram, and traceability back to the workstation requirements. The PPR layer was joint; my teammate owned the remaining WS layers and the Platen Force Controller.</dd></div>
-      <div><dt class="mono">Tools</dt><dd>Enterprise Architect (Sparx Systems) · UML/SysML notation · RAMI 4.0 reference architecture</dd></div>
+      <div><dt class="mono">Context</dt><dd>Enterprise Architecture &amp; RAMI 4.0 — M.Sc. OVGU Magdeburg, Winter Semester 2025/26</dd></div>
+      <div><dt class="mono">Tool</dt><dd>Enterprise Architect (Sparx Systems) — the modelling tool, not the TOGAF discipline</dd></div>
+      <div><dt class="mono">Scale</dt><dd>Two hierarchy levels · seven layers · 30 diagrams</dd></div>
+      <div><dt class="mono">My scope</dt><dd><b>The Sheet Feed Controller in full</b> — all seven layers, every diagram, and the traceability back to the workstation requirements. At Work Station level I owned the Business, Function and Information layers; the WS PPR layer was joint. My teammate took the remaining WS layers and the Platen Force Controller.</dd></div>
     </dl>
 
     <section class="case__section">
-      <h2 class="case__h">The requirement</h2>
-      <p>Model a thermal printer as an Industry 4.0 asset: structure the model according to the RAMI 4.0 reference architecture, cover the layers axis in full, and show that a control device can be derived from workstation-level intent rather than asserted alongside it. The test of the model is not how many diagrams exist — it is whether a reader can follow a single requirement from the business layer down to the motor that satisfies it.</p>
-      <p>That framing sets two hard constraints. Workstation-level models must contain <em>no</em> implementation assumptions, or the refinement step proves nothing. And every control-device element must trace to something above it, or the hierarchy is decoration.</p>
-    </section>
-
-    <section class="case__section">
-      <h2 class="case__h">Approach</h2>
-      <p>The Enterprise Architect project is organised as two hierarchy levels from the RAMI hierarchy axis — <b>Work Station</b> (the system-level view) and <b>Control Device</b> (implementable control logic) — with the Control Device level decomposed into two independent but cooperating subsystems: the Sheet Feed Controller and the Platen Force Controller.</p>
-      <p>Both levels are modelled across all six RAMI layers — Business, Function, Information, Communication, Integration, Asset — plus a <b>Product–Process–Resource</b> layer that carries the execution view. Thirty diagrams in total: ten at workstation level, and a full ten-diagram stack for each control device, so each subsystem stands on its own.</p>
-      <p>The order of work is the substance of the method. Workstation goals and behaviours first, as use cases, business requirements, functional requirements, activity flow and functional architecture — nothing about motors, sensors or PCBs. Only then the refinement into control-device functions, logical structures and physical realisations. Vertical integration comes from that refinement chain; horizontal integration between the two controllers is carried by the Information and Communication layers rather than by direct coupling.</p>
-      <ul class="case__list">
-        <li><b>Business layer</b> — system boundary, operator and supervisory actors, and the services the workstation offers. Business requirements cover operational reliability, print quality, safety and throughput; functional requirements refine those into obligations the workstation must meet without saying how.</li>
-        <li><b>Function layer</b> — activity diagram for the printing workflow including decision points and parallel activity, then a functional architecture that decomposes the workstation into interacting blocks.</li>
-        <li><b>Information layer</b> — data flow between processes, stores, external entities and gates, defining the logical interfaces the control devices later refine.</li>
-        <li><b>Sheet Feed Controller (mine, end to end)</b> — reliable sheet transport with jam prevention and safe handling as its operating constraints; sheet detection → decision → actuation as control behaviour; then down to the feed controller PCB, feed motor and paper-presence sensor at the Asset layer, and a PPR refinement of the workstation execution model.</li>
-      </ul>
+      <h2 class="case__h">Top: the workstation, no hardware named</h2>
       <figure class="case__figure">
-        <img src="../assets/projects/03-thermal-printer/use-case-requirements-trace.jpg" width="1200" height="750" loading="lazy" decoding="async"
+        <img src="../assets/projects/03-thermal-printer/use-case-requirements-trace.jpg" width="901" height="602" loading="lazy" decoding="async"
              alt="Use case diagram for the thermal printer with the system-of-interest boundary, three business actors and trace links to six functional requirements" />
-        <figcaption>Work Station use-case model with explicit trace links to functional requirements FR-1 – FR-6. The traces are the deliverable; the boxes are just where they attach.</figcaption>
+        <figcaption>Actors, boundary, and trace links out to functional requirements FR-1 – FR-6. The traces are the deliverable; the boxes are where they attach.</figcaption>
       </figure>
       <figure class="case__figure">
-        <img src="../assets/projects/03-thermal-printer/ppr-process-flow.jpg" width="1200" height="750" loading="lazy" decoding="async"
-             alt="Product-Process-Resource flow from receiving a print job through validation, paper feed, printing and status reporting" />
-        <figcaption>PPR process flow — print job in, printed sheet out. This is the workstation-level execution model that both control devices refine.</figcaption>
+        <img src="../assets/projects/03-thermal-printer/ws-activity.png" width="989" height="652" loading="lazy" decoding="async"
+             alt="Activity diagram of the printing workflow with decision points for paper availability and print success, and a branch to printing error" />
+        <figcaption>What the workstation does, including the branch where it fails. No motors, no PCBs — that's the discipline this level has to hold.</figcaption>
       </figure>
-      <figure class="case__figure">
-        <img src="../assets/projects/03-thermal-printer/ppr-resource-allocation.jpg" width="1200" height="750" loading="lazy" decoding="async"
-             alt="PPR diagram of the sheet-feed subsystem linking processes to the feed controller PCB, feed motor and paper presence sensor" />
-        <figcaption>Sheet-feed PPR resource allocation: each process bound to the physical resource that executes it. The bottom of my refinement chain.</figcaption>
+      <figure class="case__figure case__figure--sm">
+        <img src="../assets/projects/03-thermal-printer/ws-data-flow.png" width="661" height="601" loading="lazy" decoding="async"
+             alt="Data flow diagram showing print job data moving from the external IT system through receive, check paper availability, print content and handle printing error" />
+        <figcaption>Information layer: the logical interfaces a control device is later obliged to implement.</figcaption>
       </figure>
     </section>
 
     <section class="case__section">
-      <h2 class="case__h">Result</h2>
-      <p>The model covers the RAMI layers axis completely at two hierarchy levels, and the refinement holds: workstation requirements resolve into control-device functions, logical structures and physical assets, with the trace links present in the model rather than described in prose. Splitting the two control devices between the two of us — each owning all seven layers of one subsystem — meant both were modelled to the same depth instead of one being sketched to fill a gap.</p>
+      <h2 class="case__h">Bottom: the Sheet Feed Controller, mine end to end</h2>
+      <figure class="case__figure">
+        <img src="../assets/projects/03-thermal-printer/sfc-use-case.jpg" width="812" height="619" loading="lazy" decoding="async"
+             alt="Use case diagram for the Sheet Feed Controller with business cases for control sheet feeding, detect paper presence, handle feed error, report status and maintenance" />
+        <figcaption>The controller's own scope — sheet transport, jam prevention, safe handling — derived from the workstation above, not invented next to it.</figcaption>
+      </figure>
+      <figure class="case__figure">
+        <img src="../assets/projects/03-thermal-printer/sfc-activity.png" width="1029" height="666" loading="lazy" decoding="async"
+             alt="Activity diagram of the sheet feed control logic: receive command, check paper presence, start feed, monitor progress, detect feed error, report status" />
+        <figcaption>Detect, decide, actuate, report. Every action here traces up to a workstation activity.</figcaption>
+      </figure>
+      <figure class="case__figure">
+        <img src="../assets/projects/03-thermal-printer/sfc-cps.png" width="1230" height="647" loading="lazy" decoding="async"
+             alt="Cyber-physical system diagram mapping sheet feed control logic to the controller PCB, feed motor, motor driver circuit and paper presence sensor" />
+        <figcaption>End of the chain: control logic bound to a controller PCB, a motor driver, a feed motor and a paper-presence sensor.</figcaption>
+      </figure>
       <div class="case__note">
-        This was coursework in <b>Enterprise Architect</b>, the Sparx Systems modelling tool. It is not work in Enterprise Architecture — the TOGAF/Zachman discipline — and I don't claim that discipline here.
+        Splitting the two control devices one each — rather than by layer — meant both were modelled to the same depth. Vertical integration comes from the refinement chain; horizontal integration between the controllers runs through the Information and Communication layers.
       </div>
     </section>
 
     <section class="case__section">
       <h2 class="case__h">What I'd do differently</h2>
       <ul class="case__list">
-        <li><b>The third RAMI axis is missing.</b> The model covers Layers and Hierarchy Levels; there is no Life Cycle &amp; Value Stream content — nothing distinguishing type from instance, nothing on development versus maintenance versus end of life. That axis is where RAMI earns its keep for an asset that will be serviced in the field, and leaving it out means the model describes a design, not a lifecycle.</li>
-        <li><b>Traceability is manual.</b> The trace links were drawn by hand, so nothing prevents a requirement from quietly losing its realisation as the model grows. Enterprise Architect can validate this, and a coverage report — every requirement, its realising element, its verifying element — would turn traceability from a claim into a check.</li>
-        <li><b>Nothing is verified, only described.</b> There are no interface specifications with data types and ranges on the Information layer, and no behavioural verification — no state machine for the feed cycle, no simulation of the jam-prevention logic. A model this size should be able to answer "what happens if the paper-presence sensor fails mid-feed?" and mine cannot.</li>
+        <li><b>The third RAMI axis is missing.</b> Layers and Hierarchy Levels are covered; Life Cycle &amp; Value Stream isn't. Nothing separates type from instance, or development from field service — which is where RAMI earns its keep.</li>
+        <li><b>Traceability is manual.</b> The links are drawn by hand, so a requirement can quietly lose its realisation as the model grows. A coverage report would make it a check instead of a claim.</li>
+        <li><b>Described, not verified.</b> No interface data types or ranges, no state machine for the feed cycle. The model can't yet answer "what if the paper sensor fails mid-feed?"</li>
       </ul>
     </section>
 
-    <p class="case__back"><a href="../index.html#work">← Back to all work</a></p>
+    <p class="case__back"><a href="../index.html#p03">← Back to all work</a></p>
   </main>
 
   <footer class="footer container">

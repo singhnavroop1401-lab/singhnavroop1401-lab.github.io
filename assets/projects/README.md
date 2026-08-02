@@ -10,9 +10,10 @@ Clicking a project card on the site then pops up a full-screen image gallery.
 | `02-production-scheduling/` | Production Scheduling & Lot-Sizing Study | `"02-production-scheduling"` |
 | `03-thermal-printer/` | Thermal Printer MBSE Model (RAMI 4.0) | `"03-thermal-printer"` |
 | `04-medical-exoskeleton/` | Medical Exoskeleton | `"04-medical-exoskeleton"` |
-| `05-shaft-design/` | Shaft Design for Fatigue Loading | `"05-shaft-design"` |
-| `06-feed-pump/` | Reciprocating Feed Pump | `"06-feed-pump"` |
-| `07-cantilever-fea/` | Cantilever Beam FEA | `"07-cantilever-fea"` |
+| `05-backhoe-kinematics/` | Backhoe Loader Kinematics & Force Analysis | `"05-backhoe-kinematics"` |
+| `06-shaft-design/` | Shaft Design for Fatigue Loading | `"06-shaft-design"` |
+| `07-feed-pump/` | Reciprocating Feed Pump | `"07-feed-pump"` |
+| `08-cantilever-fea/` | Cantilever Beam FEA | `"08-cantilever-fea"` |
 
 ## How it works
 
