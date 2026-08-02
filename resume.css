@@ -100,6 +100,28 @@
 @page { size: A4; margin: 14mm 13mm; }
 
 @media print {
+  /* Defensive reset — keep the PDF as real text, not a picture of text.
+     GDI/XPS-based printer drivers (notably "Microsoft Print to PDF") flatten
+     the whole page to a bitmap when any transparency or compositing layer is
+     present. styles.css carries several — .nav has a backdrop-filter, .reveal
+     animates opacity — and display:none is not always enough to keep them out
+     of the print render tree. Killing them outright keeps the text selectable
+     and, more importantly, machine-readable for applicant tracking systems. */
+  *, *::before, *::after {
+    -webkit-backdrop-filter: none !important;
+            backdrop-filter: none !important;
+    filter: none !important;
+    mix-blend-mode: normal !important;
+    -webkit-mask-image: none !important;
+            mask-image: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+  }
+
   :root, [data-theme="dark"], [data-theme="light"] {
     --bg: #ffffff; --surface: #ffffff; --ink: #000000;
     --muted: #333333; --border: #bbbbbb; --accent: #000000;
