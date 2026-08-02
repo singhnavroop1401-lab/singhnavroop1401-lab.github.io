@@ -7,8 +7,8 @@ Clicking a project card on the site then pops up a full-screen image gallery.
 | Folder | Project | Manifest key |
 |--------|---------|--------------|
 | `01-ppr-tool/` | PPR Modelling & Validation Tool | `"01-ppr-tool"` |
-| `02-production-scheduling/` | Production Scheduling Optimisation | `"02-production-scheduling"` |
-| `03-thermal-printer/` | Thermal Printer System Architecture | `"03-thermal-printer"` |
+| `02-production-scheduling/` | Production Scheduling & Lot-Sizing Study | `"02-production-scheduling"` |
+| `03-thermal-printer/` | Thermal Printer MBSE Model (RAMI 4.0) | `"03-thermal-printer"` |
 | `04-medical-exoskeleton/` | Medical Exoskeleton | `"04-medical-exoskeleton"` |
 | `05-shaft-design/` | Shaft Design for Fatigue Loading | `"05-shaft-design"` |
 | `06-feed-pump/` | Reciprocating Feed Pump | `"06-feed-pump"` |

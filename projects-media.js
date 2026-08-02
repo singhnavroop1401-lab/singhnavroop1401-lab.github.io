@@ -26,17 +26,22 @@ window.PROJECT_MEDIA = {
     { src: "sample-model-graph.jpg", alt: "Sample model rendered as a process-resource-product graph", caption: "Sample model — assembly graph" },
   ],
 
-  // Production Scheduling Optimisation  →  assets/projects/02-production-scheduling/
+  // Production Scheduling & Lot-Sizing Study  →  assets/projects/02-production-scheduling/
+  // The two SVGs are corrected redraws of the report figures: the report's Pareto
+  // chart had its axis labels swapped, and its lot-size figure was plotted against
+  // run index instead of lot size.
   "02-production-scheduling": [
     { src: "plant-model.jpg", alt: "Manufacturing line modeled in Siemens Tecnomatix Plant Simulation", caption: "Plant model in Siemens Tecnomatix Plant Simulation" },
+    { src: "pareto-makespan-tardiness.svg", alt: "Scatter chart of makespan against total tardiness for five order-release strategies. EDD sits on the zero-tardiness axis at 67 hours makespan; the best lot-based search run sits at 30 hours makespan and 163 hours tardiness; LPT is worst at 1,046 hours tardiness", caption: "Makespan vs total tardiness across the five strategies — EDD and the best lot-based run form the trade-off front" },
+    { src: "lot-size-response.svg", alt: "Line chart of the weighted objective z against uniform lot size on a log scale, U-shaped with its minimum at lot size 50", caption: "Lot size has a U-shaped response — very large lots reproduce the family rule, very small lots explode set-up count. Optimum at 50" },
   ],
 
-  // Thermal Printer System Architecture  →  assets/projects/03-thermal-printer/
+  // Thermal Printer MBSE Model (RAMI 4.0)  →  assets/projects/03-thermal-printer/
   "03-thermal-printer": [
     { src: "use-case-requirements-trace.jpg", alt: "Use case diagram for the thermal printer with the system-of-interest boundary, three business actors and trace links to six functional requirements", caption: "Use case model traced to functional requirements FR-1 – FR-6" },
     { src: "ppr-process-flow.jpg", alt: "Product-Process-Resource flow from receiving a print job through validation, paper feed, printing and status reporting", caption: "PPR process flow — print job to printed sheet" },
     { src: "ppr-resource-allocation.jpg", alt: "PPR diagram of the sheet-feed subsystem linking processes to the feed controller PCB, feed motor and paper presence sensor", caption: "PPR resource allocation — sheet-feed subsystem" },
-    { src: "use-case-platen-controller.jpg", alt: "Use case diagram for the platen force controller subsystem showing include and extend relationships between platen force cases", caption: "Platen force controller — subsystem use cases" },
+    { src: "use-case-platen-controller.jpg", alt: "Use case diagram for the platen force controller subsystem showing include and extend relationships between platen force cases", caption: "Platen force controller — subsystem use cases (teammate's scope)" },
   ],
 
   // Medical Exoskeleton  →  assets/projects/04-medical-exoskeleton/
