@@ -11,6 +11,18 @@ assets/README.md
 # redacted derivatives under assets/ go live.
 _source/
 
+# The loose originals in assets/ that the redacted derivatives were made
+# from. Same reason as _source/ above: internal R&D data, and a signed
+# report containing other people's names and student ID numbers.
+# Listed explicitly so `git add -A` can never publish them by accident.
+assets/Input and output kinematics template.png
+assets/Input for forces kinematics template Escorts.png
+assets/Output image of forces on Loader.png
+assets/Kinematics Calculation template.xlsm
+assets/Lower Limb Exoskeleton Final Signed report.docx
+assets/Quick-hitch coupler.jpeg
+assets/My Picture.jpeg
+
 # Claude Code tooling — never part of the published site.
 # Holds the local dev-server config and any nested git worktrees.
 # Without this, `git add -A` could commit an entire worktree into the repo.
