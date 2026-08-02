@@ -284,10 +284,19 @@
     else if (linksWrap) { linksWrap.appendChild(btn); }
     else { card.appendChild(btn); }
 
-    // Convenience: clicking anywhere on the card (except a link/button) opens the gallery
+    // Clicking the card body follows the case study when there is one — that's
+    // what a reader expects from a project card. The gallery stays available
+    // through the "View N images" button. Cards without a case study (the
+    // compact coursework ones) keep the gallery as their card action.
+    var caseLink = card.querySelector('.project__links a[href^="projects/"]');
     card.addEventListener("click", function (e) {
       if (e.target.closest("a, button")) return;
-      openLightbox(items, 0);
+      // Don't hijack a modified click or a click that ends a text selection.
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var sel = window.getSelection();
+      if (sel && sel.toString().length) return;
+      if (caseLink) { window.location.href = caseLink.href; }
+      else { openLightbox(items, 0); }
     });
   });
 })();
