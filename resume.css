@@ -40,6 +40,9 @@
   padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
 }
 .cv__lede { color: var(--muted); max-width: 68ch; }
+/* Availability / start / work authorisation — German recruiters screen on these. */
+.cv__availability { margin-top: 0.6rem; font-size: 0.88rem; }
+.cv__availability b { color: var(--ink); font-weight: 600; }
 
 .cv__item {
   display: grid; grid-template-columns: 12rem 1fr; gap: 1.5rem;

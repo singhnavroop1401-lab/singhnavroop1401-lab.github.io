@@ -287,6 +287,13 @@ body.no-scroll { overflow: hidden; }
 .contact__line { color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.35rem); max-width: 40ch; margin-bottom: 2.25rem; }
 .contact__actions { display: flex; flex-wrap: wrap; gap: 0.9rem; }
 
+/* Availability / start date / work authorisation — recruiters screen on these,
+   so they sit in the flow, not in the decorative titleblock. */
+.contact__facts { display: grid; gap: 0.6rem; max-width: 60ch; margin-bottom: 2.25rem; }
+.contact__facts > div { display: grid; grid-template-columns: 11rem 1fr; gap: 0.9rem; align-items: baseline; }
+.contact__facts dt { font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.contact__facts dd { margin: 0; color: var(--muted); font-size: 0.92rem; }
+
 /* ---------- Footer ---------- */
 .footer { border-top: 1px solid var(--border); padding-block: 2.5rem; }
 .footer__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
@@ -506,4 +513,5 @@ body.no-scroll { overflow: hidden; }
 @media (max-width: 560px) {
   .lightbox__nav { width: 42px; height: 42px; font-size: 1.5rem; }
   .lightbox__img { max-height: 74vh; }
+  .contact__facts > div { grid-template-columns: 1fr; gap: 0.2rem; }
 }

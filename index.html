@@ -105,9 +105,6 @@
             <a href="https://linkedin.com/in/navroop-singh-1218a11a3" target="_blank" rel="noopener" aria-label="LinkedIn">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.5 8h4V24h-4V8zM8.5 8h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-7.1c0-1.7-.03-3.9-2.37-3.9-2.37 0-2.73 1.85-2.73 3.77V24h-4V8z"/></svg>
             </a>
-            <a href="https://github.com/singhnavroop1401-lab" target="_blank" rel="noopener" aria-label="GitHub">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.36-3.88-1.36-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.76.4-1.27.74-1.56-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.28 5.69.41.36.78 1.05.78 2.12v3.14c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
-            </a>
             <a href="mailto:singhnavroop1401@gmail.com" aria-label="Email">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7 10-7"/></svg>
             </a>
@@ -156,8 +153,8 @@
 
         <ul class="stats reveal">
           <li><span class="stats__num">2+</span><span class="stats__label">Years in industry</span></li>
+          <li><span class="stats__num">3</span><span class="stats__label">Compressors installed</span></li>
           <li><span class="stats__num">8</span><span class="stats__label">Engineering projects</span></li>
-          <li><span class="stats__num">2</span><span class="stats__label">Languages spoken</span></li>
           <li><span class="stats__num">MSc</span><span class="stats__label">Systems Eng. @ OVGU</span></li>
         </ul>
       </div>
@@ -188,11 +185,11 @@
             </div>
           </div>
           <h3 class="project__name">PPR Modelling &amp; Validation Tool</h3>
-          <p class="project__desc">An interactive web app that models Product-Process-Resource relationships as directed graphs. Upload Excel/CSV to auto-generate visualizations across reliability, process-flow, and resource-dependency views. Deployed publicly on Streamlit Cloud.</p>
+          <p class="project__desc">An interactive web app that models Product-Process-Resource relationships as directed graphs. Upload Excel/CSV to auto-generate visualizations across engineering, reliability, process-flow, and resource-dependency views. Deployed publicly on Streamlit Cloud.</p>
           <ul class="tags">
             <li>Python</li><li>Streamlit</li><li>NetworkX</li><li>Graphviz</li>
           </ul>
-          <p class="project__note mono">Collaborative build — shared repository hosted on a teammate's account.</p>
+          <p class="project__note mono">Two-person build. My scope: the engineering and reliability views. Repository hosted on my teammate's account, so commit history does not reflect authorship.</p>
         </article>
 
         <!-- Featured #2 -->
@@ -201,11 +198,17 @@
             <span class="project__index mono">P.02</span>
             <div class="project__links"><span class="project__pending mono">media soon</span></div>
           </div>
-          <h3 class="project__name">Production Scheduling Optimisation</h3>
-          <p class="project__desc">Modeled a manufacturing facility in Siemens Tecnomatix Plant Simulation to optimize throughput. Benchmarked scheduling strategies — GA, SPT, LPT, EDD, FIFO — across throughput, utilization, and queue-time KPIs. The Genetic Algorithm outperformed rule-based heuristics under variable demand.</p>
+          <h3 class="project__name">Production Scheduling &amp; Lot-Sizing Study</h3>
+          <p class="project__desc">Modelled a six-product, five-stage line — Press → Laser → Bending → Profiling → Welding, with product-specific skip paths and a two-machine Profiling bottleneck — in Tecnomatix Plant Simulation, then benchmarked five order-release strategies over 100 orders / 1,050 units against makespan, total tardiness and on-time delivery.</p>
+          <dl class="project__case">
+            <div><dt class="mono">Search</dt><dd>A lot-based search over lot size and release sequence cut makespan 20% and tardiness 64% against the family-production baseline</dd></div>
+            <div><dt class="mono">Finding</dt><dd>EDD — the simplest rule tested — eliminated tardiness entirely and won the weighted objective outright, because per-order release buys perfect delivery reliability at the cost of a set-up explosion</dd></div>
+            <div><dt class="mono">Plan</dt><dd>Lot-based release now, EDD after a SMED set-up-reduction programme</dd></div>
+          </dl>
           <ul class="tags">
-            <li>Tecnomatix Plant Simulation</li><li>Genetic Algorithm</li><li>Optimization</li>
+            <li>Tecnomatix Plant Simulation 2404</li><li>SimTalk</li><li>Scheduling &amp; Lot-Sizing</li>
           </ul>
+          <p class="project__note mono">Summer Semester 2026 · deterministic demand — one fixed-seed realisation of 100 orders, identical across all runs.</p>
         </article>
 
         <!-- Featured #3 -->
@@ -214,11 +217,12 @@
             <span class="project__index mono">P.03</span>
             <div class="project__links"><span class="project__pending mono">media soon</span></div>
           </div>
-          <h3 class="project__name">Thermal Printer System Architecture</h3>
-          <p class="project__desc">Modeled a thermal printer's architecture with Enterprise Architecture principles aligned to RAMI 4.0. Decomposed sheets, printhead mechanism, and control logic across the RAMI hierarchy and life-cycle axes, showing how the six layers apply to an embedded industrial device.</p>
+          <h3 class="project__name">Thermal Printer MBSE Model (RAMI 4.0)</h3>
+          <p class="project__desc">Modelled a thermal printer in Enterprise Architect against the RAMI 4.0 reference architecture, across two hierarchy levels (Work Station and Control Device) and the six RAMI layers plus a Product–Process–Resource layer. Top-down: workstation goals modelled without implementation assumptions, then refined into control-device functions, logical structures and physical realisations, with traceability maintained across the refinement.</p>
           <ul class="tags">
-            <li>RAMI 4.0</li><li>Enterprise Architecture</li><li>MBSE</li>
+            <li>RAMI 4.0</li><li>Enterprise Architect (Sparx)</li><li>MBSE</li>
           </ul>
+          <p class="project__note mono">Winter Semester 2025/26 · group project, two members. My scope: the Business, Function and Information layers at Work Station level, and the Sheet Feed Controller end to end — all seven layers, every diagram, and traceability back to the workstation requirements. The PPR layer was joint; my teammate owned the remaining WS layers and the Platen Force Controller.</p>
         </article>
 
         <!-- Featured #4 -->
@@ -247,9 +251,9 @@
             <div class="project__links"><span class="project__pending mono">Escorts Kubota · R&amp;D</span></div>
           </div>
           <h3 class="project__name">Backhoe Loader Kinematics &amp; Force Analysis</h3>
-          <p class="project__desc">Built a parametric kinematics and force-analysis tool for backhoe loader mechanisms. Linkage geometry drives a full free-body solution at every pin joint, feeding computed outputs for reach, working height, bucket rotation and breakout force. Cut data-manipulation effort by 30%. Also modelled a quick-hitch coupler in Siemens Solid Edge.</p>
+          <p class="project__desc">Built a parametric kinematics and force-analysis tool for backhoe loader mechanisms. Linkage geometry drives a full free-body solution at every pin joint, feeding computed outputs for reach, working height, bucket rotation and breakout force. Cut manual calculation time for linkage kinematic analysis by ~30%. Also modelled a quick-hitch coupler in Siemens Solid Edge.</p>
           <ul class="tags">
-            <li>Kinematics</li><li>Force Analysis</li><li>Excel</li><li>Solid Edge</li>
+            <li>Kinematics</li><li>Force Analysis</li><li>Excel / VBA</li><li>Solid Edge</li>
           </ul>
           <p class="project__note mono">Numeric values redacted — Escorts Kubota internal data.</p>
         </article>
@@ -286,7 +290,7 @@
         <div class="titleblock mono" aria-hidden="true">
           <span class="titleblock__cell"><b>Sheet</b>03</span>
           <span class="titleblock__cell"><b>Title</b>Experience</span>
-          <span class="titleblock__cell"><b>Period</b>2021 — 2025</span>
+          <span class="titleblock__cell"><b>Industry</b>2+ yrs</span>
           <span class="titleblock__cell"><b>Roles</b>3</span>
         </div>
       </div>
@@ -295,17 +299,17 @@
         <li class="timeline__item reveal">
           <div class="timeline__meta">
             <span class="timeline__date mono">Aug 2024 — Sep 2025</span>
-            <span class="timeline__loc mono">India</span>
+            <span class="timeline__loc mono">Jamnagar, India</span>
           </div>
           <div class="timeline__body">
-            <h3 class="timeline__role">Manager</h3>
-            <p class="timeline__org">Reliance Corp IT Park Ltd — Polysilicon Plant</p>
+            <h3 class="timeline__role">Rotating Equipment Engineer — Installation &amp; Commissioning</h3>
+            <p class="timeline__org">Reliance Corp IT Park Ltd (Reliance Industries — New Energy) — Polysilicon Plant · designation: Manager</p>
             <ul class="timeline__points">
+              <li>Supervised installation of three reciprocating compressors — two horizontal, one vertical — covering vendor coordination, site sequencing and quality inspection through to pre-commissioning.</li>
+              <li>Witnessed the Mechanical Run Test at the vendor's works for one compressor, and one canned seal-less pump tag on site.</li>
               <li>Reviewed and interpreted General Arrangement Drawings (GAD) and P&amp;IDs for rotating equipment installations.</li>
-              <li>Supervised installation of reciprocating compressors and coordinated vendor and site activities.</li>
-              <li>Participated in Mechanical Run Tests (MRT) of compressors and canned seal-less pumps.</li>
-              <li>Conducted quality inspections and supervised nitrogen preservation prior to commissioning.</li>
-              <li>Developed a reactor bell shifting and optimization plan to reduce batch reactor downtime.</li>
+              <li>Supervised nitrogen preservation procedures ahead of commissioning.</li>
+              <li>Developed a reactor bell shifting and sequencing plan projected to remove ~14 h of downtime per batch (modelled — plant in construction phase).</li>
             </ul>
           </div>
         </li>
@@ -313,15 +317,15 @@
         <li class="timeline__item reveal">
           <div class="timeline__meta">
             <span class="timeline__date mono">Aug 2023 — Aug 2024</span>
-            <span class="timeline__loc mono">India</span>
+            <span class="timeline__loc mono">Jamnagar, India</span>
           </div>
           <div class="timeline__body">
             <h3 class="timeline__role">Graduate Engineering Trainee</h3>
-            <p class="timeline__org">Reliance Corp IT Park Ltd — Polysilicon Plant</p>
+            <p class="timeline__org">Reliance Corp IT Park Ltd (Reliance Industries — New Energy) — Polysilicon Plant</p>
             <ul class="timeline__points">
-              <li>Assisted the rotary equipment team during installation and pre-commissioning activities.</li>
-              <li>Supported cross-functional coordination between maintenance, vendors, and project teams.</li>
-              <li>Participated in documentation reviews, inspections, and MRT observations.</li>
+              <li>Assisted the rotating equipment team during installation, assembly and pre-commissioning.</li>
+              <li>Supported coordination between maintenance teams, vendors and project engineers.</li>
+              <li>Participated in documentation reviews, quality inspections and MRT observations.</li>
             </ul>
           </div>
         </li>
@@ -333,11 +337,12 @@
           </div>
           <div class="timeline__body">
             <h3 class="timeline__role">R&amp;D Intern</h3>
-            <p class="timeline__org">Escorts Kubota Limited</p>
+            <p class="timeline__org">Escorts Kubota Limited — Agricultural &amp; Construction Machinery</p>
             <ul class="timeline__points">
-              <li>Developed an Excel-based kinematics calculation template for backhoe loader mechanisms.</li>
-              <li>Achieved a 30% improvement in data manipulation efficiency through automated calculations.</li>
-              <li>Designed a basic quick-hitch coupler model using Siemens Solid Edge.</li>
+              <li>Built an Excel/VBA kinematics and force-analysis template for backhoe loader linkages, automating geometry and free-body calculations previously done by hand.</li>
+              <li>Cut manual calculation time for linkage kinematic analysis by ~30%.</li>
+              <li>Modelled a quick-hitch coupler in Siemens Solid Edge.</li>
+              <li>Internship formally certified by Escorts Kubota HR (EAM &amp; ECE – R&amp;D).</li>
             </ul>
             <a class="timeline__link mono" href="#p08">See the drawings — P.08 ↓</a>
           </div>
@@ -372,7 +377,7 @@
           <span class="edu__date mono">2019 — 2023</span>
           <div>
             <h3 class="edu__degree">B.Eng. Mechanical Engineering</h3>
-            <p class="edu__school">Thapar Institute of Engineering and Technology, Patiala, India — German GPA 2.1</p>
+            <p class="edu__school">Thapar Institute of Engineering and Technology, Patiala, India — German scale 2.1</p>
             <p class="edu__course">Machine Design · Mechanical Vibrations · Heat Transfer · Fluid Mechanics · Manufacturing Processes · Strength of Materials · Dynamics &amp; Vibrations</p>
           </div>
         </article>
@@ -387,35 +392,39 @@
         <div class="titleblock mono" aria-hidden="true">
           <span class="titleblock__cell"><b>Sheet</b>05</span>
           <span class="titleblock__cell"><b>Title</b>Capabilities</span>
-          <span class="titleblock__cell"><b>Groups</b>6</span>
-          <span class="titleblock__cell"><b>Languages</b>2</span>
+          <span class="titleblock__cell"><b>Groups</b>7</span>
+          <span class="titleblock__cell"><b>Languages</b>4</span>
         </div>
       </div>
 
       <div class="skills">
         <div class="skills__group reveal">
           <h3 class="skills__label mono">Systems Engineering</h3>
-          <ul class="tags"><li>MBSE</li><li>SysML</li><li>UML</li><li>System Architecture</li><li>RAMI 4.0</li><li>Enterprise Architecture</li></ul>
+          <ul class="tags"><li>MBSE</li><li>SysML</li><li>UML</li><li>System Architecture</li><li>RAMI 4.0</li></ul>
         </div>
         <div class="skills__group reveal">
           <h3 class="skills__label mono">CAD &amp; Design</h3>
           <ul class="tags"><li>SolidWorks</li><li>PTC Creo</li><li>AutoCAD</li><li>Siemens Solid Edge</li><li>Navisworks</li></ul>
         </div>
         <div class="skills__group reveal">
-          <h3 class="skills__label mono">Simulation &amp; Analysis</h3>
-          <ul class="tags"><li>ANSYS</li><li>Tecnomatix Plant Simulation</li></ul>
+          <h3 class="skills__label mono">Modelling &amp; Simulation</h3>
+          <ul class="tags"><li>ANSYS</li><li>Tecnomatix Plant Simulation</li><li>Enterprise Architect (Sparx)</li></ul>
         </div>
         <div class="skills__group reveal">
           <h3 class="skills__label mono">Programming</h3>
-          <ul class="tags"><li>Python</li><li>MATLAB</li><li>Streamlit</li><li>NetworkX</li><li>Graphviz</li></ul>
+          <ul class="tags"><li>Python</li><li>MATLAB</li><li>SimTalk</li><li>Streamlit</li><li>NetworkX</li><li>Graphviz</li></ul>
         </div>
         <div class="skills__group reveal">
           <h3 class="skills__label mono">Plant &amp; Domain</h3>
           <ul class="tags"><li>Rotating Equipment</li><li>Maintenance Engineering</li><li>P&amp;ID / GAD</li><li>Installation &amp; Commissioning</li><li>Plant Optimization</li></ul>
         </div>
         <div class="skills__group reveal">
+          <h3 class="skills__label mono">Standards — working familiarity</h3>
+          <ul class="tags"><li>ISO 13482</li><li>ISO 13485</li><li>ISO 14001</li></ul>
+        </div>
+        <div class="skills__group reveal">
           <h3 class="skills__label mono">Languages</h3>
-          <ul class="tags"><li>English — C1</li><li>German — A2 (→ B1)</li></ul>
+          <ul class="tags"><li>English — C1</li><li>German — A2</li><li>Punjabi — Native</li><li>Hindi — Fluent</li></ul>
         </div>
       </div>
     </section>
@@ -455,11 +464,15 @@
           <span class="titleblock__cell"><b>Status</b>Open to roles</span>
           <span class="titleblock__cell"><b>Region</b>Germany</span>
         </div>
-        <p class="contact__line">Open to systems engineering roles and collaborations across Germany.</p>
+        <p class="contact__line">Looking for a working-student role in MBSE, system architecture or production systems — 15–20 h/week, Magdeburg–Braunschweig–Wolfsburg or remote.</p>
+        <dl class="contact__facts">
+          <div><dt class="mono">Availability</dt><dd>Up to 20 h/week during semester · full-time in breaks</dd></div>
+          <div><dt class="mono">Earliest start</dt><dd>Immediate</dd></div>
+          <div><dt class="mono">Work authorisation</dt><dd>Non-EU student — eligible for working-student employment under German student visa terms</dd></div>
+        </dl>
         <div class="contact__actions">
           <a class="btn btn--primary" href="mailto:singhnavroop1401@gmail.com">Email me</a>
           <a class="btn btn--ghost" href="https://linkedin.com/in/navroop-singh-1218a11a3" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a class="btn btn--ghost" href="https://github.com/singhnavroop1401-lab" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
       </div>
     </section>
