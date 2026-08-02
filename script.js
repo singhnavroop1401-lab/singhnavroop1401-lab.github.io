@@ -14,7 +14,7 @@
     var isDark = root.getAttribute("data-theme") === "dark";
     if (toggle) toggle.setAttribute("aria-pressed", String(isDark));
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", isDark ? "#0a0a0a" : "#ffffff");
+    if (meta) meta.setAttribute("content", isDark ? "#0a0a0a" : "#f2f1ed");
   }
   syncToggle();
 
@@ -74,6 +74,60 @@
       });
     }, { rootMargin: "0px 0px -10% 0px", threshold: 0.1 });
     revealEls.forEach(function (el) { revObserver.observe(el); });
+  }
+
+  /* ---------- Cursor spotlight ----------
+     Glow follows the pointer exactly; the ring eases toward it so the
+     motion reads as deliberate rather than twitchy. Fine pointers only —
+     on touch there is no cursor to show, and it would just burn battery. */
+  var spotlight = document.querySelector(".spotlight");
+  var ring = document.querySelector(".cursor-ring");
+  var finePointer = window.matchMedia("(pointer: fine)").matches;
+
+  if (spotlight && ring && finePointer && !reduceMotion) {
+    var tx = 0, ty = 0;      // target (true pointer position)
+    var rx = 0, ry = 0;      // ring position, eased toward the target
+    var seen = false, frame = null;
+
+    var place = function () {
+      ring.style.transform = "translate3d(" + rx.toFixed(1) + "px," + ry.toFixed(1) + "px,0)";
+    };
+
+    var tick = function () {
+      rx += (tx - rx) * 0.18;
+      ry += (ty - ry) * 0.18;
+      place();
+      frame = Math.abs(tx - rx) > 0.1 || Math.abs(ty - ry) > 0.1
+        ? requestAnimationFrame(tick)
+        : null;
+    };
+
+    document.addEventListener("pointermove", function (e) {
+      if (e.pointerType !== "mouse") return;
+      tx = e.clientX; ty = e.clientY;
+      spotlight.style.setProperty("--mx", tx + "px");
+      spotlight.style.setProperty("--my", ty + "px");
+
+      if (!seen) {
+        // Snap to the pointer and paint immediately. Waiting for the first
+        // rAF would flash the ring at the top-left corner (and rAF does not
+        // run at all while the tab is hidden).
+        seen = true; rx = tx; ry = ty;
+        place();
+        spotlight.classList.add("is-on");
+        ring.classList.add("is-on");
+      }
+      ring.classList.toggle("is-active", !!e.target.closest("a, button, .project--has-media"));
+      if (!frame) frame = requestAnimationFrame(tick);
+    }, { passive: true });
+
+    document.addEventListener("pointerleave", function () {
+      spotlight.classList.remove("is-on");
+      ring.classList.remove("is-on");
+    });
+    document.addEventListener("pointerenter", function () {
+      if (seen) { spotlight.classList.add("is-on"); ring.classList.add("is-on"); }
+    });
   }
 
   /* ---------- Scroll spy (active nav link) ---------- */

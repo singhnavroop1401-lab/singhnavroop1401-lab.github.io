@@ -1,0 +1,163 @@
+/* =========================================================
+   Navroop Singh — Résumé
+   Loaded AFTER styles.css, which supplies the tokens
+   (--ink, --muted, --border, --accent, fonts, theme).
+   Screen: matches the portfolio. Print: A4, ink-friendly.
+   ========================================================= */
+
+.resume-page { background: var(--bg); }
+
+.resume-nav .nav__inner { justify-content: space-between; }
+.resume-print { padding: 0.55rem 1rem; font-size: 0.85rem; }
+
+.cv {
+  width: 100%; max-width: 60rem;
+  margin-inline: auto;
+  padding: clamp(2.5rem, 6vw, 4.5rem) var(--pad-x) clamp(3rem, 6vw, 5rem);
+}
+
+/* ---------- Header ---------- */
+.cv__head { padding-bottom: clamp(1.5rem, 3vw, 2rem); border-bottom: 1px solid var(--border); }
+.cv__name { font-size: clamp(2.4rem, 7vw, 4rem); letter-spacing: -0.04em; }
+.cv__role {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(1rem, 2vw, 1.3rem); margin-top: 0.5rem;
+}
+.cv__role .sep { color: var(--accent); margin-inline: 0.3rem; }
+
+.cv__contact {
+  display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem;
+  margin-top: 1.1rem; font-size: 0.82rem; color: var(--muted);
+}
+.cv__contact a { border-bottom: 1px solid transparent; transition: border-color 0.2s ease, color 0.2s ease; }
+.cv__contact a:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ---------- Sections ---------- */
+.cv__section { padding-top: clamp(1.75rem, 4vw, 2.5rem); }
+.cv__h {
+  font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1.1rem;
+  padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+}
+.cv__lede { color: var(--muted); max-width: 68ch; }
+
+.cv__item {
+  display: grid; grid-template-columns: 12rem 1fr; gap: 1.5rem;
+  padding-block: 0.9rem;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.cv__meta { display: flex; flex-direction: column; gap: 0.2rem; padding-top: 0.15rem; }
+.cv__date { font-size: 0.78rem; color: var(--accent); }
+.cv__loc { font-size: 0.74rem; color: var(--muted); }
+
+.cv__title { font-size: 1.08rem; letter-spacing: -0.02em; }
+.cv__org { color: var(--muted); font-weight: 500; font-size: 0.92rem; margin-top: 0.15rem; }
+.cv__course { color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem; }
+
+.cv__points { display: flex; flex-direction: column; gap: 0.35rem; margin-top: 0.7rem; }
+.cv__points li { position: relative; padding-left: 1.1rem; color: var(--muted); font-size: 0.9rem; }
+.cv__points li::before {
+  content: ""; position: absolute; left: 0; top: 0.6em;
+  width: 5px; height: 5px; background: var(--accent); border-radius: 1px;
+}
+
+/* ---------- Projects ---------- */
+.cv__projects { display: flex; flex-direction: column; gap: 1.1rem; }
+.cv__projects li { break-inside: avoid; page-break-inside: avoid; }
+.cv__projects p { color: var(--muted); font-size: 0.9rem; margin-top: 0.3rem; max-width: 74ch; }
+.cv__tag {
+  display: inline-block; vertical-align: 0.14em; margin-left: 0.5rem;
+  font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); border: 1px solid var(--border);
+  border-radius: 100px; padding: 0.15rem 0.55rem;
+}
+.cv__url { color: var(--muted); font-size: 0.78rem; }
+
+/* ---------- Skills ---------- */
+.cv__skills { display: flex; flex-direction: column; gap: 0.6rem; }
+.cv__skills > div {
+  display: grid; grid-template-columns: 12rem 1fr; gap: 1.5rem;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.cv__skills dt { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); }
+.cv__skills dd { margin: 0; color: var(--muted); font-size: 0.9rem; }
+
+.cv__foot { margin-top: clamp(2rem, 5vw, 3rem); font-size: 0.78rem; color: var(--muted); }
+.cv__foot a { color: var(--accent); border-bottom: 1px solid var(--accent); }
+
+/* ---------- Narrow screens ---------- */
+@media (max-width: 720px) {
+  .cv__item, .cv__skills > div { grid-template-columns: 1fr; gap: 0.5rem; }
+  .cv__meta { flex-direction: row; gap: 0.75rem; align-items: baseline; }
+  .resume-print { display: none; }
+}
+
+/* =========================================================
+   PRINT — A4, one ink colour, no chrome.
+   Forces the light palette regardless of the on-screen theme
+   so a dark-mode visitor doesn't print a black page.
+   ========================================================= */
+@page { size: A4; margin: 14mm 13mm; }
+
+@media print {
+  :root, [data-theme="dark"], [data-theme="light"] {
+    --bg: #ffffff; --surface: #ffffff; --ink: #000000;
+    --muted: #333333; --border: #bbbbbb; --accent: #000000;
+  }
+
+  .resume-nav, .skip-link, .resume-print, .theme-toggle,
+  .spotlight, .cursor-ring, .scroll-progress,
+  .cv__foot { display: none !important; }
+
+  html, body { background: #fff !important; color: #000 !important; }
+  /* Density tuned to fill two A4 pages without spilling to a third.
+     Measured at 184mm content width: total ~1.7 pages, leaving slack for
+     the break-inside rules below to push items onto page 2. */
+  body { font-size: 9.6pt; line-height: 1.4; }
+
+  .cv { max-width: none; margin: 0; padding: 0; }
+
+  .cv__head { padding-bottom: 9pt; }
+  .cv__name { font-size: 22pt; }
+  .cv__role { font-size: 10.5pt; margin-top: 3pt; }
+  .cv__contact { font-size: 8.4pt; gap: 2pt 14pt; margin-top: 7pt; }
+  .cv__contact a { color: #000; text-decoration: none; }
+
+  .cv__section { padding-top: 11pt; break-inside: auto; }
+  .cv__h {
+    font-size: 8pt; color: #000; border-bottom: 0.5pt solid #999;
+    margin-bottom: 6.5pt; padding-bottom: 3pt;
+  }
+  .cv__lede { font-size: 9.2pt; max-width: none; }
+  .cv__lede, .cv__points li, .cv__org, .cv__course,
+  .cv__projects p, .cv__skills dd { color: #222; }
+
+  .cv__item { grid-template-columns: 9rem 1fr; gap: 1rem; padding-block: 4.5pt; }
+  .cv__title { font-size: 10.5pt; }
+  .cv__org { font-size: 9pt; margin-top: 1.5pt; }
+  .cv__course { font-size: 8.4pt; margin-top: 4pt; }
+  .cv__date { font-size: 8pt; }
+  .cv__loc { font-size: 7.6pt; }
+
+  .cv__points { gap: 2.5pt; margin-top: 5pt; }
+  .cv__points li { font-size: 9pt; padding-left: 0.9rem; }
+  .cv__date, .cv__points li::before { color: #000; }
+  .cv__points li::before { background: #000; width: 4px; height: 4px; }
+
+  .cv__projects { gap: 8pt; }
+  .cv__projects p { font-size: 9pt; margin-top: 2pt; max-width: none; }
+  .cv__tag { font-size: 6.8pt; padding: 0.5pt 5pt; border-color: #999; }
+
+  .cv__skills { gap: 4.5pt; }
+  .cv__skills > div { grid-template-columns: 9rem 1fr; gap: 1rem; }
+  .cv__skills dt { font-size: 7.8pt; }
+  .cv__skills dd { font-size: 9pt; }
+
+  /* Sheet stamp kept in print — it ties the CV to the portfolio. Compact. */
+  .titleblock { border-color: #999; margin-top: 8pt; }
+  .titleblock__cell { border-right-color: #ccc; padding: 3pt 7pt; font-size: 7.4pt; }
+  .titleblock__cell b { font-size: 6.2pt; }
+
+  /* Keep a heading from stranding at the foot of a page */
+  .cv__h, .cv__title { break-after: avoid; page-break-after: avoid; }
+}

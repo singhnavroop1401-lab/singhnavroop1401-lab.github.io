@@ -5,11 +5,14 @@
    ========================================================= */
 
 :root {
-  --bg: #ffffff;
-  --surface: #fafafa;
+  /* Light theme is a toned paper stock, not pure white — easier on the eyes
+     and it suits the drawing-sheet language. Cards stay white so they lift
+     off the page, mirroring how --surface lifts off --bg in dark mode. */
+  --bg: #f2f1ed;
+  --surface: #ffffff;
   --ink: #0a0a0a;
-  --muted: #6b6b6b;
-  --border: #e6e6e6;
+  --muted: #5f5f5a;
+  --border: #dedcd5;
   --accent: #2e5bff;
   --accent-ink: #ffffff;
 
@@ -35,7 +38,11 @@
 
 /* ---------- Reset / base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html {
+  -webkit-text-size-adjust: 100%;
+  /* Keep anchor targets clear of the 68px sticky nav */
+  scroll-padding-top: 84px;
+}
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
 }
@@ -292,11 +299,192 @@ body.no-scroll { overflow: hidden; }
 .reveal.is-visible { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 
+/* =========================================================
+   BLUEPRINT LAYER — engineering-drawing treatment.
+   Scoped to the Work section + hero figure so the rest of
+   the site stays calm. Uses existing tokens only.
+   ========================================================= */
+
+/* Graph-paper field behind the Work section, faded at both ends. */
+.section--blueprint { position: relative; --grid: 26px; }
+.section--blueprint > * { position: relative; z-index: 1; }
+.section--blueprint::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    repeating-linear-gradient(to right, var(--border) 0 1px, transparent 1px var(--grid)),
+    repeating-linear-gradient(to bottom, var(--border) 0 1px, transparent 1px var(--grid));
+  opacity: 0.55;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 10%, #000 90%, transparent);
+          mask-image: linear-gradient(to bottom, transparent, #000 10%, #000 90%, transparent);
+}
+
+/* CAD title block — sits under the heading of every section */
+.titleblock {
+  display: flex; flex-wrap: wrap;
+  border: 1px solid var(--ink); background: var(--bg);
+  margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+.contact__title + .titleblock { margin-bottom: clamp(1.5rem, 3vw, 2rem); }
+.titleblock__cell {
+  display: flex; flex-direction: column; gap: 0.15rem;
+  flex: 1 1 9rem; min-width: 0;
+  padding: 0.55rem 0.9rem; font-size: 0.78rem;
+  border-right: 1px solid var(--border);
+}
+.titleblock__cell:last-child { border-right: 0; }
+.titleblock__cell b {
+  font-weight: 500; font-size: 0.62rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* Corner registration ticks on featured project cards */
+.project--featured { position: relative; }
+.project--featured::before, .project--featured::after {
+  content: ""; position: absolute; width: 12px; height: 12px;
+  border: 1px solid var(--accent); opacity: 0; transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+.project--featured::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+.project--featured::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+.project--featured:hover::before, .project--featured:hover::after,
+.project--featured:focus-within::before, .project--featured:focus-within::after { opacity: 1; }
+
+/* A lone 5th featured card spans the full grid rather than leaving a gap */
+.projects > .project--featured:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+/* Jumped-to card: make it obvious you landed on the right one */
+.project:target { border-color: var(--accent); }
+.project:target::before, .project:target::after { opacity: 1; }
+
+/* Short case-study block (spec sheet rows) */
+.project__case { display: grid; gap: 0.55rem; }
+.project__case > div { display: grid; grid-template-columns: 5.5rem 1fr; gap: 0.9rem; align-items: baseline; }
+.project__case dt { font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.project__case dd { margin: 0; color: var(--muted); font-size: 0.92rem; }
+
+/* Redaction / provenance note */
+.project__note {
+  margin-top: auto; padding-top: 0.75rem; font-size: 0.72rem;
+  color: var(--muted); border-top: 1px dashed var(--border);
+}
+
+.timeline__link {
+  display: inline-block; margin-top: 1rem; font-size: 0.78rem; color: var(--accent);
+  border-bottom: 1px solid transparent; transition: border-color 0.2s ease;
+}
+.timeline__link:hover { border-color: var(--accent); }
+
+/* ---------- Hero figure (drawing-framed portrait) ---------- */
+.hero__grid {
+  display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+  gap: clamp(2rem, 5vw, 4.5rem); align-items: center;
+}
+.hero__figure { margin: 0; position: relative; }
+.hero__frame { position: relative; padding: 10px; border: 1px solid var(--border); background: var(--surface); }
+.hero__frame img {
+  width: 100%; height: auto;
+  /* Native crop is 685×1400 — far too tall for the hero. Frame it to 2:3 and
+     bias upward so both Heidelberg Castle and the face stay in shot. */
+  aspect-ratio: 2 / 3; object-fit: cover; object-position: 50% 12%;
+  filter: grayscale(1) contrast(1.04); transition: filter 0.5s ease;
+}
+.hero__figure:hover .hero__frame img { filter: grayscale(0) contrast(1); }
+.hero__tick { position: absolute; width: 14px; height: 14px; border: 1px solid var(--accent); }
+.hero__tick--tl { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+.hero__tick--br { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+.hero__figcaption {
+  margin-top: 0.6rem; font-size: 0.68rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* =========================================================
+   KINETIC LAYER — native CSS scroll-driven animation where
+   supported, falling back to the IntersectionObserver in
+   script.js. All motion honours prefers-reduced-motion.
+   ========================================================= */
+
+/* ---------- Cursor spotlight ----------
+   A soft accent glow plus a lagging ring that tracks the pointer.
+   Sits above content but below the nav (z 100) and lightbox (z 300). */
+.spotlight, .cursor-ring { position: fixed; pointer-events: none; z-index: 90; opacity: 0; }
+.spotlight {
+  inset: 0;
+  background: radial-gradient(
+    170px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--accent) 32%, transparent),
+    transparent 68%);
+  transition: opacity 0.4s ease;
+}
+.cursor-ring {
+  top: 0; left: 0; width: 26px; height: 26px; margin: -13px 0 0 -13px;
+  border: 1px solid color-mix(in srgb, var(--accent) 65%, transparent);
+  border-radius: 50%;
+  transition: opacity 0.3s ease, width 0.2s ease, height 0.2s ease,
+              margin 0.2s ease, background 0.2s ease;
+}
+.spotlight.is-on, .cursor-ring.is-on { opacity: 1; }
+/* Grows and fills over anything clickable */
+.cursor-ring.is-active {
+  width: 44px; height: 44px; margin: -22px 0 0 -22px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+/* Touch devices and reduced-motion users get nothing at all */
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .spotlight, .cursor-ring { display: none; }
+}
+
+.scroll-progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 2px;
+  z-index: 150; pointer-events: none;
+}
+.scroll-progress span {
+  display: block; height: 100%; background: var(--accent);
+  transform: scaleX(0); transform-origin: 0 50%;
+}
+
+@keyframes scroll-progress { to { transform: scaleX(1); } }
+@keyframes reveal-in { to { opacity: 1; transform: none; } }
+@keyframes hero-rise { from { opacity: 0; transform: translateY(0.35em); } to { opacity: 1; transform: none; } }
+@keyframes hero-fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero assembles on load */
+  .hero__word { display: inline-block; animation: hero-rise 0.9s cubic-bezier(0.2, 0.75, 0.25, 1) both; }
+  .hero__word:nth-of-type(2) { animation-delay: 0.09s; }
+  .hero__accent { display: inline-block; animation: hero-fade 0.5s ease 0.5s both; }
+  .hero__eyebrow { animation: hero-fade 0.7s ease 0.04s both; }
+  .hero__title   { animation: hero-fade 0.7s ease 0.20s both; }
+  .hero__tagline { animation: hero-fade 0.7s ease 0.28s both; }
+  .hero__cta     { animation: hero-fade 0.7s ease 0.36s both; }
+  .hero__socials { animation: hero-fade 0.7s ease 0.44s both; }
+  .hero__figure  { animation: hero-fade 0.9s cubic-bezier(0.2, 0.75, 0.25, 1) 0.22s both; }
+
+  @supports (animation-timeline: scroll()) {
+    .scroll-progress span {
+      animation: scroll-progress linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+
+  /* Scroll-linked reveals replace the JS transition where supported */
+  @supports (animation-timeline: view()) {
+    .reveal {
+      opacity: 0; transform: translateY(24px); transition: none;
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 8% cover 30%;
+    }
+  }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .about__grid { grid-template-columns: 1fr; }
   .skills { grid-template-columns: repeat(2, 1fr); }
   .projects--compact { grid-template-columns: 1fr 1fr; }
+  .hero__grid { grid-template-columns: 1fr; gap: 2.25rem; }
+  .hero__figure { max-width: 22rem; }
+  .hero__frame img { aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 24%; }
 }
 @media (max-width: 720px) {
   .nav__burger { display: inline-flex; }

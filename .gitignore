@@ -5,6 +5,17 @@ structure.md
 claude.md
 assets/README.md
 
+# Unredacted originals — NEVER publish.
+# Contains Escorts Kubota internal R&D data (competitor benchmarking, ram
+# specs, a named colleague) and the signed exoskeleton report. Only the
+# redacted derivatives under assets/ go live.
+_source/
+
+# Claude Code tooling — never part of the published site.
+# Holds the local dev-server config and any nested git worktrees.
+# Without this, `git add -A` could commit an entire worktree into the repo.
+.claude/
+
 # OS / editor cruft
 .DS_Store
 Thumbs.db
