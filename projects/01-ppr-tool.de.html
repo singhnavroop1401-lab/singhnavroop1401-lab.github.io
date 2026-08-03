@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>PPR-Modellierungs- &amp; Validierungstool — Navroop Singh</title>
+  <meta name="description" content="Ein Streamlit-Tool, das Produkt-Prozess-Ressource-Beziehungen als einen gerichteten Graphen modelliert, mit zwei Ingenieurssichten und vier Anforderungsprüfungen darauf." />
+  <meta name="author" content="Navroop Singh" />
+  <meta name="theme-color" content="#0A0A0A" />
+
+  <!-- Language alternates -->
+  <link rel="alternate" hreflang="en" href="https://singhnavroop1401-lab.github.io/projects/01-ppr-tool.html" />
+  <link rel="alternate" hreflang="de" href="https://singhnavroop1401-lab.github.io/projects/01-ppr-tool.de.html" />
+  <link rel="alternate" hreflang="x-default" href="https://singhnavroop1401-lab.github.io/projects/01-ppr-tool.html" />
+
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../styles.css" />
+
+  <!-- No-flash theme bootstrap: set theme before first paint -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#case">Zum Inhalt springen</a>
+
+  <header class="nav">
+    <div class="nav__inner container">
+      <a href="../index.de.html#p01" class="nav__brand">← Navroop&nbsp;Singh</a>
+      <div class="nav__actions">
+        <a class="lang-toggle mono" href="01-ppr-tool.html" hreflang="en" lang="en" aria-label="View this case study in English">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14.5 14.5 0 0 1 0 18 14.5 14.5 0 0 1 0-18z"/></svg>
+          <span>EN</span>
+        </a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Farbschema wechseln" aria-pressed="false">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="case container" id="case">
+    <p class="case__eyebrow mono"><a href="../index.de.html#work">Projekte</a> / P.01 · Fallstudie</p>
+    <h1 class="case__title">PPR-Modellierungs- &amp; Validierungstool</h1>
+    <p class="case__thesis">Zwei Ingenieurssichten auf einen Graphen — mit Produkt-Prozess-Ressource-Regeln, die schon beim Anlegen einer Kante durchgesetzt werden, sodass ein ungültiges Modell gar nicht erst entstehen kann.</p>
+
+    <dl class="case__facts">
+      <div><dt class="mono">Kontext</dt><dd>Python for Production Systems Engineering — OVGU Magdeburg, Wintersemester 2025/26</dd></div>
+      <div><dt class="mono">Team</dt><dd>Zweierteam. Mein Anteil: die Engineering- und Zuverlässigkeitssicht. Der Code wurde vom Konto meines Teamkollegen in einem einzigen Upload eingestellt, deshalb zeigt die Commit-Historie nicht, wer welches Modul geschrieben hat.</dd></div>
+      <div><dt class="mono">Stack</dt><dd>Python · Streamlit · NetworkX · Graphviz · PyVis</dd></div>
+      <div><dt class="mono">Live</dt><dd><a href="https://ppr-modelling-and-validation-tool-hz9epskbcjybcqievvs3cj.streamlit.app/" target="_blank" rel="noopener">Auf Streamlit Cloud bereitgestellt ↗</a></dd></div>
+    </dl>
+
+    <section class="case__section">
+      <h2 class="case__h">Ein Graph, viele Leser</h2>
+      <p>Ein PPR-Modell sagt, was produziert wird, wie und mit welchen Ressourcen. Diese drei Sichten werden von unterschiedlichen Ingenieuren gelesen — also muss das Tool sie aus <em>einem</em> Graphen projizieren. Zwei Kopien würden auseinanderlaufen, und ein auseinandergelaufenes Modell ist schlimmer als gar keins.</p>
+      <figure class="case__figure">
+        <img src="../assets/projects/01-ppr-tool/interactive-graph.jpg" width="1221" height="683" loading="lazy" decoding="async"
+             alt="Gerichteter PPR-Graph, der Ressourcen, Prozesse und Produkte verbindet, mit Ressourcen in der oberen Ebene, Prozessen in der Mitte und Produkten unten" />
+        <figcaption>Ressourcen oben, Prozesse in der Mitte, Produkte unten. Der Typ ist doppelt kodiert — über Farbe und Form — damit ein monochromer Beamer die Unterscheidung nicht verliert.</figcaption>
+      </figure>
+      <figure class="case__figure">
+        <img src="../assets/projects/01-ppr-tool/sample-model-graph.jpg" width="1243" height="851" loading="lazy" decoding="async"
+             alt="Beispielhaftes Lego-Auto-Modell als Prozess-Ressource-Produkt-Graph, dessen Montageschritte mit den erzeugten Teilen verknüpft sind" />
+        <figcaption>Die Beispieldomäne ist eine Lego-Rennwagen-Montagelinie — klein genug, um sie mit bloßem Auge zu prüfen, und strukturell trotzdem nicht trivial.</figcaption>
+      </figure>
+      <div class="case__note">
+        Nur zwei Kantenrichtungen haben in PPR überhaupt eine Bedeutung: Eine Ressource führt einen Prozess aus, und ein Prozess erzeugt ein Produkt. Diese Positivliste wird innerhalb der Funktion zum Anlegen von Kanten geprüft, sodass eine falsche Kante den Graphen nie erreicht — und die Fehlermeldung benennt den Verstoß, statt die Kante nur abzulehnen.
+      </div>
+    </section>
+
+    <section class="case__section">
+      <h2 class="case__h">Die Zuverlässigkeitssicht — mein Teil</h2>
+      <p>Eine Zuverlässigkeitskante ist keine PPR-Kante. Die PPR-Struktur sagt „dieser Prozess erzeugt jenes Produkt“; eine Ausfallabhängigkeit sagt „wenn dies ausfällt, funktioniert jenes nicht mehr“. Andere Beziehung, gleiche Knoten — deshalb <em>überlagert</em> die Sicht sie als gestrichelte Pfeile, statt sie in den Graphen aufzunehmen, wo sie genau die Regeln beschädigen würden, die das Modell prüfbar machen.</p>
+      <p>An der Beispiellinie: Ein Achsausfall legt die Radmontage lahm, ein Chassisausfall löst die Karosserie, ein abgelöster Spoiler belastet das Chassis. Die Sicht ordnet Knoten nach MTBF und MTTR und markiert alles über 4 % Ausfallwahrscheinlichkeit — womit auch der menschliche Bediener neben der Hardware sichtbar wird, denn das Modell stellt Maschinen nicht über Menschen.</p>
+      <figure class="case__figure">
+        <img src="../assets/projects/01-ppr-tool/graph-view.jpg" width="1912" height="903" loading="lazy" decoding="async"
+             alt="Registerkarte „Graph View“ des PPR-Modellierungstools mit Knotenlegende und Graphviz-Renderoptionen" />
+        <figcaption>Dieselbe Überlagerung treibt die Ausbreitungsprüfung an, sodass Sicht und Algorithmus sich nicht darüber uneinig sein können, was wovon abhängt.</figcaption>
+      </figure>
+      <div class="case__scroll">
+        <table class="case__table">
+          <thead><tr><th scope="col">Prüfung</th><th scope="col">Frage</th><th scope="col">Graph-Primitiv</th></tr></thead>
+          <tbody>
+            <tr><td>Abdeckung</td><td>Wird jedes Produkt von einem Prozess montiert, jeder Prozess von einer Ressource besetzt?</td><td class="is-num">predecessors()</td></tr>
+            <tr><td>Ausbreitung</td><td>Wenn dieser Knoten ausfällt, was ist sonst noch betroffen?</td><td class="is-num">descendants()</td></tr>
+            <tr><td>Ähnlichkeit</td><td>Welche Elemente teilen eine strukturelle Signatur?</td><td class="is-num">combinations()</td></tr>
+            <tr><td>Segmente</td><td>Ist ein Teil der Linie vom Rest abgetrennt?</td><td class="is-num">weakly_connected_components()</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="case__section">
+      <h2 class="case__h">Was ich anders machen würde</h2>
+      <ul class="case__list">
+        <li><b>Zuverlässigkeitsdaten gehören in die Modelldatei.</b> MTBF und Ausfallwahrscheinlichkeiten liegen in einer Tabelle auf Modulebene — für eine Demo trivial, für die Nachvollziehbarkeit falsch. Sie lassen sich weder mit dem Modell versionieren noch von denen pflegen, denen die Instandhaltungshistorie gehört.</li>
+        <li><b>Kein Export.</b> Drei Importformate, keines hinaus. Der Serialisierer existiert bereits, es wäre also eine kleine Änderung — und ohne ihn stirbt jede Bearbeitung mit der Sitzung.</li>
+        <li><b>Testbar und ungetestet.</b> Streamlit aus der Graphenschicht herauszuhalten war richtig, weil es genau diese Funktionen unit-testbar macht. Dann hat niemand die Tests geschrieben.</li>
+      </ul>
+    </section>
+
+    <p class="case__back"><a href="../index.de.html#p01">← Zurück zu allen Projekten</a></p>
+  </main>
+
+  <footer class="footer container">
+    <div class="footer__inner">
+      <span class="footer__name">Navroop Singh</span>
+      <span class="footer__meta mono">Systems Engineer · Magdeburg, DE</span>
+      <span class="footer__copy mono">© 2026 — Mit Sorgfalt gebaut.</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var toggle = document.getElementById('theme-toggle');
+      function sync() {
+        var isDark = root.getAttribute('data-theme') === 'dark';
+        if (toggle) toggle.setAttribute('aria-pressed', String(isDark));
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', isDark ? '#0a0a0a' : '#f2f1ed');
+      }
+      sync();
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-theme', next);
+          try { localStorage.setItem('theme', next); } catch (e) {}
+          sync();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

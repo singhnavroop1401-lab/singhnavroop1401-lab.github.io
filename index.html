@@ -16,6 +16,12 @@
   <meta property="og:title" content="Navroop Singh — Systems Engineer" />
   <meta property="og:description" content="Systems engineer bridging hardware know-how with structured systems methods." />
   <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="de_DE" />
+
+  <!-- Language alternates — the German twin is a real page, not a JS swap -->
+  <link rel="alternate" hreflang="en" href="https://singhnavroop1401-lab.github.io/" />
+  <link rel="alternate" hreflang="de" href="https://singhnavroop1401-lab.github.io/index.de.html" />
+  <link rel="alternate" hreflang="x-default" href="https://singhnavroop1401-lab.github.io/" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
@@ -75,6 +81,11 @@
       </nav>
 
       <div class="nav__actions">
+        <a class="lang-toggle mono" href="index.de.html" hreflang="de" lang="de" aria-label="Diese Seite auf Deutsch ansehen">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14.5 14.5 0 0 1 0 18 14.5 14.5 0 0 1 0-18z"/></svg>
+          <span>DE</span>
+        </a>
+
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">
           <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
           <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
@@ -329,27 +340,52 @@
             <li>Kinematics</li><li>Force Analysis</li><li>Excel / VBA</li><li>Solid Edge</li>
           </ul>
         </article>
-      </div>
+        <!-- Featured #6 -->
+        <article class="project project--featured reveal" id="p06" data-gallery="06-shaft-design">
+          <div class="project__top">
+            <span class="project__index mono">P.06</span>
+            <div class="project__links">
+              <a href="projects/06-shaft-design.html">Case study →</a>
+            </div>
+          </div>
+          <h3 class="project__name">Shaft Design for Fatigue Loading</h3>
+          <p class="project__desc">A speed-reducer countershaft taken from a free-body sketch to a diameter by the ASME code, then checked with static and fatigue FEA. Two of the numbers the code produced didn't belong on the drawing — the case study says which, and why.</p>
+          <ul class="tags">
+            <li>Machine Design</li><li>Fatigue</li><li>ASME B106.1M</li><li>SolidWorks</li>
+          </ul>
+          <p class="project__note mono">Hand calculation first · FEA as the check, not the answer.</p>
+        </article>
 
-      <h3 class="projects__more-title mono">More engineering coursework</h3>
-      <div class="projects projects--compact">
-        <article class="project project--compact reveal" data-gallery="06-shaft-design">
-          <span class="project__index mono">P.06</span>
-          <h4 class="project__name">Shaft Design for Fatigue Loading</h4>
-          <p class="project__desc">Designed a shaft under fatigue loading — evaluated stress concentrations and fatigue life with safety factors, then selected materials and dimensions.</p>
-          <ul class="tags"><li>Machine Design</li><li>Fatigue</li></ul>
+        <!-- Featured #7 -->
+        <article class="project project--featured reveal" id="p07" data-gallery="07-feed-pump">
+          <div class="project__top">
+            <span class="project__index mono">P.07</span>
+            <div class="project__links">
+              <a href="projects/07-feed-pump.html">Case study →</a>
+            </div>
+          </div>
+          <h3 class="project__name">Reciprocating Feed Pump</h3>
+          <p class="project__desc">Seventeen parts modelled from flat views and constrained into one assembly that moves the way the real pump moves. Five of them weren't in the brief at all — they had to be read out of the geometry of the parts that were.</p>
+          <ul class="tags">
+            <li>Onshape</li><li>Part Modelling</li><li>Assembly</li><li>Drawings</li>
+          </ul>
+          <p class="project__note mono">12 parts given, 5 inferred from the space they had to fill.</p>
         </article>
-        <article class="project project--compact reveal" data-gallery="07-feed-pump">
-          <span class="project__index mono">P.07</span>
-          <h4 class="project__name">Reciprocating Feed Pump</h4>
-          <p class="project__desc">Designed a feed pump from flow-rate and pressure requirements; performed kinematic and force analysis of the piston-crank mechanism.</p>
-          <ul class="tags"><li>Kinematics</li><li>Machine Design</li></ul>
-        </article>
-        <article class="project project--compact reveal" data-gallery="08-cantilever-fea">
-          <span class="project__index mono">P.08</span>
-          <h4 class="project__name">Cantilever Beam FEA</h4>
-          <p class="project__desc">Static, modal, and dynamic analysis of a cantilever beam in ANSYS — natural frequencies and dynamic response via finite element methods.</p>
-          <ul class="tags"><li>ANSYS</li><li>FEA</li></ul>
+
+        <!-- Featured #8 -->
+        <article class="project project--featured reveal" id="p08" data-gallery="08-crankshaft-drive">
+          <div class="project__top">
+            <span class="project__index mono">P.08</span>
+            <div class="project__links">
+              <a href="projects/08-crankshaft-drive.html">Case study →</a>
+            </div>
+          </div>
+          <h3 class="project__name">Crankshaft to Complete Drive Assembly</h3>
+          <p class="project__desc">A Honda GX-160 crankshaft rebuilt to clearance constraints and balanced until its centre of gravity sat on the axis of rotation — 1.84 mm to zero over three optimisation runs — then built into the engine, scotch-yoke and pump it exists to drive.</p>
+          <ul class="tags">
+            <li>PTC Creo</li><li>Design Optimisation</li><li>Mechanism Design</li><li>AFX Framework</li>
+          </ul>
+          <p class="project__note mono">Two linked Creo projects · the pump on the far end is P.07.</p>
         </article>
       </div>
     </section>

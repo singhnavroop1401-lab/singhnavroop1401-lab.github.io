@@ -23,14 +23,20 @@ assets/Input and output kinematics template.png
 assets/Input for forces kinematics template Escorts.png
 assets/Output image of forces on Loader.png
 assets/Kinematics Calculation template.xlsm
-assets/Lower Limb Exoskeleton Final Signed report.docx
 
 # Source reports the case studies were written from. Kept local: they carry
 # matriculation numbers and teammates' full names, and two of them still have
 # the figure defects the case-study charts correct.
 assets/*.pdf
-# ...except the generated CV, which the résumé's download button serves.
+# Word source reports, same reason — and their docProps carry the *authoring*
+# teammate's name (Narinder Kaur, Gaurav) even where the body text doesn't.
+# A pattern, not a list: the coursework .docx files arrive in batches and an
+# explicit list is one forgotten line away from publishing someone's report.
+assets/*.docx
+# ...except the generated CVs, which the résumé download buttons serve —
+# one per language, both produced by scripts/build-cv.sh.
 !assets/Navroop-Singh-CV.pdf
+!assets/Navroop-Singh-CV-DE.pdf
 assets/Quick-hitch coupler.jpeg
 assets/My Picture.jpeg
 assets/Professional photo.png

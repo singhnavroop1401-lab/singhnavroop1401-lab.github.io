@@ -13,7 +13,10 @@ Clicking a project card on the site then pops up a full-screen image gallery.
 | `05-backhoe-kinematics/` | Backhoe Loader Kinematics & Force Analysis | `"05-backhoe-kinematics"` |
 | `06-shaft-design/` | Shaft Design for Fatigue Loading | `"06-shaft-design"` |
 | `07-feed-pump/` | Reciprocating Feed Pump | `"07-feed-pump"` |
-| `08-cantilever-fea/` | Cantilever Beam FEA | `"08-cantilever-fea"` |
+| `08-crankshaft-drive/` | Crankshaft to Complete Drive Assembly | `"08-crankshaft-drive"` |
+
+`08-cantilever-fea/` is gone — the Cantilever Beam FEA card was retired when
+P.06–P.08 were rebuilt from the coursework reports.
 
 ## How it works
 

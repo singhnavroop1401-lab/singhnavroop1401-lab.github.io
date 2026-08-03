@@ -2,9 +2,9 @@
 
 Drop screenshots / photos for **this** project into this folder.
 Then register the filenames in [`../../../projects-media.js`](../../../projects-media.js)
-under the key **`"05-shaft-design"`**, e.g.:
+under the key **`"06-shaft-design"`**, e.g.:
 
-    "05-shaft-design": ["shaft-drawing.png"],
+    "06-shaft-design": ["shaft-drawing.png"],
 
 - The **first** image becomes the card thumbnail; all of them show in the click-to-open gallery.
 - Recommended size: ~1200×750px (16:10), optimized (WebP / PNG / JPG).

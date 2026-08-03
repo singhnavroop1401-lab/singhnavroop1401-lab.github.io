@@ -130,7 +130,7 @@
     --muted: #333333; --border: #bbbbbb; --accent: #000000;
   }
 
-  .resume-nav, .skip-link, .resume-print, .theme-toggle,
+  .resume-nav, .skip-link, .resume-print, .theme-toggle, .lang-toggle,
   .spotlight, .cursor-ring, .scroll-progress,
   .cv__foot { display: none !important; }
 
@@ -141,6 +141,25 @@
      single item. Verify the page count after editing content:
      scripts/build-cv.sh regenerates the PDF. */
   body { font-size: 9.35pt; line-height: 1.36; }
+
+  /* German set at the sizes above runs onto a third page — the same content
+     is roughly a tenth longer, and compound nouns wrap later. This is the
+     density lever again, scoped to resume.de.html so the English PDF is
+     untouched. The sizes above are absolute pt, so each one has to be
+     restated; changing the body size alone would move nothing.
+     Re-check BOTH page counts after editing either résumé. */
+  html[lang="de"] body { line-height: 1.31; }
+  html[lang="de"] .cv__lede { font-size: 8.9pt; }
+  html[lang="de"] .cv__availability { font-size: 8.3pt; }
+  html[lang="de"] .cv__title { font-size: 10.1pt; }
+  html[lang="de"] .cv__org,
+  html[lang="de"] .cv__points li,
+  html[lang="de"] .cv__projects p { font-size: 8.7pt; }
+  html[lang="de"] .cv__course { font-size: 8.2pt; }
+  html[lang="de"] .cv__section { padding-top: 8pt; }
+  html[lang="de"] .cv__item { padding-block: 3pt; }
+  html[lang="de"] .cv__points { gap: 2pt; margin-top: 4pt; }
+  html[lang="de"] .cv__projects { gap: 5pt; }
 
   .cv { max-width: none; margin: 0; padding: 0; }
 

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary meta -->
+  <title>Navroop Singh — Systems Engineer</title>
+  <meta name="description" content="Systems Engineer mit maschinenbaulicher Grundlage und Industrieerfahrung in Polysilizium-Anlagentechnik, Inbetriebnahme und MBSE." />
+  <meta name="keywords" content="Systems Engineering, Maschinenbau, MBSE, SysML, RAMI 4.0, rotierende Maschinen, Inbetriebnahme, Werkstudent, Magdeburg" />
+  <meta name="author" content="Navroop Singh" />
+  <meta name="theme-color" content="#0A0A0A" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Navroop Singh — Systems Engineer" />
+  <meta property="og:description" content="Systems Engineer, der Hardware-Praxis mit strukturierten Systemmethoden verbindet." />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <!-- Language alternates -->
+  <link rel="alternate" hreflang="en" href="https://singhnavroop1401-lab.github.io/" />
+  <link rel="alternate" hreflang="de" href="https://singhnavroop1401-lab.github.io/index.de.html" />
+  <link rel="alternate" hreflang="x-default" href="https://singhnavroop1401-lab.github.io/" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- No-flash theme bootstrap: set theme before first paint -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = saved || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+</head>
+
+<body>
+  <!-- Anchor for the "back to top" brand link. It must NOT live on the sticky
+       header: a sticky element sits at the viewport top once you scroll, so
+       jumping to it is a no-op. -->
+  <span id="top" aria-hidden="true"></span>
+
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <!-- Scroll progress rule — pure CSS scroll-driven animation, see styles.css -->
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+  <!-- Cursor spotlight — fine pointers only, disabled for reduced motion.
+       Populated by script.js; purely decorative. -->
+  <div class="spotlight" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <div class="nav__inner container">
+      <a href="#top" class="nav__brand">Navroop&nbsp;Singh</a>
+
+      <nav class="nav__links" id="nav-links" aria-label="Hauptnavigation">
+        <a href="#about">Über mich</a>
+        <a href="#experience">Erfahrung</a>
+        <a href="#work">Projekte</a>
+        <a href="#education">Ausbildung</a>
+        <a href="#skills">Kompetenzen</a>
+        <a href="#community">Ehrenamt</a>
+        <a href="#contact">Kontakt</a>
+        <a href="resume.de.html" class="nav__resume">Lebenslauf ↗</a>
+      </nav>
+
+      <div class="nav__actions">
+        <a class="lang-toggle mono" href="index.html" hreflang="en" lang="en" aria-label="View this page in English">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14.5 14.5 0 0 1 0 18 14.5 14.5 0 0 1 0-18z"/></svg>
+          <span>EN</span>
+        </a>
+
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Farbschema wechseln" aria-pressed="false">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+
+        <button class="nav__burger" id="nav-burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero container" aria-label="Einleitung">
+      <div class="hero__grid">
+        <div class="hero__content">
+          <p class="hero__eyebrow"><span class="mono">Magdeburg, Deutschland</span> — offen für Werkstudentenstellen in ganz Deutschland</p>
+          <h1 class="hero__name"><span class="hero__word">Navroop</span><br /><span class="hero__word">Singh</span></h1>
+          <p class="hero__title">Systems Engineer</p>
+          <p class="hero__tagline">Zwei Jahre lang habe ich Kompressoren in einer Polysilizium-Anlage eingebaut. Jetzt lerne ich in Magdeburg, die Systeme zu modellieren, zu denen sie gehören.</p>
+
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="mailto:singhnavroop1401@gmail.com">Kontakt aufnehmen</a>
+            <a class="btn btn--ghost" href="#work">Projekte ansehen ↓</a>
+          </div>
+
+          <div class="hero__socials">
+            <a href="https://linkedin.com/in/navroop-singh-1218a11a3" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.5 8h4V24h-4V8zM8.5 8h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-7.1c0-1.7-.03-3.9-2.37-3.9-2.37 0-2.73 1.85-2.73 3.77V24h-4V8z"/></svg>
+            </a>
+            <a href="mailto:singhnavroop1401@gmail.com" aria-label="E-Mail">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7 10-7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <figure class="hero__figure">
+          <div class="hero__frame">
+            <img src="assets/navroop-portrait.jpg" width="820" height="1232"
+                 alt="Porträt von Navroop Singh in dunkelgrauem Anzug und schwarzem Turban, im Freien aufgenommen vor einem Glasgebäude und einer Stadt am Hang"
+                 fetchpriority="high" decoding="async" />
+            <span class="hero__tick hero__tick--tl" aria-hidden="true"></span>
+            <span class="hero__tick hero__tick--br" aria-hidden="true"></span>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>MBSE</span><span>·</span><span>SysML</span><span>·</span><span>RAMI 4.0</span><span>·</span><span>Rotierende Maschinen</span><span>·</span><span>Inbetriebnahme</span><span>·</span><span>ANSYS</span><span>·</span><span>Solid Edge</span><span>·</span><span>Plant Simulation</span><span>·</span><span>Python</span><span>·</span>
+        <span>MBSE</span><span>·</span><span>SysML</span><span>·</span><span>RAMI 4.0</span><span>·</span><span>Rotierende Maschinen</span><span>·</span><span>Inbetriebnahme</span><span>·</span><span>ANSYS</span><span>·</span><span>Solid Edge</span><span>·</span><span>Plant Simulation</span><span>·</span><span>Python</span><span>·</span>
+      </div>
+    </div>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section container" id="about" aria-labelledby="about-h">
+      <div class="section__head reveal">
+        <span class="eyebrow"><span class="eyebrow__num">01</span> Über mich</span>
+        <h2 class="section__title" id="about-h">Die interessanten Probleme<br />liegen zwischen den Komponenten.</h2>
+        <div class="titleblock mono" aria-hidden="true">
+          <span class="titleblock__cell"><b>Blatt</b>01</span>
+          <span class="titleblock__cell"><b>Titel</b>Über mich</span>
+          <span class="titleblock__cell"><b>Standort</b>Magdeburg, DE</span>
+          <span class="titleblock__cell"><b>Anlage</b>Aug 2023 — Sep 2025</span>
+        </div>
+      </div>
+
+      <div class="about__grid">
+        <div class="about__bio reveal">
+          <p>Meine ersten zwei Jahre nach dem Studium habe ich auf der Baustelle einer Polysilizium-Anlage in Jamnagar verbracht und zugesehen, wie drei Kolbenkompressoren eingebaut wurden. Zeichnungen, die auf dem Papier stimmig aussahen, trafen auf Beton, der längst gegossen war. Das Schwierige lag nie im Bauteil selbst — es lag in den Schnittstellen, in der Reihenfolge und in all dem, was niemand aufgeschrieben hatte.</p>
+          <p>Genau das hat mich zum Systems Engineering gezogen, und genau das studiere ich an der Otto-von-Guericke-Universität Magdeburg — MBSE, Systemarchitektur und die Simulation einer Produktionslinie, bevor sie jemand baut. Ich bin immer noch gern derjenige, der sowohl das R&amp;I-Fließbild als auch das Modell lesen kann.</p>
+          <p class="about__seeking">Ich suche eine Werkstudentenstelle, in der beide Hälften davon nützlich sind — überall in Deutschland, ein Umzug ist kein Problem.</p>
+        </div>
+
+        <ul class="stats reveal">
+          <li><span class="stats__num">2 J.</span><span class="stats__label">Vor Ort — Reliance, 2023–25</span></li>
+          <li><span class="stats__num">3</span><span class="stats__label">Kompressoren montiert</span></li>
+          <li><span class="stats__num">8</span><span class="stats__label">Ingenieurprojekte</span></li>
+          <li><span class="stats__num">M.Sc.</span><span class="stats__label">Systems Eng. @ OVGU</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section container" id="experience" aria-labelledby="exp-h">
+      <div class="section__head reveal">
+        <span class="eyebrow"><span class="eyebrow__num">02</span> Erfahrung</span>
+        <h2 class="section__title" id="exp-h">Zwei Jahre<br />in der Anlage.</h2>
+        <div class="titleblock mono" aria-hidden="true">
+          <span class="titleblock__cell"><b>Blatt</b>02</span>
+          <span class="titleblock__cell"><b>Anlage</b>Aug 2023 — Sep 2025</span>
+          <span class="titleblock__cell"><b>Praktikum</b>Dez 2021 — Jun 2022</span>
+          <span class="titleblock__cell"></span>
+        </div>
+      </div>
+
+      <ol class="timeline">
+        <li class="timeline__item reveal">
+          <div class="timeline__meta">
+            <span class="timeline__date mono">Aug 2024 — Sep 2025</span>
+            <span class="timeline__loc mono">Jamnagar, Indien</span>
+          </div>
+          <div class="timeline__body">
+            <h3 class="timeline__role">Ingenieur für rotierende Maschinen — Montage &amp; Inbetriebnahme</h3>
+            <p class="timeline__org">Reliance Corp IT Park Ltd (Reliance Industries — New Energy) — Polysilizium-Anlage · Position: Manager</p>
+            <ul class="timeline__points">
+              <li>Die Montage von drei Kolbenkompressoren geleitet — zwei liegend, einer stehend — von der Lieferantenkoordination und der Ablaufplanung vor Ort bis zur Vor-Inbetriebnahme.</li>
+              <li>Den Mechanical Run Test beim Lieferanten für einen Kompressor begleitet sowie für eine dichtungslose Spaltrohrmotorpumpe vor Ort.</li>
+              <li>Aufstellungszeichnungen (GAD) und R&amp;I-Fließbilder für die Montage rotierender Maschinen gelesen und danach gearbeitet.</li>
+              <li>Die Stickstoffkonservierung vor der Inbetriebnahme beaufsichtigt.</li>
+              <li>Einen Plan für das Umsetzen und die Reihenfolge der Reaktorglocken erstellt, der rechnerisch rund 14 h Stillstand pro Charge einspart (modelliert — die Anlage befindet sich noch im Bau).</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="timeline__item reveal">
+          <div class="timeline__meta">
+            <span class="timeline__date mono">Aug 2023 — Aug 2024</span>
+            <span class="timeline__loc mono">Jamnagar, Indien</span>
+          </div>
+          <div class="timeline__body">
+            <h3 class="timeline__role">Ingenieur-Trainee</h3>
+            <p class="timeline__org">Reliance Corp IT Park Ltd (Reliance Industries — New Energy) — Polysilizium-Anlage</p>
+            <ul class="timeline__points">
+              <li>Mit dem Team für rotierende Maschinen durch Montage, Zusammenbau und Vor-Inbetriebnahme gearbeitet.</li>
+              <li>Instandhaltungsteams, Lieferanten und Projektingenieure auf denselben Plan ausgerichtet.</li>
+              <li>An Dokumentenprüfungen, Qualitätsabnahmen und Testlaufbeobachtungen teilgenommen.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="timeline__item reveal">
+          <div class="timeline__meta">
+            <span class="timeline__date mono">Dez 2021 — Jun 2022</span>
+            <span class="timeline__loc mono">Faridabad, Indien</span>
+          </div>
+          <div class="timeline__body">
+            <h3 class="timeline__role">Praktikant F&amp;E</h3>
+            <p class="timeline__org">Escorts Kubota Limited — Land- &amp; Baumaschinen</p>
+            <ul class="timeline__points">
+              <li>Eine Excel/VBA-Vorlage für die Kinematik- und Kraftanalyse von Baggerlader-Gestängen gebaut, die zuvor von Hand durchgeführte Berechnungen ersetzt.</li>
+              <li>Die manuelle Rechenzeit für eine Gestängeanalyse um rund 30 % verkürzt.</li>
+              <li>Einen Schnellwechsler in Siemens Solid Edge modelliert.</li>
+              <li>Praktikum bescheinigt durch die Personalabteilung von Escorts Kubota (EAM &amp; ECE – F&amp;E).</li>
+            </ul>
+            <a class="timeline__link mono" href="#p05">Zu den Zeichnungen — P.05 ↓</a>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ WORK / PROJECTS ============ -->
+    <section class="section section--blueprint container" id="work" aria-labelledby="work-h">
+      <div class="section__head reveal">
+        <span class="eyebrow"><span class="eyebrow__num">03</span> Projekte</span>
+        <h2 class="section__title" id="work-h">Projekte &amp; Systeme,<br />die ich gebaut habe.</h2>
+        <div class="titleblock mono" aria-hidden="true">
+          <span class="titleblock__cell"><b>Blatt</b>03</span>
+          <span class="titleblock__cell"><b>Titel</b>Projekte</span>
+          <span class="titleblock__cell"><b>Anz. Projekte</b>8</span>
+          <span class="titleblock__cell"><b>Bereiche</b>MBSE · Simulation · Konstruktion</span>
+        </div>
+      </div>
+
+
+      <div class="projects">
+        <!-- Featured #1 -->
+        <article class="project project--featured reveal" id="p01" data-gallery="01-ppr-tool">
+          <div class="project__top">
+            <span class="project__index mono">P.01</span>
+            <div class="project__links">
+              <a href="projects/01-ppr-tool.de.html">Fallstudie →</a>
+              <a href="https://ppr-modelling-and-validation-tool-hz9epskbcjybcqievvs3cj.streamlit.app/" target="_blank" rel="noopener">Live-Demo ↗</a>
+              <a href="https://github.com/yashp08art/PPR-Modelling-and-Validation-Tool" target="_blank" rel="noopener">Quellcode ↗</a>
+            </div>
+          </div>
+          <h3 class="project__name">PPR-Modellierungs- &amp; Validierungstool</h3>
+          <p class="project__desc">Eine Streamlit-App, die Produkt-Prozess-Ressource-Beziehungen als einen gerichteten Graphen modelliert — mit zwei Ingenieurssichten darauf, Basic Engineering und Zuverlässigkeit, und vier Prüfungen, die ein ungültiges Modell aufdecken.</p>
+          <ul class="tags">
+            <li>Python</li><li>Streamlit</li><li>NetworkX</li><li>Graphviz</li>
+          </ul>
+          <p class="project__note mono">Zweierteam · mein Anteil: die Engineering- und Zuverlässigkeitssicht.</p>
+        </article>
+
+        <!-- Featured #2 -->
+        <article class="project project--featured reveal" id="p02" data-gallery="02-production-scheduling">
+          <div class="project__top">
+            <span class="project__index mono">P.02</span>
+            <div class="project__links">
+              <a href="projects/02-production-scheduling.de.html">Fallstudie →</a>
+              <span class="project__pending mono">Medien folgen</span>
+            </div>
+          </div>
+          <h3 class="project__name">Produktionsplanung &amp; Losgrößen-Studie</h3>
+          <p class="project__desc">Eine Linie mit sechs Produkten und fünf Stufen in Plant Simulation, auf der fünf Auftragsfreigabe-Strategien über 100 Aufträge gegeneinander antreten. Eine losbasierte Suche gewann beim Durchsatz; die einfachste Regel im Feld gewann bei der Termintreue.</p>
+          <ul class="tags">
+            <li>Plant Simulation</li><li>SimTalk</li><li>Losgrößenplanung</li>
+          </ul>
+          <p class="project__note mono">Sommersemester 2026 · vollständige Ergebnisse in der Fallstudie.</p>
+        </article>
+
+        <!-- Featured #3 -->
+        <article class="project project--featured reveal" id="p03" data-gallery="03-thermal-printer">
+          <div class="project__top">
+            <span class="project__index mono">P.03</span>
+            <div class="project__links">
+              <a href="projects/03-thermal-printer.de.html">Fallstudie →</a>
+              <span class="project__pending mono">Medien folgen</span>
+            </div>
+          </div>
+          <h3 class="project__name">Thermodrucker-MBSE-Modell (RAMI 4.0)</h3>
+          <p class="project__desc">Ein Thermodrucker, in Enterprise Architect gegen RAMI 4.0 modelliert — zuerst die Ziele der Arbeitsstation, ohne jede Implementierung darin, dann heruntergebrochen bis zum Motor, der sie erfüllt. 30 Diagramme, Nachverfolgbarkeit durchgängig.</p>
+          <ul class="tags">
+            <li>RAMI 4.0</li><li>Enterprise Architect</li><li>MBSE</li>
+          </ul>
+          <p class="project__note mono">Zweierteam · der Sheet Feed Controller gehört vollständig mir — alle sieben Schichten — plus drei Schichten der Arbeitsstation.</p>
+        </article>
+
+        <!-- Featured #4 -->
+        <article class="project project--featured reveal" id="p04" data-gallery="04-medical-exoskeleton">
+          <div class="project__top">
+            <span class="project__index mono">P.04</span>
+            <div class="project__links">
+              <a href="projects/04-medical-exoskeleton.de.html">Fallstudie →</a>
+              <span class="project__pending mono">Medien folgen</span>
+            </div>
+          </div>
+          <h3 class="project__name">Medizinisches Exoskelett</h3>
+          <p class="project__desc">Ein kostengünstiges Exoskelett für die untere Extremität, ausgelegt auf einen 78 kg schweren Nutzer und 150 Nm Schwungmoment und in der Institutswerkstatt gefertigt. Es ist gelaufen. Gesamtkosten: 300 €.</p>
+          <ul class="tags">
+            <li>Konstruktion</li><li>FEM</li><li>Onshape</li><li>Teamleitung</li>
+          </ul>
+          <p class="project__note mono">Abschlussprojekt · Teamleitung, fünf Mitglieder.</p>
+        </article>
+
+        <!-- Featured #5 -->
+        <article class="project project--featured reveal" id="p05" data-gallery="05-backhoe-kinematics">
+          <div class="project__top">
+            <span class="project__index mono">P.05</span>
+            <div class="project__links">
+              <a href="projects/05-backhoe-kinematics.de.html">Fallstudie →</a>
+              <span class="project__pending mono">Escorts Kubota · F&amp;E</span>
+            </div>
+          </div>
+          <h3 class="project__name">Baggerlader-Kinematik &amp; Kraftanalyse</h3>
+          <p class="project__desc">Gestängegeometrie rein, Bolzenkräfte und die gesamte Leistungshüllkurve raus — ein parametrischer Ersatz für Arbeit, die zuvor von Hand gemacht wurde. Rund 30 % schneller pro Analyse.</p>
+          <ul class="tags">
+            <li>Kinematik</li><li>Kraftanalyse</li><li>Excel / VBA</li><li>Solid Edge</li>
+          </ul>
+        </article>
+        <!-- Featured #6 -->
+        <article class="project project--featured reveal" id="p06" data-gallery="06-shaft-design">
+          <div class="project__top">
+            <span class="project__index mono">P.06</span>
+            <div class="project__links">
+              <a href="projects/06-shaft-design.de.html">Fallstudie →</a>
+            </div>
+          </div>
+          <h3 class="project__name">Wellenauslegung für Ermüdungsbelastung</h3>
+          <p class="project__desc">Die Vorgelegewelle eines Untersetzungsgetriebes, von der Freikörperskizze bis zum Durchmesser nach ASME-Code gerechnet und danach mit statischer und Ermüdungs-FEM geprüft. Zwei der Zahlen aus dem Code gehörten nicht auf die Zeichnung — die Fallstudie sagt, welche und warum.</p>
+          <ul class="tags">
+            <li>Maschinenkonstruktion</li><li>Ermüdung</li><li>ASME B106.1M</li><li>SolidWorks</li>
+          </ul>
+          <p class="project__note mono">Erst die Handrechnung · die FEM als Kontrolle, nicht als Antwort.</p>
+        </article>
+
+        <!-- Featured #7 -->
+        <article class="project project--featured reveal" id="p07" data-gallery="07-feed-pump">
+          <div class="project__top">
+            <span class="project__index mono">P.07</span>
+            <div class="project__links">
+              <a href="projects/07-feed-pump.de.html">Fallstudie →</a>
+            </div>
+          </div>
+          <h3 class="project__name">Kolben-Speisepumpe</h3>
+          <p class="project__desc">Siebzehn Bauteile aus flachen Ansichten modelliert und zu einer Baugruppe verbunden, die sich bewegt wie die echte Pumpe. Fünf davon standen gar nicht in der Aufgabe — sie mussten aus der Geometrie der übrigen Teile herausgelesen werden.</p>
+          <ul class="tags">
+            <li>Onshape</li><li>Bauteilmodellierung</li><li>Baugruppe</li><li>Zeichnungen</li>
+          </ul>
+          <p class="project__note mono">12 Teile vorgegeben, 5 aus dem Bauraum abgeleitet.</p>
+        </article>
+
+        <!-- Featured #8 -->
+        <article class="project project--featured reveal" id="p08" data-gallery="08-crankshaft-drive">
+          <div class="project__top">
+            <span class="project__index mono">P.08</span>
+            <div class="project__links">
+              <a href="projects/08-crankshaft-drive.de.html">Fallstudie →</a>
+            </div>
+          </div>
+          <h3 class="project__name">Von der Kurbelwelle zur kompletten Antriebsbaugruppe</h3>
+          <p class="project__desc">Eine Honda-GX-160-Kurbelwelle nach Freigangsvorgaben neu aufgebaut und ausgewuchtet, bis ihr Schwerpunkt auf der Drehachse lag — von 1,84 mm auf null in drei Optimierungsläufen — und danach in Motor, Kulissenantrieb und Pumpe eingebaut, die sie antreiben soll.</p>
+          <ul class="tags">
+            <li>PTC Creo</li><li>Designoptimierung</li><li>Mechanismenkonstruktion</li><li>AFX-Framework</li>
+          </ul>
+          <p class="project__note mono">Zwei zusammenhängende Creo-Projekte · die Pumpe am Ende ist P.07.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION ============ -->
+    <section class="section container" id="education" aria-labelledby="edu-h">
+      <div class="section__head reveal">
+        <span class="eyebrow"><span class="eyebrow__num">04</span> Ausbildung</span>
+        <h2 class="section__title" id="edu-h">Akademische<br />Grundlage.</h2>
+        <div class="titleblock mono" aria-hidden="true">
+          <span class="titleblock__cell"><b>Blatt</b>04</span>
+          <span class="titleblock__cell"><b>Titel</b>Ausbildung</span>
+          <span class="titleblock__cell"><b>Anz. Abschlüsse</b>2</span>
+          <span class="titleblock__cell"><b>Aktuell</b>M.Sc. Systems Engineering for Manufacturing</span>
+        </div>
+      </div>
+
+      <div class="edu">
+        <article class="edu__item reveal">
+          <span class="edu__date mono">2025 — Voraussichtlich 2027</span>
+          <div>
+            <h3 class="edu__degree">M.Sc. Systems Engineering for Manufacturing</h3>
+            <p class="edu__school">Otto-von-Guericke-Universität Magdeburg, Deutschland</p>
+            <p class="edu__course">Systems Engineering · MBSE · Systemarchitektur · Systemmodellierung (SysML, UML) · Regelungstechnik · Systemintegration · Modellierung &amp; Simulation der Logistikplanung · Python in Produktionssystemen · Engineering resilienter Produktionssysteme · Mensch-Technik-Interaktion</p>
+          </div>
+        </article>
+
+        <article class="edu__item reveal">
+          <span class="edu__date mono">2019 — 2023</span>
+          <div>
+            <h3 class="edu__degree">B.Eng. Mechanical Engineering</h3>
+            <p class="edu__school">Thapar Institute of Engineering and Technology, Patiala, Indien — deutsche Notenskala 2,1</p>
+            <p class="edu__course">Maschinenkonstruktion · Maschinendynamik · Wärmeübertragung · Strömungsmechanik · Fertigungsverfahren · Festigkeitslehre · Dynamik &amp; Schwingungen</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section container" id="skills" aria-labelledby="skills-h">
+      <div class="section__head reveal">
+        <span class="eyebrow"><span class="eyebrow__num">05</span> Kompetenzen</span>
+        <h2 class="section__title" id="skills-h">Werkzeuge &amp;<br />Expertise.</h2>
+        <div class="titleblock mono" aria-hidden="true">
+          <span class="titleblock__cell"><b>Blatt</b>05</span>
+          <span class="titleblock__cell"><b>Titel</b>Kompetenzen</span>
+          <span class="titleblock__cell"><b>Sprachen</b>4</span>
+          <span class="titleblock__cell"></span>
+        </div>
+      </div>
+
+      <div class="skills">
+        <div class="skills__group reveal">
+          <h3 class="skills__label mono">Systems Engineering</h3>
+          <ul class="tags"><li>MBSE</li><li>SysML</li><li>UML</li><li>Systemarchitektur</li><li>RAMI 4.0</li></ul>
+        </div>
+        <div class="skills__group reveal">
+          <h3 class="skills__label mono">CAD &amp; Konstruktion</h3>
+          <ul class="tags"><li>SolidWorks</li><li>PTC Creo</li><li>AutoCAD</li><li>Siemens Solid Edge</li><li>Navisworks</li></ul>
+        </div>
+        <div class="skills__group reveal">
+          <h3 class="skills__label mono">Modellierung &amp; Simulation</h3>
+          <ul class="tags"><li>ANSYS</li><li>Tecnomatix Plant Simulation</li><li>Enterprise Architect (Sparx)</li></ul>
+        </div>
+        <div class="skills__group reveal">
+          <h3 class="skills__label mono">Programmierung</h3>
+          <ul class="tags"><li>Python</li><li>MATLAB</li><li>SimTalk</li><li>Streamlit</li><li>NetworkX</li><li>Graphviz</li></ul>
+        </div>
+        <div class="skills__group reveal">
+          <h3 class="skills__label mono">Anlage &amp; Fachgebiet</h3>
+          <ul class="tags"><li>Rotierende Maschinen</li><li>Instandhaltung</li><li>R&amp;I / Aufstellungszeichnung</li><li>Montage &amp; Inbetriebnahme</li><li>Anlagenoptimierung</li></ul>
+        </div>
+        <div class="skills__group reveal">
+          <h3 class="skills__label mono">Normen — Grundkenntnisse</h3>
+          <ul class="tags"><li>ISO 13482</li><li>ISO 13485</li><li>ISO 14001</li></ul>
+        </div>
+        <div class="skills__group reveal">
+          <h3 class="skills__label mono">Sprachen</h3>
+          <ul class="tags"><li>Englisch — C1</li><li>Deutsch — A2</li><li>Punjabi — Muttersprache</li><li>Hindi — Fließend</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COMMUNITY ============ -->
+    <section class="section container" id="community" aria-labelledby="comm-h">
+      <div class="section__head reveal">
+        <span class="eyebrow"><span class="eyebrow__num">06</span> Ehrenamt</span>
+        <h2 class="section__title" id="comm-h">Neben<br />der Arbeit.</h2>
+        <div class="titleblock mono" aria-hidden="true">
+          <span class="titleblock__cell"><b>Blatt</b>06</span>
+          <span class="titleblock__cell"><b>Titel</b>Ehrenamt</span>
+          <span class="titleblock__cell"><b>Vereine</b>2</span>
+          <span class="titleblock__cell"><b>Seit</b>2025</span>
+        </div>
+      </div>
+      <div class="community reveal">
+        <div class="community__item">
+          <span class="community__date mono">2025 — Heute</span>
+          <div>
+            <h3 class="community__role">Ehrenamtliches Mitglied — DEGIS</h3>
+            <p class="community__org">Otto-von-Guericke-Universität Magdeburg</p>
+            <p class="community__desc">Kulturelle Veranstaltungen planen und durchführen sowie Vereinsaktivitäten in einem multikulturellen Team koordinieren.</p>
+          </div>
+        </div>
+        <div class="community__item">
+          <span class="community__date mono">2025 — Heute</span>
+          <div>
+            <h3 class="community__role">Mitglied — ENACTUS</h3>
+            <p class="community__org">Studentisches Entrepreneurship-Netzwerk</p>
+            <p class="community__desc">Teilnahme am ENACTUS-Trainingswochenende 2025 in Heidelberg — Workshops zu Zeitmanagement und zum Startup-Accelerator-Programm.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section section--contact container" id="contact" aria-labelledby="contact-h">
+      <div class="reveal">
+        <span class="eyebrow"><span class="eyebrow__num">07</span> Kontakt</span>
+        <h2 class="contact__title" id="contact-h">Lass uns etwas<br />bauen.</h2>
+        <div class="titleblock mono" aria-hidden="true">
+          <span class="titleblock__cell"><b>Blatt</b>07</span>
+          <span class="titleblock__cell"><b>Titel</b>Kontakt</span>
+          <span class="titleblock__cell"><b>Status</b>Offen für Angebote</span>
+          <span class="titleblock__cell"><b>Region</b>Ganz Deutschland</span>
+        </div>
+        <p class="contact__line">Ich suche eine Werkstudentenstelle in MBSE, Systemarchitektur oder Produktionssystemen — 15–20 h/Woche, überall in Deutschland oder remote.</p>
+        <dl class="contact__facts">
+          <div><dt class="mono">Standort</dt><dd>Magdeburg — bereit, überall in Deutschland umzuziehen, und offen für Remote-Arbeit</dd></div>
+          <div><dt class="mono">Verfügbarkeit</dt><dd>Bis zu 20 h/Woche während des Semesters · Vollzeit in den Semesterferien</dd></div>
+          <div><dt class="mono">Frühester Eintritt</dt><dd>Sofort</dd></div>
+          <div><dt class="mono">Arbeitserlaubnis</dt><dd>Nicht-EU-Studierender — im Rahmen des deutschen Studentenvisums für eine Werkstudententätigkeit berechtigt</dd></div>
+        </dl>
+        <div class="contact__actions">
+          <a class="btn btn--primary" href="mailto:singhnavroop1401@gmail.com">E-Mail schreiben</a>
+          <a class="btn btn--ghost" href="https://linkedin.com/in/navroop-singh-1218a11a3" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer container">
+    <div class="footer__inner">
+      <span class="footer__name">Navroop Singh</span>
+      <span class="footer__meta mono">Systems Engineer · Magdeburg, DE</span>
+      <span class="footer__copy mono">© <span id="year">2026</span> — Mit Sorgfalt gebaut.</span>
+    </div>
+  </footer>
+
+  <script src="projects-media.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

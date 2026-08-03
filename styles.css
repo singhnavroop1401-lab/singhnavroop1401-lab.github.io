@@ -93,15 +93,24 @@ img { max-width: 100%; display: block; }
 .nav__resume { color: var(--ink) !important; font-family: var(--font-mono); font-size: 0.8rem !important; }
 .nav__actions { display: flex; align-items: center; gap: 0.5rem; }
 
-.theme-toggle, .nav__burger {
+.theme-toggle, .nav__burger, .lang-toggle {
   display: inline-flex; align-items: center; justify-content: center;
   width: 40px; height: 40px; background: transparent; color: var(--ink);
   border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer;
   transition: border-color 0.2s ease, background 0.2s ease;
 }
-.theme-toggle:hover, .nav__burger:hover { border-color: var(--accent); }
+.theme-toggle:hover, .nav__burger:hover, .lang-toggle:hover { border-color: var(--accent); }
 [data-theme="light"] .icon-moon { display: none; }
 [data-theme="dark"] .icon-sun { display: none; }
+
+/* Language switcher — sits beside the theme toggle. Wider than the square
+   buttons because the globe alone doesn't say *which* language: the code
+   names the language you get by clicking, not the one you're reading. */
+.lang-toggle {
+  width: auto; gap: 0.3rem; padding-inline: 0.5rem;
+  font-size: 0.72rem; letter-spacing: 0.06em; white-space: nowrap;
+}
+.lang-toggle svg { flex: none; }
 
 .nav__burger { display: none; flex-direction: column; gap: 4px; }
 .nav__burger span { width: 18px; height: 2px; background: var(--ink); transition: transform 0.25s ease, opacity 0.25s ease; }
@@ -543,7 +552,18 @@ body.no-scroll { overflow: hidden; }
   /* 4:5 crops height off a 2:3 source — bias upward to keep the face framed */
   .hero__frame img { aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 15%; }
 }
-@media (max-width: 720px) {
+/* Nav collapse has its own breakpoint, deliberately not the 720px content one.
+   Brand + 7 links + Résumé + the two toggles need ~890px of row. It used to
+   collapse at 720px and the links overlapped the brand for the whole 720–900px
+   band, before the language toggle existed. Sized for the GERMAN nav, which is
+   the wider of the two — "Über mich / Kompetenzen / Ehrenamt / Lebenslauf" runs
+   663px against English's 580px. One shared breakpoint on purpose: per-language
+   values would flip the nav between bar and burger as you switch language at
+   the same window width. Keep this separate from the 720px block — folding it
+   back would collapse the project and skills grids far too early.
+   1120, not 1060: at 1060 the German bar technically fits but leaves a 2px
+   gap either side of the links, which reads as a collision. */
+@media (max-width: 1120px) {
   .nav__burger { display: inline-flex; }
   .nav__links {
     position: fixed; inset: 68px 0 auto 0; flex-direction: column; align-items: flex-start;
@@ -554,6 +574,8 @@ body.no-scroll { overflow: hidden; }
   .nav__links.is-open { transform: translateY(0); }
   .nav__links a { padding: 0.85rem 0; width: 100%; font-size: 1.05rem; border-bottom: 1px solid var(--border); }
   .nav__links a.is-active::after { display: none; }
+}
+@media (max-width: 720px) {
   .projects, .projects--compact { grid-template-columns: 1fr; }
   .skills { grid-template-columns: 1fr; }
   .stats { grid-template-columns: 1fr 1fr; }

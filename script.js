@@ -7,6 +7,34 @@
 
   var root = document.documentElement;
 
+  /* ---------- UI strings ----------
+     Page copy lives in the markup — the German pages are real files
+     (index.de.html and friends). Only the strings this script *injects* need
+     a table: the gallery cue and the lightbox controls. Keyed off <html lang>,
+     falling back to English for any other value. */
+  var lang = (root.getAttribute("lang") || "en").slice(0, 2).toLowerCase();
+  var isDe = lang === "de";
+  var t = {
+    openMenu:     isDe ? "Menü öffnen"            : "Open menu",
+    closeMenu:    isDe ? "Menü schließen"         : "Close menu",
+    viewer:       isDe ? "Projektbild-Betrachter" : "Project image viewer",
+    closeGallery: isDe ? "Galerie schließen"      : "Close gallery",
+    prevImage:    isDe ? "Vorheriges Bild"        : "Previous image",
+    nextImage:    isDe ? "Nächstes Bild"          : "Next image",
+    imageOf: function (i, n) {
+      return isDe ? "Projektbild " + i + " von " + n
+                  : "Project image " + i + " of " + n;
+    },
+    viewImages: function (n) {
+      return isDe ? "◲ " + n + (n > 1 ? " Bilder" : " Bild") + " ansehen"
+                  : "◲ View " + n + " image" + (n > 1 ? "s" : "");
+    },
+    galleryFor: function (name) {
+      return isDe ? "Bildergalerie öffnen für " + name
+                  : "Open image gallery for " + name;
+    }
+  };
+
   /* ---------- Theme toggle ---------- */
   var toggle = document.getElementById("theme-toggle");
 
@@ -36,7 +64,7 @@
     links.classList.remove("is-open");
     if (burger) {
       burger.setAttribute("aria-expanded", "false");
-      burger.setAttribute("aria-label", "Open menu");
+      burger.setAttribute("aria-label", t.openMenu);
     }
   }
 
@@ -44,7 +72,7 @@
     burger.addEventListener("click", function () {
       var open = links.classList.toggle("is-open");
       burger.setAttribute("aria-expanded", String(open));
-      burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      burger.setAttribute("aria-label", open ? t.closeMenu : t.openMenu);
     });
     links.addEventListener("click", function (e) {
       if (e.target.tagName === "A") closeMenu();
@@ -162,8 +190,12 @@
     if (!Array.isArray(list)) return [];
     return list.map(function (it) {
       if (typeof it === "string") return { src: mediaBase(slug, it), alt: "", caption: "" };
-      if (it && it.src) return { src: mediaBase(slug, it.src), alt: it.alt || "", caption: it.caption || it.alt || "" };
-      return null;
+      if (!it || !it.src) return null;
+      // altDe/captionDe fall back to the English fields, so an entry that
+      // hasn't been translated yet degrades to English rather than to nothing.
+      var alt = (isDe && it.altDe) || it.alt || "";
+      var caption = (isDe && it.captionDe) || it.caption || alt;
+      return { src: mediaBase(slug, it.src), alt: alt, caption: caption };
     }).filter(Boolean);
   }
 
@@ -177,18 +209,18 @@
     overlay.className = "lightbox";
     overlay.setAttribute("role", "dialog");
     overlay.setAttribute("aria-modal", "true");
-    overlay.setAttribute("aria-label", "Project image viewer");
+    overlay.setAttribute("aria-label", t.viewer);
     overlay.hidden = true;
     overlay.innerHTML =
-      '<button class="lightbox__backdrop" type="button" tabindex="-1" aria-label="Close gallery" data-close></button>' +
+      '<button class="lightbox__backdrop" type="button" tabindex="-1" aria-label="' + t.closeGallery + '" data-close></button>' +
       '<span class="lightbox__counter mono" aria-hidden="true"></span>' +
-      '<button class="lightbox__close" type="button" aria-label="Close gallery">✕</button>' +
-      '<button class="lightbox__nav lightbox__prev" type="button" aria-label="Previous image">‹</button>' +
+      '<button class="lightbox__close" type="button" aria-label="' + t.closeGallery + '">✕</button>' +
+      '<button class="lightbox__nav lightbox__prev" type="button" aria-label="' + t.prevImage + '">‹</button>' +
       '<figure class="lightbox__figure">' +
         '<img class="lightbox__img" alt="" />' +
         '<figcaption class="lightbox__caption"></figcaption>' +
       '</figure>' +
-      '<button class="lightbox__nav lightbox__next" type="button" aria-label="Next image">›</button>';
+      '<button class="lightbox__nav lightbox__next" type="button" aria-label="' + t.nextImage + '">›</button>';
     document.body.appendChild(overlay);
 
     lbImg = overlay.querySelector(".lightbox__img");
@@ -211,7 +243,7 @@
     current = (i + active.length) % active.length;
     var item = active[current];
     lbImg.src = item.src;
-    lbImg.alt = item.alt || ("Project image " + (current + 1) + " of " + active.length);
+    lbImg.alt = item.alt || t.imageOf(current + 1, active.length);
     lbCap.textContent = item.caption || "";
     lbCap.hidden = !item.caption;
     lbCount.textContent = (current + 1) + " / " + active.length;
@@ -266,7 +298,6 @@
     var nameEl = card.querySelector(".project__name");
     var name = nameEl ? nameEl.textContent.trim() : "project";
     var count = items.length;
-    var plural = count > 1 ? "s" : "";
 
     // Small text cue — replaces the "media soon" placeholder, or is appended.
     // (No thumbnail: the whole card is the trigger; this keeps the gallery
@@ -274,8 +305,8 @@
     var btn = document.createElement("button");
     btn.type = "button";
     btn.className = "project__gallery-btn mono";
-    btn.textContent = "◲ View " + count + " image" + plural;
-    btn.setAttribute("aria-label", "Open image gallery for " + name);
+    btn.textContent = t.viewImages(count);
+    btn.setAttribute("aria-label", t.galleryFor(name));
     btn.addEventListener("click", function (e) { e.stopPropagation(); openLightbox(items, 0); });
 
     var pending = card.querySelector(".project__pending");
