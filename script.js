@@ -1,5 +1,5 @@
 /* =========================================================
-   Navroop Singh — Portfolio interactions
+   Navroop Singh: Portfolio interactions
    Theme toggle · mobile nav · scroll reveal · scroll spy
    ========================================================= */
 (function () {
@@ -8,7 +8,7 @@
   var root = document.documentElement;
 
   /* ---------- UI strings ----------
-     Page copy lives in the markup — the German pages are real files
+     Page copy lives in the markup: the German pages are real files
      (index.de.html and friends). Only the strings this script *injects* need
      a table: the gallery cue and the lightbox controls. Keyed off <html lang>,
      falling back to English for any other value. */
@@ -106,7 +106,7 @@
 
   /* ---------- Cursor spotlight ----------
      Glow follows the pointer exactly; the ring eases toward it so the
-     motion reads as deliberate rather than twitchy. Fine pointers only —
+     motion reads as deliberate rather than twitchy. Fine pointers only:
      on touch there is no cursor to show, and it would just burn battery. */
   var spotlight = document.querySelector(".spotlight");
   var ring = document.querySelector(".cursor-ring");
@@ -292,14 +292,14 @@
   galleryCards.forEach(function (card) {
     var slug = card.getAttribute("data-gallery");
     var items = normalizeItems(media[slug], slug);
-    if (!items.length) return; // no registered images — leave the card untouched
+    if (!items.length) return; // no registered images: leave the card untouched
 
     card.classList.add("project--has-media");
     var nameEl = card.querySelector(".project__name");
     var name = nameEl ? nameEl.textContent.trim() : "project";
     var count = items.length;
 
-    // Small text cue — replaces the "media soon" placeholder, or is appended.
+    // Small text cue: replaces the "media soon" placeholder, or is appended.
     // (No thumbnail: the whole card is the trigger; this keeps the gallery
     // discoverable and gives keyboard/screen-reader users an accessible control.)
     var btn = document.createElement("button");
@@ -315,7 +315,7 @@
     else if (linksWrap) { linksWrap.appendChild(btn); }
     else { card.appendChild(btn); }
 
-    // Clicking the card body follows the case study when there is one — that's
+    // Clicking the card body follows the case study when there is one: that's
     // what a reader expects from a project card. The gallery stays available
     // through the "View N images" button. Cards without a case study (the
     // compact coursework ones) keep the gallery as their card action.

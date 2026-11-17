@@ -1,5 +1,5 @@
 /* =========================================================
-   Navroop Singh — Résumé
+   Navroop Singh · Résumé
    Loaded AFTER styles.css, which supplies the tokens
    (--ink, --muted, --border, --accent, fonts, theme).
    Screen: matches the portfolio. Print: A4, ink-friendly.
@@ -40,7 +40,7 @@
   padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
 }
 .cv__lede { color: var(--muted); max-width: 68ch; }
-/* Availability / start / work authorisation — German recruiters screen on these. */
+/* Availability / start / work authorisation: German recruiters screen on these. */
 .cv__availability { margin-top: 0.6rem; font-size: 0.88rem; }
 .cv__availability b { color: var(--ink); font-weight: 600; }
 
@@ -96,18 +96,18 @@
 }
 
 /* =========================================================
-   PRINT — A4, one ink colour, no chrome.
+   PRINT: A4, one ink colour, no chrome.
    Forces the light palette regardless of the on-screen theme
    so a dark-mode visitor doesn't print a black page.
    ========================================================= */
 @page { size: A4; margin: 14mm 13mm; }
 
 @media print {
-  /* Defensive reset — keep the PDF as real text, not a picture of text.
+  /* Defensive reset: keep the PDF as real text, not a picture of text.
      GDI/XPS-based printer drivers (notably "Microsoft Print to PDF") flatten
      the whole page to a bitmap when any transparency or compositing layer is
-     present. styles.css carries several — .nav has a backdrop-filter, .reveal
-     animates opacity — and display:none is not always enough to keep them out
+     present. styles.css carries several: .nav has a backdrop-filter, .reveal
+     animates opacity, and display:none is not always enough to keep them out
      of the print render tree. Killing them outright keeps the text selectable
      and, more importantly, machine-readable for applicant tracking systems. */
   *, *::before, *::after {
@@ -137,29 +137,31 @@
   html, body { background: #fff !important; color: #000 !important; }
   /* Density tuned to fill two A4 pages without spilling to a third. Retuned
      after the availability line, the expanded project entries and the second
-     society entry were added — those pushed it onto a third page carrying a
-     single item. Verify the page count after editing content:
-     scripts/build-cv.sh regenerates the PDF. */
-  body { font-size: 9.35pt; line-height: 1.36; }
+     society entry were added: those pushed it onto a third page carrying a
+     single item. Retuned again when the mandatory-internship line, the
+     Navisworks bullet and the coursework-tools line went in: those pushed the
+     whole Community section onto a third page. Verify the page count after
+     editing content: scripts/build-cv.sh regenerates the PDF. */
+  body { font-size: 9.2pt; line-height: 1.30; }
 
-  /* German set at the sizes above runs onto a third page — the same content
+  /* German set at the sizes above runs onto a third page: the same content
      is roughly a tenth longer, and compound nouns wrap later. This is the
      density lever again, scoped to resume.de.html so the English PDF is
      untouched. The sizes above are absolute pt, so each one has to be
      restated; changing the body size alone would move nothing.
      Re-check BOTH page counts after editing either résumé. */
-  html[lang="de"] body { line-height: 1.31; }
-  html[lang="de"] .cv__lede { font-size: 8.9pt; }
-  html[lang="de"] .cv__availability { font-size: 8.3pt; }
-  html[lang="de"] .cv__title { font-size: 10.1pt; }
+  html[lang="de"] body { line-height: 1.26; }
+  html[lang="de"] .cv__lede { font-size: 8.7pt; }
+  html[lang="de"] .cv__availability { font-size: 8.1pt; }
+  html[lang="de"] .cv__title { font-size: 9.9pt; }
   html[lang="de"] .cv__org,
   html[lang="de"] .cv__points li,
-  html[lang="de"] .cv__projects p { font-size: 8.7pt; }
-  html[lang="de"] .cv__course { font-size: 8.2pt; }
-  html[lang="de"] .cv__section { padding-top: 8pt; }
-  html[lang="de"] .cv__item { padding-block: 3pt; }
-  html[lang="de"] .cv__points { gap: 2pt; margin-top: 4pt; }
-  html[lang="de"] .cv__projects { gap: 5pt; }
+  html[lang="de"] .cv__projects p { font-size: 8.5pt; }
+  html[lang="de"] .cv__course { font-size: 8pt; }
+  html[lang="de"] .cv__section { padding-top: 6.5pt; }
+  html[lang="de"] .cv__item { padding-block: 2.4pt; }
+  html[lang="de"] .cv__points { gap: 1.8pt; margin-top: 3.5pt; }
+  html[lang="de"] .cv__projects { gap: 4.5pt; }
 
   .cv { max-width: none; margin: 0; padding: 0; }
 
@@ -169,30 +171,30 @@
   .cv__contact { font-size: 8.4pt; gap: 2pt 14pt; margin-top: 7pt; }
   .cv__contact a { color: #000; text-decoration: none; }
 
-  .cv__section { padding-top: 9pt; break-inside: auto; }
-  .cv__availability { font-size: 8.6pt; margin-top: 4pt; }
+  .cv__section { padding-top: 7.5pt; break-inside: auto; }
+  .cv__availability { font-size: 8.4pt; margin-top: 3.5pt; }
   .cv__h {
     font-size: 8pt; color: #000; border-bottom: 0.5pt solid #999;
     margin-bottom: 6.5pt; padding-bottom: 3pt;
   }
-  .cv__lede { font-size: 9.2pt; max-width: none; }
+  .cv__lede { font-size: 9pt; max-width: none; }
   .cv__lede, .cv__points li, .cv__org, .cv__course,
   .cv__projects p, .cv__skills dd { color: #222; }
 
-  .cv__item { grid-template-columns: 9rem 1fr; gap: 1rem; padding-block: 3.5pt; }
-  .cv__title { font-size: 10.5pt; }
-  .cv__org { font-size: 9pt; margin-top: 1.5pt; }
-  .cv__course { font-size: 8.4pt; margin-top: 4pt; }
+  .cv__item { grid-template-columns: 9rem 1fr; gap: 1rem; padding-block: 2.8pt; }
+  .cv__title { font-size: 10.2pt; }
+  .cv__org { font-size: 8.8pt; margin-top: 1.5pt; }
+  .cv__course { font-size: 8.2pt; margin-top: 3.5pt; }
   .cv__date { font-size: 8pt; }
   .cv__loc { font-size: 7.6pt; }
 
-  .cv__points { gap: 2.5pt; margin-top: 5pt; }
-  .cv__points li { font-size: 9pt; padding-left: 0.9rem; }
+  .cv__points { gap: 2pt; margin-top: 4pt; }
+  .cv__points li { font-size: 8.8pt; padding-left: 0.9rem; }
   .cv__date, .cv__points li::before { color: #000; }
   .cv__points li::before { background: #000; width: 4px; height: 4px; }
 
-  .cv__projects { gap: 6pt; }
-  .cv__projects p { font-size: 9pt; margin-top: 2pt; max-width: none; }
+  .cv__projects { gap: 5pt; }
+  .cv__projects p { font-size: 8.8pt; margin-top: 2pt; max-width: none; }
   .cv__tag { font-size: 6.8pt; padding: 0.5pt 5pt; border-color: #999; }
 
   .cv__skills { gap: 4.5pt; }
@@ -200,7 +202,7 @@
   .cv__skills dt { font-size: 7.8pt; }
   .cv__skills dd { font-size: 9pt; }
 
-  /* Sheet stamp kept in print — it ties the CV to the portfolio. Compact. */
+  /* Sheet stamp kept in print: it ties the CV to the portfolio. Compact. */
   .titleblock { border-color: #999; margin-top: 8pt; }
   .titleblock__cell { border-right-color: #ccc; padding: 3pt 7pt; font-size: 7.4pt; }
   .titleblock__cell b { font-size: 6.2pt; }

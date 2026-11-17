@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>PPR-Modellierungs- &amp; Validierungstool — Navroop Singh</title>
+  <title>PPR-Modellierungs- &amp; Validierungstool · Navroop Singh</title>
   <meta name="description" content="Ein Streamlit-Tool, das Produkt-Prozess-Ressource-Beziehungen als einen gerichteten Graphen modelliert, mit zwei Ingenieurssichten und vier Anforderungsprüfungen darauf." />
   <meta name="author" content="Navroop Singh" />
   <meta name="theme-color" content="#0A0A0A" />
@@ -58,10 +58,10 @@
   <main class="case container" id="case">
     <p class="case__eyebrow mono"><a href="../index.de.html#work">Projekte</a> / P.01 · Fallstudie</p>
     <h1 class="case__title">PPR-Modellierungs- &amp; Validierungstool</h1>
-    <p class="case__thesis">Zwei Ingenieurssichten auf einen Graphen — mit Produkt-Prozess-Ressource-Regeln, die schon beim Anlegen einer Kante durchgesetzt werden, sodass ein ungültiges Modell gar nicht erst entstehen kann.</p>
+    <p class="case__thesis">Zwei Ingenieurssichten auf einen Graphen, mit Produkt-Prozess-Ressource-Regeln, die schon beim Anlegen einer Kante durchgesetzt werden, sodass ein ungültiges Modell gar nicht erst entstehen kann.</p>
 
     <dl class="case__facts">
-      <div><dt class="mono">Kontext</dt><dd>Python for Production Systems Engineering — OVGU Magdeburg, Wintersemester 2025/26</dd></div>
+      <div><dt class="mono">Kontext</dt><dd>Python for Production Systems Engineering: OVGU Magdeburg, Wintersemester 2025/26</dd></div>
       <div><dt class="mono">Team</dt><dd>Zweierteam. Mein Anteil: die Engineering- und Zuverlässigkeitssicht. Der Code wurde vom Konto meines Teamkollegen in einem einzigen Upload eingestellt, deshalb zeigt die Commit-Historie nicht, wer welches Modul geschrieben hat.</dd></div>
       <div><dt class="mono">Stack</dt><dd>Python · Streamlit · NetworkX · Graphviz · PyVis</dd></div>
       <div><dt class="mono">Live</dt><dd><a href="https://ppr-modelling-and-validation-tool-hz9epskbcjybcqievvs3cj.streamlit.app/" target="_blank" rel="noopener">Auf Streamlit Cloud bereitgestellt ↗</a></dd></div>
@@ -69,26 +69,26 @@
 
     <section class="case__section">
       <h2 class="case__h">Ein Graph, viele Leser</h2>
-      <p>Ein PPR-Modell sagt, was produziert wird, wie und mit welchen Ressourcen. Diese drei Sichten werden von unterschiedlichen Ingenieuren gelesen — also muss das Tool sie aus <em>einem</em> Graphen projizieren. Zwei Kopien würden auseinanderlaufen, und ein auseinandergelaufenes Modell ist schlimmer als gar keins.</p>
+      <p>Ein PPR-Modell sagt, was produziert wird, wie und mit welchen Ressourcen. Diese drei Sichten werden von unterschiedlichen Ingenieuren gelesen: also muss das Tool sie aus <em>einem</em> Graphen projizieren. Zwei Kopien würden auseinanderlaufen, und ein auseinandergelaufenes Modell ist schlimmer als gar keins.</p>
       <figure class="case__figure">
         <img src="../assets/projects/01-ppr-tool/interactive-graph.jpg" width="1221" height="683" loading="lazy" decoding="async"
              alt="Gerichteter PPR-Graph, der Ressourcen, Prozesse und Produkte verbindet, mit Ressourcen in der oberen Ebene, Prozessen in der Mitte und Produkten unten" />
-        <figcaption>Ressourcen oben, Prozesse in der Mitte, Produkte unten. Der Typ ist doppelt kodiert — über Farbe und Form — damit ein monochromer Beamer die Unterscheidung nicht verliert.</figcaption>
+        <figcaption>Ressourcen oben, Prozesse in der Mitte, Produkte unten. Der Typ ist doppelt kodiert (über Farbe und Form) damit ein monochromer Beamer die Unterscheidung nicht verliert.</figcaption>
       </figure>
       <figure class="case__figure">
         <img src="../assets/projects/01-ppr-tool/sample-model-graph.jpg" width="1243" height="851" loading="lazy" decoding="async"
              alt="Beispielhaftes Lego-Auto-Modell als Prozess-Ressource-Produkt-Graph, dessen Montageschritte mit den erzeugten Teilen verknüpft sind" />
-        <figcaption>Die Beispieldomäne ist eine Lego-Rennwagen-Montagelinie — klein genug, um sie mit bloßem Auge zu prüfen, und strukturell trotzdem nicht trivial.</figcaption>
+        <figcaption>Die Beispieldomäne ist eine Lego-Rennwagen-Montagelinie: klein genug, um sie mit bloßem Auge zu prüfen, und strukturell trotzdem nicht trivial.</figcaption>
       </figure>
       <div class="case__note">
-        Nur zwei Kantenrichtungen haben in PPR überhaupt eine Bedeutung: Eine Ressource führt einen Prozess aus, und ein Prozess erzeugt ein Produkt. Diese Positivliste wird innerhalb der Funktion zum Anlegen von Kanten geprüft, sodass eine falsche Kante den Graphen nie erreicht — und die Fehlermeldung benennt den Verstoß, statt die Kante nur abzulehnen.
+        Nur zwei Kantenrichtungen haben in PPR überhaupt eine Bedeutung: Eine Ressource führt einen Prozess aus, und ein Prozess erzeugt ein Produkt. Diese Positivliste wird innerhalb der Funktion zum Anlegen von Kanten geprüft, sodass eine falsche Kante den Graphen nie erreicht, und die Fehlermeldung benennt den Verstoß, statt die Kante nur abzulehnen.
       </div>
     </section>
 
     <section class="case__section">
-      <h2 class="case__h">Die Zuverlässigkeitssicht — mein Teil</h2>
-      <p>Eine Zuverlässigkeitskante ist keine PPR-Kante. Die PPR-Struktur sagt „dieser Prozess erzeugt jenes Produkt“; eine Ausfallabhängigkeit sagt „wenn dies ausfällt, funktioniert jenes nicht mehr“. Andere Beziehung, gleiche Knoten — deshalb <em>überlagert</em> die Sicht sie als gestrichelte Pfeile, statt sie in den Graphen aufzunehmen, wo sie genau die Regeln beschädigen würden, die das Modell prüfbar machen.</p>
-      <p>An der Beispiellinie: Ein Achsausfall legt die Radmontage lahm, ein Chassisausfall löst die Karosserie, ein abgelöster Spoiler belastet das Chassis. Die Sicht ordnet Knoten nach MTBF und MTTR und markiert alles über 4 % Ausfallwahrscheinlichkeit — womit auch der menschliche Bediener neben der Hardware sichtbar wird, denn das Modell stellt Maschinen nicht über Menschen.</p>
+      <h2 class="case__h">Die Zuverlässigkeitssicht: mein Teil</h2>
+      <p>Eine Zuverlässigkeitskante ist keine PPR-Kante. Die PPR-Struktur sagt „dieser Prozess erzeugt jenes Produkt“; eine Ausfallabhängigkeit sagt „wenn dies ausfällt, funktioniert jenes nicht mehr“. Andere Beziehung, gleiche Knoten: deshalb <em>überlagert</em> die Sicht sie als gestrichelte Pfeile, statt sie in den Graphen aufzunehmen, wo sie genau die Regeln beschädigen würden, die das Modell prüfbar machen.</p>
+      <p>An der Beispiellinie: Ein Achsausfall legt die Radmontage lahm, ein Chassisausfall löst die Karosserie, ein abgelöster Spoiler belastet das Chassis. Die Sicht ordnet Knoten nach MTBF und MTTR und markiert alles über 4 % Ausfallwahrscheinlichkeit, womit auch der menschliche Bediener neben der Hardware sichtbar wird, denn das Modell stellt Maschinen nicht über Menschen.</p>
       <figure class="case__figure">
         <img src="../assets/projects/01-ppr-tool/graph-view.jpg" width="1912" height="903" loading="lazy" decoding="async"
              alt="Registerkarte „Graph View“ des PPR-Modellierungstools mit Knotenlegende und Graphviz-Renderoptionen" />
@@ -110,8 +110,8 @@
     <section class="case__section">
       <h2 class="case__h">Was ich anders machen würde</h2>
       <ul class="case__list">
-        <li><b>Zuverlässigkeitsdaten gehören in die Modelldatei.</b> MTBF und Ausfallwahrscheinlichkeiten liegen in einer Tabelle auf Modulebene — für eine Demo trivial, für die Nachvollziehbarkeit falsch. Sie lassen sich weder mit dem Modell versionieren noch von denen pflegen, denen die Instandhaltungshistorie gehört.</li>
-        <li><b>Kein Export.</b> Drei Importformate, keines hinaus. Der Serialisierer existiert bereits, es wäre also eine kleine Änderung — und ohne ihn stirbt jede Bearbeitung mit der Sitzung.</li>
+        <li><b>Zuverlässigkeitsdaten gehören in die Modelldatei.</b> MTBF und Ausfallwahrscheinlichkeiten liegen in einer Tabelle auf Modulebene, für eine Demo trivial, für die Nachvollziehbarkeit falsch. Sie lassen sich weder mit dem Modell versionieren noch von denen pflegen, denen die Instandhaltungshistorie gehört.</li>
+        <li><b>Kein Export.</b> Drei Importformate, keines hinaus. Der Serialisierer existiert bereits, es wäre also eine kleine Änderung, und ohne ihn stirbt jede Bearbeitung mit der Sitzung.</li>
         <li><b>Testbar und ungetestet.</b> Streamlit aus der Graphenschicht herauszuhalten war richtig, weil es genau diese Funktionen unit-testbar macht. Dann hat niemand die Tests geschrieben.</li>
       </ul>
     </section>
@@ -123,7 +123,7 @@
     <div class="footer__inner">
       <span class="footer__name">Navroop Singh</span>
       <span class="footer__meta mono">Systems Engineer · Magdeburg, DE</span>
-      <span class="footer__copy mono">© 2026 — Mit Sorgfalt gebaut.</span>
+      <span class="footer__copy mono">© 2026 · Mit Sorgfalt gebaut.</span>
     </div>
   </footer>
 

@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Shaft Design for Fatigue Loading — Navroop Singh</title>
-  <meta name="description" content="A speed-reducer countershaft sized to ASME B106.1M — free body to bearing reactions to a 68.33 mm diameter, then modelled and checked with static and fatigue FEA." />
+  <title>Shaft Design for Fatigue Loading · Navroop Singh</title>
+  <meta name="description" content="A speed-reducer countershaft sized to ASME B106.1M: free body to bearing reactions to a 68.33 mm diameter, then modelled and checked with static and fatigue FEA." />
   <meta name="author" content="Navroop Singh" />
   <meta name="theme-color" content="#0A0A0A" />
 
@@ -61,10 +61,10 @@
     <p class="case__thesis">A speed-reducer countershaft taken from a free-body sketch to a diameter, by the ASME code, and then checked in FEA. The interesting part is the two places where the number the code hands you is <em>not</em> the number that belongs on the drawing.</p>
 
     <dl class="case__facts">
-      <div><dt class="mono">Context</dt><dd>Machine Design — B.Eng. Mechanical Engineering, Thapar Institute</dd></div>
+      <div><dt class="mono">Context</dt><dd>Machine Design: B.Eng. Mechanical Engineering, Thapar Institute</dd></div>
       <div><dt class="mono">Brief</dt><dd>The countershaft of a speed reducer running at constant speed. Gear A takes power in from a meshing gear, gear B delivers it out. Size the shaft, keys and splines for fatigue loading.</dd></div>
       <div><dt class="mono">Method</dt><dd>ASME code B106.1M · maximum shear stress theory · hand calculation, then FEA as a check</dd></div>
-      <div><dt class="mono">Tools</dt><dd>SolidWorks — model, static study, fatigue study, drawing</dd></div>
+      <div><dt class="mono">Tools</dt><dd>SolidWorks: model, static study, fatigue study, drawing</dd></div>
     </dl>
 
     <section class="case__section">
@@ -73,14 +73,14 @@
       <figure class="case__figure">
         <img src="../assets/projects/06-shaft-design/shaft-layout.jpg" width="1250" height="792" loading="lazy" decoding="async"
              alt="Hand-drawn layout of the countershaft with gear A and gear B, the 400, 350 and 300 mm spacings and the 20 degree pressure angle marked" />
-        <figcaption>The layout everything else follows from — spans, gear diameters, and the 20° pressure angle that splits each tooth load in two.</figcaption>
+        <figcaption>The layout everything else follows from: spans, gear diameters, and the 20° pressure angle that splits each tooth load in two.</figcaption>
       </figure>
-      <p>Material is Steel FeE at 770 MPa ultimate, 580 MPa yield. ASME gives two ceilings on shear stress — 30% of yield or 18% of ultimate — and you take the lower, which here is 138.6 MPa. Because the gears are keyed, that comes down another 25%, and <b>103.95 MPa</b> is what the shaft actually has to live inside.</p>
+      <p>Material is Steel FeE at 770 MPa ultimate, 580 MPa yield. ASME gives two ceilings on shear stress, 30% of yield or 18% of ultimate, and you take the lower, which here is 138.6 MPa. Because the gears are keyed, that comes down another 25%, and <b>103.95 MPa</b> is what the shaft actually has to live inside.</p>
     </section>
 
     <section class="case__section">
       <h2 class="case__h">From free body to diameter</h2>
-      <p>Resolving in both planes and taking moments about O gives the bearing reactions, and from those the bending moment at each gear. Gear A is the worse of the two by a wide margin — it is further from a support and carries six times the tooth load.</p>
+      <p>Resolving in both planes and taking moments about O gives the bearing reactions, and from those the bending moment at each gear. Gear A is the worse of the two by a wide margin: it is further from a support and carries six times the tooth load.</p>
       <div class="case__scroll">
         <table class="case__table">
           <thead>
@@ -99,7 +99,7 @@
       <figure class="case__figure">
         <img src="../assets/projects/06-shaft-design/cad-model.jpg" width="848" height="713" loading="lazy" decoding="async"
              alt="SolidWorks model of the stepped countershaft carrying the two gear discs" />
-        <figcaption>The shaft modelled at the calculated size, gears simplified to discs of the right diameter and mass — enough to load it correctly, not a gear study.</figcaption>
+        <figcaption>The shaft modelled at the calculated size, gears simplified to discs of the right diameter and mass: enough to load it correctly, not a gear study.</figcaption>
       </figure>
       <p>Keys and splines follow from the diameter. A square key at the industrial rule of a quarter of the shaft gives 17.08 mm square; eight splines over a hub 1.25 diameters long, at 6.5 N/mm² permissible pressure, give a 65.64 mm root against the 68.33 mm outside.</p>
     </section>
@@ -110,12 +110,12 @@
       <figure class="case__figure">
         <img src="../assets/projects/06-shaft-design/von-mises-stress.jpg" width="1133" height="738" loading="lazy" decoding="async"
              alt="Static von Mises stress plot of the countershaft with loads and fixtures shown, the whole part at the blue end of a scale topping out at the 580 MPa yield strength" />
-        <figcaption>Static von Mises, scaled to the 580 MPa yield. The part never leaves the blue end — which is the expected answer, not a surprising one.</figcaption>
+        <figcaption>Static von Mises, scaled to the 580 MPa yield. The part never leaves the blue end, which is the expected answer, not a surprising one.</figcaption>
       </figure>
       <figure class="case__figure">
         <img src="../assets/projects/06-shaft-design/fatigue-life.jpg" width="914" height="584" loading="lazy" decoding="async"
              alt="Fatigue total-life plot of the countershaft showing uniform life above one billion cycles" />
-        <figcaption>Fatigue life comes out uniformly past 10⁹ cycles — run-out. Damage across the part sits at about 1.7%.</figcaption>
+        <figcaption>Fatigue life comes out uniformly past 10⁹ cycles: run-out. Damage across the part sits at about 1.7%.</figcaption>
       </figure>
       <div class="case__note">
         Both plots are a single flat colour, and that is worth saying out loud rather than presenting as a result. The ASME factors already sized the shaft to sit far below the endurance limit, so the FEA can only confirm it. A study that would actually earn its keep would model the keyway and the step fillets, because those are the stress raisers the smooth model has no way to show.
@@ -130,9 +130,9 @@
     <section class="case__section">
       <h2 class="case__h">What I'd do differently</h2>
       <ul class="case__list">
-        <li><b>68.33 mm is a calculation, not a shaft.</b> It went onto the drawing as-is. Nobody turns a 68.33 mm shaft — it should have been rounded up to the nearest standard size, 70 mm, and the margin recalculated at that size. Carrying two decimals of false precision onto a production drawing is the kind of thing a checker sends straight back.</li>
-        <li><b>The 5 mm key length is wrong, and the arithmetic isn't.</b> Solving the shear equation for length gives 5 mm, and that is genuinely what the equation says. It's still wrong, because key length is set by the hub it sits in, not by shear — a 68 mm shaft carries a hub of roughly 100 mm, and the key runs most of that. The right conclusion was that shear is not the binding constraint here, and I drew the opposite one.</li>
-        <li><b>The torque was assumed, not derived.</b> 200 N·m was taken as a starting value rather than worked back from a transmitted power and the running speed. Every number downstream — the diameter, the key, the splines — inherits that assumption, and the brief gave enough to do better.</li>
+        <li><b>68.33 mm is a calculation, not a shaft.</b> It went onto the drawing as-is. Nobody turns a 68.33 mm shaft: it should have been rounded up to the nearest standard size, 70 mm, and the margin recalculated at that size. Carrying two decimals of false precision onto a production drawing is the kind of thing a checker sends straight back.</li>
+        <li><b>The 5 mm key length is wrong, and the arithmetic isn't.</b> Solving the shear equation for length gives 5 mm, and that is genuinely what the equation says. It's still wrong, because key length is set by the hub it sits in, not by shear: a 68 mm shaft carries a hub of roughly 100 mm, and the key runs most of that. The right conclusion was that shear is not the binding constraint here, and I drew the opposite one.</li>
+        <li><b>The torque was assumed, not derived.</b> 200 N·m was taken as a starting value rather than worked back from a transmitted power and the running speed. Every number downstream (the diameter, the key, the splines) inherits that assumption, and the brief gave enough to do better.</li>
         <li><b>No tolerances.</b> The brief asked for them and the drawing doesn't carry any. A shaft with gears, bearings and splines on it needs fits called out at each seat; without them the drawing isn't manufacturable.</li>
       </ul>
     </section>
@@ -144,7 +144,7 @@
     <div class="footer__inner">
       <span class="footer__name">Navroop Singh</span>
       <span class="footer__meta mono">Systems Engineer · Magdeburg, DE</span>
-      <span class="footer__copy mono">© 2026 — Built with care.</span>
+      <span class="footer__copy mono">© 2026 · Built with care.</span>
     </div>
   </footer>
 

@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Production Scheduling &amp; Lot-Sizing Study — Navroop Singh</title>
-  <meta name="description" content="Five order-release strategies raced on a six-product, five-stage line in Tecnomatix Plant Simulation — makespan, tardiness and on-time delivery over 100 orders." />
+  <title>Production Scheduling &amp; Lot-Sizing Study · Navroop Singh</title>
+  <meta name="description" content="Five order-release strategies raced on a six-product, five-stage line in Tecnomatix Plant Simulation: makespan, tardiness and on-time delivery over 100 orders." />
   <meta name="author" content="Navroop Singh" />
   <meta name="theme-color" content="#0A0A0A" />
 
@@ -61,14 +61,14 @@
     <p class="case__thesis">Five ways to release orders onto the same line. The one that won on throughput lost on delivery, and the simplest rule in the set beat everything on the objective.</p>
 
     <dl class="case__facts">
-      <div><dt class="mono">Context</dt><dd>Simulation Modeling in Logistics Planning — M.Sc. OVGU Magdeburg, Summer Semester 2026. Individual assignment.</dd></div>
+      <div><dt class="mono">Context</dt><dd>Simulation Modeling in Logistics Planning: M.Sc. OVGU Magdeburg, Summer Semester 2026. Individual assignment.</dd></div>
       <div><dt class="mono">Tools</dt><dd>Tecnomatix Plant Simulation 2404 · SimTalk</dd></div>
-      <div><dt class="mono">Brief</dt><dd>Raise delivery reliability — the share of orders finished on or before the customer's required date.</dd></div>
+      <div><dt class="mono">Brief</dt><dd>Raise delivery reliability: the share of orders finished on or before the customer's required date.</dd></div>
     </dl>
 
     <section class="case__section">
       <h2 class="case__h">The line</h2>
-      <p>Six products, five stages, and each product skipping the stages it doesn't need. Profiling runs two machines where everything else has three — but at expected demand it's <b>Bending</b> that carries the heaviest load per machine, so that's the real constraint.</p>
+      <p>Six products, five stages, and each product skipping the stages it doesn't need. Profiling runs two machines where everything else has three, but at expected demand it's <b>Bending</b> that carries the heaviest load per machine, so that's the real constraint.</p>
       <figure class="case__figure case__figure--chart">
         <img src="../assets/projects/02-production-scheduling/conceptual-model.png" width="1400" height="646" loading="lazy" decoding="async"
              alt="Conceptual model of the five-stage production line showing Press, Laser, Bending, Profiling and Welding with machine counts, product skip paths and Bending marked as the bottleneck" />
@@ -98,19 +98,19 @@
           <caption>Simulation output from fixed seeds; re-running any model reproduces these to the decimal.</caption>
         </table>
       </div>
-      <p>Releasing every order individually costs about 30 hours of makespan whichever priority key you sort by — the line absorbs roughly 100 extra set-ups per machine instead of five. So makespan is driven by the <em>number</em> of set-ups, not their order. EDD spends that penalty well and buys zero tardiness; SPT and LPT spend it for nothing.</p>
+      <p>Releasing every order individually costs about 30 hours of makespan whichever priority key you sort by: the line absorbs roughly 100 extra set-ups per machine instead of five. So makespan is driven by the <em>number</em> of set-ups, not their order. EDD spends that penalty well and buys zero tardiness; SPT and LPT spend it for nothing.</p>
       <figure class="case__figure case__figure--chart">
         <img src="../assets/projects/02-production-scheduling/pareto-makespan-tardiness.svg" width="1200" height="777" loading="lazy" decoding="async"
              alt="Scatter chart of makespan against total tardiness for five order-release strategies. EDD sits on the zero-tardiness axis at 67 hours makespan; the best lot-based search run sits at 30 hours makespan and 163 hours tardiness; LPT is worst at 1,046 hours tardiness" />
-        <figcaption>The trade-off front is two points wide: EDD buys reliability with time, the lot-based run buys time with tardiness. The rest are dominated. <span class="mono">Redrawn — the report's figure has its axes swapped.</span></figcaption>
+        <figcaption>The trade-off front is two points wide: EDD buys reliability with time, the lot-based run buys time with tardiness. The rest are dominated. <span class="mono">Redrawn: the report's figure has its axes swapped.</span></figcaption>
       </figure>
       <figure class="case__figure case__figure--chart">
         <img src="../assets/projects/02-production-scheduling/lot-size-response.svg" width="1200" height="777" loading="lazy" decoding="async"
              alt="Line chart of the weighted objective z against uniform lot size on a log scale, U-shaped with its minimum at lot size 50" />
-        <figcaption>Lot size 200 reproduces the family rule; lot size 5 explodes the set-up count. Optimum at 50. Release order matters too — reverse-alphabetical beat alphabetical by 15%.</figcaption>
+        <figcaption>Lot size 200 reproduces the family rule; lot size 5 explodes the set-up count. Optimum at 50. Release order matters too: reverse-alphabetical beat alphabetical by 15%.</figcaption>
       </figure>
       <div class="case__note">
-        <b>Recommendation, staged.</b> Lot-based release now — it beats today's family rule on every KPI and costs nothing. EDD after a SMED programme, because EDD's whole penalty is set-up time. Shingo's original SMED work took a Toyota press die change from about four hours to under ten minutes.
+        <b>Recommendation, staged.</b> Lot-based release now: it beats today's family rule on every KPI and costs nothing. EDD after a SMED programme, because EDD's whole penalty is set-up time. Shingo's original SMED work took a Toyota press die change from about four hours to under ten minutes.
       </div>
     </section>
 
@@ -130,7 +130,7 @@
     <div class="footer__inner">
       <span class="footer__name">Navroop Singh</span>
       <span class="footer__meta mono">Systems Engineer · Magdeburg, DE</span>
-      <span class="footer__copy mono">© 2026 — Built with care.</span>
+      <span class="footer__copy mono">© 2026 · Built with care.</span>
     </div>
   </footer>
 

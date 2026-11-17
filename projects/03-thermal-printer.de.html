@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Thermodrucker-MBSE-Modell (RAMI 4.0) — Navroop Singh</title>
-  <meta name="description" content="Ein Thermodrucker, in Enterprise Architect gegen RAMI 4.0 modelliert — die Ziele der Arbeitsstation heruntergebrochen bis zum Motor, der sie erfüllt, mit durchgängiger Nachverfolgbarkeit." />
+  <title>Thermodrucker-MBSE-Modell (RAMI 4.0) · Navroop Singh</title>
+  <meta name="description" content="Ein Thermodrucker, in Enterprise Architect gegen RAMI 4.0 modelliert: die Ziele der Arbeitsstation heruntergebrochen bis zum Motor, der sie erfüllt, mit durchgängiger Nachverfolgbarkeit." />
   <meta name="author" content="Navroop Singh" />
   <meta name="theme-color" content="#0A0A0A" />
 
@@ -61,10 +61,10 @@
     <p class="case__thesis">Modelliere die Ziele der Arbeitsstation ohne jede Implementierung darin. Dann verfeinere nach unten, bis du beim Motor ankommst. Wenn ein Leser einer Anforderung den ganzen Weg folgen kann, funktioniert das Modell.</p>
 
     <dl class="case__facts">
-      <div><dt class="mono">Kontext</dt><dd>Enterprise Architecture &amp; RAMI 4.0 — M.Sc. OVGU Magdeburg, Wintersemester 2025/26</dd></div>
-      <div><dt class="mono">Werkzeug</dt><dd>Enterprise Architect (Sparx Systems) — das Modellierungswerkzeug, nicht die TOGAF-Disziplin</dd></div>
+      <div><dt class="mono">Kontext</dt><dd>Enterprise Architecture &amp; RAMI 4.0: M.Sc. OVGU Magdeburg, Wintersemester 2025/26</dd></div>
+      <div><dt class="mono">Werkzeug</dt><dd>Enterprise Architect (Sparx Systems): das Modellierungswerkzeug, nicht die TOGAF-Disziplin</dd></div>
       <div><dt class="mono">Umfang</dt><dd>Zwei Hierarchieebenen · sieben Schichten · 30 Diagramme</dd></div>
-      <div><dt class="mono">Mein Anteil</dt><dd><b>Der Sheet Feed Controller vollständig</b> — alle sieben Schichten, jedes Diagramm und die Nachverfolgbarkeit zurück zu den Anforderungen der Arbeitsstation. Auf Work-Station-Ebene gehörten mir die Business-, Funktions- und Informationsschicht; die PPR-Schicht der Work Station war gemeinsam. Mein Teamkollege übernahm die übrigen WS-Schichten und den Platen Force Controller.</dd></div>
+      <div><dt class="mono">Mein Anteil</dt><dd><b>Der Sheet Feed Controller vollständig</b>: alle sieben Schichten, jedes Diagramm und die Nachverfolgbarkeit zurück zu den Anforderungen der Arbeitsstation. Auf Work-Station-Ebene gehörten mir die Business-, Funktions- und Informationsschicht; die PPR-Schicht der Work Station war gemeinsam. Mein Teamkollege übernahm die übrigen WS-Schichten und den Platen Force Controller.</dd></div>
     </dl>
 
     <section class="case__section">
@@ -77,7 +77,7 @@
       <figure class="case__figure">
         <img src="../assets/projects/03-thermal-printer/ws-activity.png" width="989" height="652" loading="lazy" decoding="async"
              alt="Aktivitätsdiagramm des Druckablaufs mit Entscheidungspunkten für Papierverfügbarkeit und Druckerfolg sowie einem Zweig zum Druckfehler" />
-        <figcaption>Was die Arbeitsstation tut, einschließlich des Zweigs, in dem sie scheitert. Keine Motoren, keine Platinen — das ist die Disziplin, die diese Ebene halten muss.</figcaption>
+        <figcaption>Was die Arbeitsstation tut, einschließlich des Zweigs, in dem sie scheitert. Keine Motoren, keine Platinen: das ist die Disziplin, die diese Ebene halten muss.</figcaption>
       </figure>
       <figure class="case__figure case__figure--sm">
         <img src="../assets/projects/03-thermal-printer/ws-data-flow.png" width="661" height="601" loading="lazy" decoding="async"
@@ -91,7 +91,7 @@
       <figure class="case__figure">
         <img src="../assets/projects/03-thermal-printer/sfc-use-case.jpg" width="812" height="619" loading="lazy" decoding="async"
              alt="Anwendungsfalldiagramm für den Sheet Feed Controller mit Geschäftsfällen für Papierzuführung steuern, Papieranwesenheit erkennen, Zuführfehler behandeln, Status melden und Wartung" />
-        <figcaption>Der eigene Umfang des Controllers — Blatttransport, Stauvermeidung, sicheres Handling — abgeleitet aus der Arbeitsstation darüber, nicht daneben erfunden.</figcaption>
+        <figcaption>Der eigene Umfang des Controllers (Blatttransport, Stauvermeidung, sicheres Handling) abgeleitet aus der Arbeitsstation darüber, nicht daneben erfunden.</figcaption>
       </figure>
       <figure class="case__figure">
         <img src="../assets/projects/03-thermal-printer/sfc-activity.png" width="1029" height="666" loading="lazy" decoding="async"
@@ -104,14 +104,14 @@
         <figcaption>Ende der Kette: Steuerungslogik gebunden an eine Controller-Platine, einen Motortreiber, einen Zuführmotor und einen Papieranwesenheitssensor.</figcaption>
       </figure>
       <div class="case__note">
-        Die beiden Steuergeräte je eines aufzuteilen — statt nach Schichten — führte dazu, dass beide gleich tief modelliert wurden. Die vertikale Integration entsteht aus der Verfeinerungskette; die horizontale Integration zwischen den Controllern läuft über die Informations- und die Kommunikationsschicht.
+        Die beiden Steuergeräte je eines aufzuteilen, statt nach Schichten, führte dazu, dass beide gleich tief modelliert wurden. Die vertikale Integration entsteht aus der Verfeinerungskette; die horizontale Integration zwischen den Controllern läuft über die Informations- und die Kommunikationsschicht.
       </div>
     </section>
 
     <section class="case__section">
       <h2 class="case__h">Was ich anders machen würde</h2>
       <ul class="case__list">
-        <li><b>Die dritte RAMI-Achse fehlt.</b> Schichten und Hierarchieebenen sind abgedeckt; Life Cycle &amp; Value Stream nicht. Nichts trennt Typ von Instanz oder Entwicklung von Feldeinsatz — und genau dort spielt RAMI seinen Nutzen aus.</li>
+        <li><b>Die dritte RAMI-Achse fehlt.</b> Schichten und Hierarchieebenen sind abgedeckt; Life Cycle &amp; Value Stream nicht. Nichts trennt Typ von Instanz oder Entwicklung von Feldeinsatz, und genau dort spielt RAMI seinen Nutzen aus.</li>
         <li><b>Nachverfolgbarkeit ist Handarbeit.</b> Die Verbindungen sind von Hand gezogen, eine Anforderung kann ihre Realisierung also stillschweigend verlieren, während das Modell wächst. Ein Abdeckungsbericht würde daraus eine Prüfung statt einer Behauptung machen.</li>
         <li><b>Beschrieben, nicht verifiziert.</b> Keine Datentypen oder Wertebereiche für Schnittstellen, kein Zustandsautomat für den Zuführzyklus. Das Modell kann noch nicht beantworten: „Was passiert, wenn der Papiersensor mitten in der Zuführung ausfällt?“</li>
       </ul>
@@ -124,7 +124,7 @@
     <div class="footer__inner">
       <span class="footer__name">Navroop Singh</span>
       <span class="footer__meta mono">Systems Engineer · Magdeburg, DE</span>
-      <span class="footer__copy mono">© 2026 — Mit Sorgfalt gebaut.</span>
+      <span class="footer__copy mono">© 2026 · Mit Sorgfalt gebaut.</span>
     </div>
   </footer>
 

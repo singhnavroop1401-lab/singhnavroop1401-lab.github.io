@@ -1,11 +1,11 @@
 /* =========================================================
-   Navroop Singh — Portfolio
+   Navroop Singh: Portfolio
    Bold editorial · Monochrome + accent · Light/Dark
    Edit --accent below to reskin the whole site.
    ========================================================= */
 
 :root {
-  /* Light theme is a toned paper stock, not pure white — easier on the eyes
+  /* Light theme is a toned paper stock, not pure white: easier on the eyes
      and it suits the drawing-sheet language. Cards stay white so they lift
      off the page, mirroring how --surface lifts off --bg in dark mode. */
   --bg: #f2f1ed;
@@ -103,7 +103,7 @@ img { max-width: 100%; display: block; }
 [data-theme="light"] .icon-moon { display: none; }
 [data-theme="dark"] .icon-sun { display: none; }
 
-/* Language switcher — sits beside the theme toggle. Wider than the square
+/* Language switcher: sits beside the theme toggle. Wider than the square
    buttons because the globe alone doesn't say *which* language: the code
    names the language you get by clicking, not the one you're reading. */
 .lang-toggle {
@@ -301,7 +301,7 @@ body.no-scroll { overflow: hidden; }
 .contact__line { color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.35rem); max-width: 40ch; margin-bottom: 2.25rem; }
 .contact__actions { display: flex; flex-wrap: wrap; gap: 0.9rem; }
 
-/* Availability / start date / work authorisation — recruiters screen on these,
+/* Availability / start date / work authorisation: recruiters screen on these,
    so they sit in the flow, not in the decorative titleblock. */
 .contact__facts { display: grid; gap: 0.6rem; max-width: 60ch; margin-bottom: 2.25rem; }
 .contact__facts > div { display: grid; grid-template-columns: 11rem 1fr; gap: 0.9rem; align-items: baseline; }
@@ -320,7 +320,7 @@ body.no-scroll { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 
 /* =========================================================
-   BLUEPRINT LAYER — engineering-drawing treatment.
+   BLUEPRINT LAYER: engineering-drawing treatment.
    Scoped to the Work section + hero figure so the rest of
    the site stays calm. Uses existing tokens only.
    ========================================================= */
@@ -338,7 +338,7 @@ body.no-scroll { overflow: hidden; }
           mask-image: linear-gradient(to bottom, transparent, #000 10%, #000 90%, transparent);
 }
 
-/* CAD title block — sits under the heading of every section */
+/* CAD title block: sits under the heading of every section */
 .titleblock {
   display: flex; flex-wrap: wrap;
   border: 1px solid var(--ink); background: var(--bg);
@@ -393,7 +393,7 @@ body.no-scroll { overflow: hidden; }
   display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.55fr);
   gap: clamp(2rem, 5vw, 4.5rem); align-items: center;
 }
-/* Capped rather than left to fill the column — at full width the portrait
+/* Capped rather than left to fill the column, at full width the portrait
    competed with the name for attention. */
 .hero__figure { margin: 0 0 0 auto; position: relative; max-width: 17rem; width: 100%; }
 .hero__frame { position: relative; padding: 10px; border: 1px solid var(--border); background: var(--surface); }
@@ -414,7 +414,7 @@ body.no-scroll { overflow: hidden; }
 }
 
 /* =========================================================
-   KINETIC LAYER — native CSS scroll-driven animation where
+   KINETIC LAYER: native CSS scroll-driven animation where
    supported, falling back to the IntersectionObserver in
    script.js. All motion honours prefers-reduced-motion.
    ========================================================= */
@@ -515,7 +515,7 @@ body.no-scroll { overflow: hidden; }
 .case__section p:last-child { margin-bottom: 0; }
 .case__list { display: grid; gap: 0.6rem; max-width: 68ch; }
 .case__list li { position: relative; padding-left: 1.15rem; color: var(--muted); }
-.case__list li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+.case__list li::before { content: "·"; position: absolute; left: 0; color: var(--accent); }
 .case__list b { color: var(--ink); font-weight: 600; }
 
 .case__figure { margin: clamp(1.5rem, 3vw, 2rem) 0 0; }
@@ -549,17 +549,17 @@ body.no-scroll { overflow: hidden; }
   .projects--compact { grid-template-columns: 1fr 1fr; }
   .hero__grid { grid-template-columns: 1fr; gap: 2.25rem; }
   .hero__figure { max-width: 22rem; }
-  /* 4:5 crops height off a 2:3 source — bias upward to keep the face framed */
+  /* 4:5 crops height off a 2:3 source: bias upward to keep the face framed */
   .hero__frame img { aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 15%; }
 }
 /* Nav collapse has its own breakpoint, deliberately not the 720px content one.
    Brand + 7 links + Résumé + the two toggles need ~890px of row. It used to
    collapse at 720px and the links overlapped the brand for the whole 720–900px
    band, before the language toggle existed. Sized for the GERMAN nav, which is
-   the wider of the two — "Über mich / Kompetenzen / Ehrenamt / Lebenslauf" runs
+   the wider of the two: "Über mich / Kompetenzen / Ehrenamt / Lebenslauf" runs
    663px against English's 580px. One shared breakpoint on purpose: per-language
    values would flip the nav between bar and burger as you switch language at
-   the same window width. Keep this separate from the 720px block — folding it
+   the same window width. Keep this separate from the 720px block: folding it
    back would collapse the project and skills grids far too early.
    1120, not 1060: at 1060 the German bar technically fits but leaves a 2px
    gap either side of the links, which reads as a collision. */

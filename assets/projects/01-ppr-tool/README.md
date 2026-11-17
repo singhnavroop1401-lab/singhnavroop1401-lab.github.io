@@ -1,4 +1,4 @@
-# PPR Modelling & Validation Tool — images
+# PPR Modelling & Validation Tool: images
 
 Drop screenshots / photos for **this** project into this folder.
 Then register the filenames in [`../../../projects-media.js`](../../../projects-media.js)

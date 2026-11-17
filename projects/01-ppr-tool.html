@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>PPR Modelling &amp; Validation Tool — Navroop Singh</title>
+  <title>PPR Modelling &amp; Validation Tool · Navroop Singh</title>
   <meta name="description" content="A Streamlit tool that models Product–Process–Resource relationships as one directed graph, with two engineering views and four requirement checks over it." />
   <meta name="author" content="Navroop Singh" />
   <meta name="theme-color" content="#0A0A0A" />
@@ -58,10 +58,10 @@
   <main class="case container" id="case">
     <p class="case__eyebrow mono"><a href="../index.html#work">Projects</a> / P.01 · Case study</p>
     <h1 class="case__title">PPR Modelling &amp; Validation Tool</h1>
-    <p class="case__thesis">Two engineering views over one graph — with the Product–Process–Resource rules enforced when an edge is created, so an invalid model can't be built in the first place.</p>
+    <p class="case__thesis">Two engineering views over one graph, with the Product–Process–Resource rules enforced when an edge is created, so an invalid model can't be built in the first place.</p>
 
     <dl class="case__facts">
-      <div><dt class="mono">Context</dt><dd>Python for Production Systems Engineering — OVGU Magdeburg, Winter Semester 2025/26</dd></div>
+      <div><dt class="mono">Context</dt><dd>Python for Production Systems Engineering: OVGU Magdeburg, Winter Semester 2025/26</dd></div>
       <div><dt class="mono">Team</dt><dd>Group of two. My scope: the engineering and reliability views. The code was pushed from my teammate's account in one upload, so the commit history doesn't show who wrote which module.</dd></div>
       <div><dt class="mono">Stack</dt><dd>Python · Streamlit · NetworkX · Graphviz · PyVis</dd></div>
       <div><dt class="mono">Live</dt><dd><a href="https://ppr-modelling-and-validation-tool-hz9epskbcjybcqievvs3cj.streamlit.app/" target="_blank" rel="noopener">Deployed on Streamlit Cloud ↗</a></dd></div>
@@ -69,26 +69,26 @@
 
     <section class="case__section">
       <h2 class="case__h">One graph, many readers</h2>
-      <p>A PPR model says what is produced, how, and with which resources. Those three views get read by different engineers — so the tool has to project them from <em>one</em> graph. Two copies would drift apart, and a drifted model is worse than no model.</p>
+      <p>A PPR model says what is produced, how, and with which resources. Those three views get read by different engineers, so the tool has to project them from <em>one</em> graph. Two copies would drift apart, and a drifted model is worse than no model.</p>
       <figure class="case__figure">
         <img src="../assets/projects/01-ppr-tool/interactive-graph.jpg" width="1221" height="683" loading="lazy" decoding="async"
              alt="PPR directed graph linking resources, processes and products, with resources on the top tier, processes in the middle and products at the bottom" />
-        <figcaption>Resources on top, processes in the middle, products at the bottom. Type is encoded twice — colour and shape — so a monochrome projector doesn't lose the distinction.</figcaption>
+        <figcaption>Resources on top, processes in the middle, products at the bottom. Type is encoded twice (colour and shape) so a monochrome projector doesn't lose the distinction.</figcaption>
       </figure>
       <figure class="case__figure">
         <img src="../assets/projects/01-ppr-tool/sample-model-graph.jpg" width="1243" height="851" loading="lazy" decoding="async"
              alt="Sample Lego car model rendered as a process-resource-product graph with assembly steps linked to the parts they produce" />
-        <figcaption>The sample domain is a Lego race car assembly line — small enough to check by eye, structurally non-trivial.</figcaption>
+        <figcaption>The sample domain is a Lego race car assembly line: small enough to check by eye, structurally non-trivial.</figcaption>
       </figure>
       <div class="case__note">
-        Only two edge directions mean anything in PPR: a resource performs a process, and a process produces a product. That whitelist is checked inside the edge-creation function, so a bad edge never reaches the graph — and the error names the violation instead of just refusing.
+        Only two edge directions mean anything in PPR: a resource performs a process, and a process produces a product. That whitelist is checked inside the edge-creation function, so a bad edge never reaches the graph, and the error names the violation instead of just refusing.
       </div>
     </section>
 
     <section class="case__section">
-      <h2 class="case__h">The reliability view — my part</h2>
-      <p>A reliability edge isn't a PPR edge. PPR structure says "this process produces that product"; a failure dependency says "if this fails, that stops working". Different relation, same nodes — which is why the view <em>overlays</em> them as dashed arrows instead of adding them to the graph, where they'd corrupt the rules that make the model checkable.</p>
-      <p>On the sample line: an axle failure takes out wheel mounting, a chassis failure detaches the body, a spoiler detachment stresses the chassis. The view ranks nodes by MTBF and MTTR and flags anything above 4% failure probability — which surfaces the human operator alongside the hardware, because the model doesn't privilege machines over people.</p>
+      <h2 class="case__h">The reliability view: my part</h2>
+      <p>A reliability edge isn't a PPR edge. PPR structure says "this process produces that product"; a failure dependency says "if this fails, that stops working". Different relation, same nodes, which is why the view <em>overlays</em> them as dashed arrows instead of adding them to the graph, where they'd corrupt the rules that make the model checkable.</p>
+      <p>On the sample line: an axle failure takes out wheel mounting, a chassis failure detaches the body, a spoiler detachment stresses the chassis. The view ranks nodes by MTBF and MTTR and flags anything above 4% failure probability, which surfaces the human operator alongside the hardware, because the model doesn't privilege machines over people.</p>
       <figure class="case__figure">
         <img src="../assets/projects/01-ppr-tool/graph-view.jpg" width="1912" height="903" loading="lazy" decoding="async"
              alt="Graph View tab of the PPR Modeling Tool showing the node legend and Graphviz render controls" />
@@ -110,8 +110,8 @@
     <section class="case__section">
       <h2 class="case__h">What I'd do differently</h2>
       <ul class="case__list">
-        <li><b>Reliability data belongs in the model file.</b> MTBF and failure probabilities live in a module-level table — trivial to demo, wrong for provenance. They can't be versioned with the model or supplied by whoever owns the maintenance history.</li>
-        <li><b>No export.</b> Three import formats, none out. The serialiser already exists, so it's a small change — and without it every edit dies with the session.</li>
+        <li><b>Reliability data belongs in the model file.</b> MTBF and failure probabilities live in a module-level table: trivial to demo, wrong for provenance. They can't be versioned with the model or supplied by whoever owns the maintenance history.</li>
+        <li><b>No export.</b> Three import formats, none out. The serialiser already exists, so it's a small change, and without it every edit dies with the session.</li>
         <li><b>Testable and untested.</b> Keeping Streamlit out of the graph layer was worth doing because it makes those functions unit-testable. Then nobody wrote the tests.</li>
       </ul>
     </section>
@@ -123,7 +123,7 @@
     <div class="footer__inner">
       <span class="footer__name">Navroop Singh</span>
       <span class="footer__meta mono">Systems Engineer · Magdeburg, DE</span>
-      <span class="footer__copy mono">© 2026 — Built with care.</span>
+      <span class="footer__copy mono">© 2026 · Built with care.</span>
     </div>
   </footer>
 

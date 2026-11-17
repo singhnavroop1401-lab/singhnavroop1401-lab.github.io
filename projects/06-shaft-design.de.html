@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Wellenauslegung für Ermüdungsbelastung — Navroop Singh</title>
-  <meta name="description" content="Eine Vorgelegewelle nach ASME B106.1M ausgelegt — vom Freikörperbild über die Lagerreaktionen zu 68,33 mm Durchmesser, danach modelliert und mit statischer und Ermüdungs-FEM geprüft." />
+  <title>Wellenauslegung für Ermüdungsbelastung · Navroop Singh</title>
+  <meta name="description" content="Eine Vorgelegewelle nach ASME B106.1M ausgelegt: vom Freikörperbild über die Lagerreaktionen zu 68,33 mm Durchmesser, danach modelliert und mit statischer und Ermüdungs-FEM geprüft." />
   <meta name="author" content="Navroop Singh" />
   <meta name="theme-color" content="#0A0A0A" />
 
@@ -61,10 +61,10 @@
     <p class="case__thesis">Die Vorgelegewelle eines Untersetzungsgetriebes, von der Freikörperskizze bis zum Durchmesser gerechnet, nach ASME-Code, danach in der FEM geprüft. Interessant sind die zwei Stellen, an denen die Zahl aus dem Code <em>nicht</em> die Zahl ist, die auf die Zeichnung gehört.</p>
 
     <dl class="case__facts">
-      <div><dt class="mono">Kontext</dt><dd>Maschinenkonstruktion — B.Eng. Mechanical Engineering, Thapar Institute</dd></div>
+      <div><dt class="mono">Kontext</dt><dd>Maschinenkonstruktion: B.Eng. Mechanical Engineering, Thapar Institute</dd></div>
       <div><dt class="mono">Aufgabe</dt><dd>Die Vorgelegewelle eines mit konstanter Drehzahl laufenden Untersetzungsgetriebes. Zahnrad A nimmt die Leistung von einem kämmenden Rad auf, Zahnrad B gibt sie ab. Welle, Passfedern und Keilprofil für Ermüdungsbelastung auslegen.</dd></div>
       <div><dt class="mono">Methode</dt><dd>ASME-Code B106.1M · Schubspannungshypothese · Handrechnung, danach FEM als Kontrolle</dd></div>
-      <div><dt class="mono">Werkzeuge</dt><dd>SolidWorks — Modell, statische Studie, Ermüdungsstudie, Zeichnung</dd></div>
+      <div><dt class="mono">Werkzeuge</dt><dd>SolidWorks: Modell, statische Studie, Ermüdungsstudie, Zeichnung</dd></div>
     </dl>
 
     <section class="case__section">
@@ -73,14 +73,14 @@
       <figure class="case__figure">
         <img src="../assets/projects/06-shaft-design/shaft-layout.jpg" width="1250" height="792" loading="lazy" decoding="async"
              alt="Handskizze der Vorgelegewelle mit Zahnrad A und B, den Abständen 400, 350 und 300 mm und dem Eingriffswinkel von 20 Grad" />
-        <figcaption>Die Geometrie, aus der alles Weitere folgt — Stützweiten, Teilkreisdurchmesser und der Eingriffswinkel von 20°, der jede Zahnkraft in zwei zerlegt.</figcaption>
+        <figcaption>Die Geometrie, aus der alles Weitere folgt: Stützweiten, Teilkreisdurchmesser und der Eingriffswinkel von 20°, der jede Zahnkraft in zwei zerlegt.</figcaption>
       </figure>
-      <p>Werkstoff ist Stahl FeE mit 770 MPa Zugfestigkeit und 580 MPa Streckgrenze. Der ASME-Code gibt zwei Obergrenzen für die Schubspannung vor — 30 % der Streckgrenze oder 18 % der Zugfestigkeit — und man nimmt die kleinere, hier 138,6 MPa. Weil die Zahnräder über Passfedern sitzen, kommen weitere 25 % herunter, und <b>103,95 MPa</b> ist das, worin die Welle tatsächlich bleiben muss.</p>
+      <p>Werkstoff ist Stahl FeE mit 770 MPa Zugfestigkeit und 580 MPa Streckgrenze. Der ASME-Code gibt zwei Obergrenzen für die Schubspannung vor, 30 % der Streckgrenze oder 18 % der Zugfestigkeit, und man nimmt die kleinere, hier 138,6 MPa. Weil die Zahnräder über Passfedern sitzen, kommen weitere 25 % herunter, und <b>103,95 MPa</b> ist das, worin die Welle tatsächlich bleiben muss.</p>
     </section>
 
     <section class="case__section">
       <h2 class="case__h">Vom Freikörperbild zum Durchmesser</h2>
-      <p>Das Gleichgewicht in beiden Ebenen und das Momentengleichgewicht um O liefern die Lagerreaktionen und daraus das Biegemoment an jedem Zahnrad. Zahnrad A ist mit deutlichem Abstand der ungünstigere Ort — es liegt weiter von einer Stütze entfernt und trägt die sechsfache Zahnkraft.</p>
+      <p>Das Gleichgewicht in beiden Ebenen und das Momentengleichgewicht um O liefern die Lagerreaktionen und daraus das Biegemoment an jedem Zahnrad. Zahnrad A ist mit deutlichem Abstand der ungünstigere Ort: es liegt weiter von einer Stütze entfernt und trägt die sechsfache Zahnkraft.</p>
       <div class="case__scroll">
         <table class="case__table">
           <thead>
@@ -99,26 +99,26 @@
       <figure class="case__figure">
         <img src="../assets/projects/06-shaft-design/cad-model.jpg" width="848" height="713" loading="lazy" decoding="async"
              alt="SolidWorks-Modell der abgesetzten Vorgelegewelle mit den beiden Zahnradscheiben" />
-        <figcaption>Die Welle im berechneten Maß, die Zahnräder als Scheiben mit richtigem Durchmesser und richtiger Masse vereinfacht — genug, um korrekt zu belasten, keine Verzahnungsuntersuchung.</figcaption>
+        <figcaption>Die Welle im berechneten Maß, die Zahnräder als Scheiben mit richtigem Durchmesser und richtiger Masse vereinfacht: genug, um korrekt zu belasten, keine Verzahnungsuntersuchung.</figcaption>
       </figure>
       <p>Passfedern und Keilprofil folgen aus dem Durchmesser. Eine quadratische Passfeder nach der Werkstattregel „ein Viertel des Wellendurchmessers“ ergibt 17,08 mm im Quadrat; acht Keile auf einer Nabe von 1,25 Durchmessern Länge bei 6,5 N/mm² zulässiger Flächenpressung ergeben 65,64 mm Innendurchmesser gegen 68,33 mm außen.</p>
     </section>
 
     <section class="case__section">
       <h2 class="case__h">Geprüft, nicht nur gerechnet</h2>
-      <p>Die Handrechnung liefert einen Durchmesser. Sie sagt nicht, wo sich die Spannung tatsächlich konzentriert — deshalb ging das Modell in eine statische und danach in eine Ermüdungsstudie.</p>
+      <p>Die Handrechnung liefert einen Durchmesser. Sie sagt nicht, wo sich die Spannung tatsächlich konzentriert: deshalb ging das Modell in eine statische und danach in eine Ermüdungsstudie.</p>
       <figure class="case__figure">
         <img src="../assets/projects/06-shaft-design/von-mises-stress.jpg" width="1133" height="738" loading="lazy" decoding="async"
              alt="Statischer von-Mises-Spannungsplot der Welle mit Lasten und Lagerungen, das gesamte Bauteil am blauen Ende einer bis zur Streckgrenze von 580 MPa reichenden Skala" />
-        <figcaption>Statische von-Mises-Spannung, skaliert auf die Streckgrenze von 580 MPa. Das Bauteil verlässt das blaue Ende nicht — das erwartete Ergebnis, kein überraschendes.</figcaption>
+        <figcaption>Statische von-Mises-Spannung, skaliert auf die Streckgrenze von 580 MPa. Das Bauteil verlässt das blaue Ende nicht: das erwartete Ergebnis, kein überraschendes.</figcaption>
       </figure>
       <figure class="case__figure">
         <img src="../assets/projects/06-shaft-design/fatigue-life.jpg" width="914" height="584" loading="lazy" decoding="async"
              alt="Ermüdungslebensdauer-Plot der Welle mit gleichmäßiger Lebensdauer über einer Milliarde Lastwechsel" />
-        <figcaption>Die Lebensdauer liegt durchweg jenseits von 10⁹ Lastwechseln — Durchläufer. Die Schädigung über das Bauteil liegt bei rund 1,7 %.</figcaption>
+        <figcaption>Die Lebensdauer liegt durchweg jenseits von 10⁹ Lastwechseln: Durchläufer. Die Schädigung über das Bauteil liegt bei rund 1,7 %.</figcaption>
       </figure>
       <div class="case__note">
-        Beide Plots sind einfarbig, und das gehört ausgesprochen statt als Ergebnis verkauft. Die ASME-Faktoren haben die Welle bereits so ausgelegt, dass sie weit unterhalb der Dauerfestigkeit liegt — die FEM kann das nur bestätigen. Eine Studie, die ihren Aufwand wert wäre, würde die Passfedernut und die Absatzrundungen modellieren, denn das sind die Kerbstellen, die das glatte Modell gar nicht zeigen kann.
+        Beide Plots sind einfarbig, und das gehört ausgesprochen statt als Ergebnis verkauft. Die ASME-Faktoren haben die Welle bereits so ausgelegt, dass sie weit unterhalb der Dauerfestigkeit liegt: die FEM kann das nur bestätigen. Eine Studie, die ihren Aufwand wert wäre, würde die Passfedernut und die Absatzrundungen modellieren, denn das sind die Kerbstellen, die das glatte Modell gar nicht zeigen kann.
       </div>
       <figure class="case__figure">
         <img src="../assets/projects/06-shaft-design/production-drawing.png" width="1100" height="754" loading="lazy" decoding="async"
@@ -130,9 +130,9 @@
     <section class="case__section">
       <h2 class="case__h">Was ich anders machen würde</h2>
       <ul class="case__list">
-        <li><b>68,33 mm sind eine Rechnung, keine Welle.</b> Der Wert ging unverändert auf die Zeichnung. Niemand dreht eine Welle mit 68,33 mm — er gehört auf das nächste Normmaß aufgerundet, 70 mm, und die Reserve bei diesem Maß neu gerechnet. Zwei Nachkommastellen Scheingenauigkeit auf einer Fertigungszeichnung schickt jeder Prüfer zurück.</li>
-        <li><b>Die Passfederlänge von 5 mm ist falsch, die Rechnung dahinter nicht.</b> Löst man die Schubgleichung nach der Länge auf, kommen 5 mm heraus, und genau das sagt die Gleichung auch. Falsch ist es trotzdem, denn die Passfederlänge folgt aus der Nabe, in der sie sitzt, nicht aus der Schubspannung — auf einer 68-mm-Welle sitzt eine Nabe von rund 100 mm, und die Passfeder läuft über deren größten Teil. Der richtige Schluss wäre gewesen, dass Schub hier gar nicht die maßgebende Bedingung ist; ich habe den gegenteiligen gezogen.</li>
-        <li><b>Das Drehmoment war angenommen, nicht hergeleitet.</b> 200 N·m wurden als Startwert gesetzt, statt aus übertragener Leistung und Drehzahl zurückgerechnet. Jede Zahl danach — Durchmesser, Passfeder, Keilprofil — erbt diese Annahme, und die Aufgabenstellung hätte genug hergegeben, um es besser zu machen.</li>
+        <li><b>68,33 mm sind eine Rechnung, keine Welle.</b> Der Wert ging unverändert auf die Zeichnung. Niemand dreht eine Welle mit 68,33 mm: er gehört auf das nächste Normmaß aufgerundet, 70 mm, und die Reserve bei diesem Maß neu gerechnet. Zwei Nachkommastellen Scheingenauigkeit auf einer Fertigungszeichnung schickt jeder Prüfer zurück.</li>
+        <li><b>Die Passfederlänge von 5 mm ist falsch, die Rechnung dahinter nicht.</b> Löst man die Schubgleichung nach der Länge auf, kommen 5 mm heraus, und genau das sagt die Gleichung auch. Falsch ist es trotzdem, denn die Passfederlänge folgt aus der Nabe, in der sie sitzt, nicht aus der Schubspannung: auf einer 68-mm-Welle sitzt eine Nabe von rund 100 mm, und die Passfeder läuft über deren größten Teil. Der richtige Schluss wäre gewesen, dass Schub hier gar nicht die maßgebende Bedingung ist; ich habe den gegenteiligen gezogen.</li>
+        <li><b>Das Drehmoment war angenommen, nicht hergeleitet.</b> 200 N·m wurden als Startwert gesetzt, statt aus übertragener Leistung und Drehzahl zurückgerechnet. Jede Zahl danach (Durchmesser, Passfeder, Keilprofil) erbt diese Annahme, und die Aufgabenstellung hätte genug hergegeben, um es besser zu machen.</li>
         <li><b>Keine Toleranzen.</b> Die Aufgabe hat danach gefragt, die Zeichnung führt keine. Eine Welle mit Zahnrädern, Lagern und Keilprofil braucht an jedem Sitz eine Passung; ohne sie ist die Zeichnung nicht fertigbar.</li>
       </ul>
     </section>
@@ -144,7 +144,7 @@
     <div class="footer__inner">
       <span class="footer__name">Navroop Singh</span>
       <span class="footer__meta mono">Systems Engineer · Magdeburg, DE</span>
-      <span class="footer__copy mono">© 2026 — Mit Sorgfalt gebaut.</span>
+      <span class="footer__copy mono">© 2026 · Mit Sorgfalt gebaut.</span>
     </div>
   </footer>
 

@@ -1,4 +1,4 @@
-# assets/projects/ — project images
+# assets/projects/: project images
 
 One subfolder per project. **Drop your images into the matching subfolder**, then
 register the filenames in [`../../projects-media.js`](../../projects-media.js).
@@ -14,16 +14,17 @@ Clicking a project card on the site then pops up a full-screen image gallery.
 | `06-shaft-design/` | Shaft Design for Fatigue Loading | `"06-shaft-design"` |
 | `07-feed-pump/` | Reciprocating Feed Pump | `"07-feed-pump"` |
 | `08-crankshaft-drive/` | Crankshaft to Complete Drive Assembly | `"08-crankshaft-drive"` |
+| `09-needle-guidance/` | Needle Guidance Pipeline: CT Plan to Simulated Robot | `"09-needle-guidance"` |
 
-`08-cantilever-fea/` is gone — the Cantilever Beam FEA card was retired when
+`08-cantilever-fea/` is gone: the Cantilever Beam FEA card was retired when
 P.06–P.08 were rebuilt from the coursework reports.
 
 ## How it works
 
 1. Copy image files into the right subfolder (e.g. `01-ppr-tool/overview.png`).
 2. Open [`projects-media.js`](../../projects-media.js) and list those filenames under the
-   matching key. Order matters — the **first** image is used as the card thumbnail.
-3. Save. That's it — the card gains a thumbnail + "View images" button, and clicking it
+   matching key. Order matters: the **first** image is used as the card thumbnail.
+3. Save. That's it: the card gains a thumbnail + "View images" button, and clicking it
    opens the pop-up gallery (arrow keys / swipe to navigate, Esc to close).
 
 **Recommended:** ~1200×750px (16:10), optimized to WebP/PNG/JPG for fast loading.

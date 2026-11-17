@@ -1,4 +1,4 @@
-# Reciprocating Feed Pump — images
+# Reciprocating Feed Pump: images
 
 Drop screenshots / photos for **this** project into this folder.
 Then register the filenames in [`../../../projects-media.js`](../../../projects-media.js)

@@ -1,4 +1,4 @@
-# Shaft Design for Fatigue Loading — images
+# Shaft Design for Fatigue Loading: images
 
 Drop screenshots / photos for **this** project into this folder.
 Then register the filenames in [`../../../projects-media.js`](../../../projects-media.js)

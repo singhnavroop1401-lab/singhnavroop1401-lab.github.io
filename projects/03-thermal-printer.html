@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Thermal Printer MBSE Model (RAMI 4.0) — Navroop Singh</title>
-  <meta name="description" content="A thermal printer modelled in Enterprise Architect against RAMI 4.0 — workstation goals refined down to the motor that satisfies them, with traceability intact." />
+  <title>Thermal Printer MBSE Model (RAMI 4.0) · Navroop Singh</title>
+  <meta name="description" content="A thermal printer modelled in Enterprise Architect against RAMI 4.0: workstation goals refined down to the motor that satisfies them, with traceability intact." />
   <meta name="author" content="Navroop Singh" />
   <meta name="theme-color" content="#0A0A0A" />
 
@@ -61,10 +61,10 @@
     <p class="case__thesis">Model the workstation's goals with no implementation in them. Then refine downward until you reach the motor. If a reader can follow one requirement the whole way, the model works.</p>
 
     <dl class="case__facts">
-      <div><dt class="mono">Context</dt><dd>Enterprise Architecture &amp; RAMI 4.0 — M.Sc. OVGU Magdeburg, Winter Semester 2025/26</dd></div>
-      <div><dt class="mono">Tool</dt><dd>Enterprise Architect (Sparx Systems) — the modelling tool, not the TOGAF discipline</dd></div>
+      <div><dt class="mono">Context</dt><dd>Enterprise Architecture &amp; RAMI 4.0: M.Sc. OVGU Magdeburg, Winter Semester 2025/26</dd></div>
+      <div><dt class="mono">Tool</dt><dd>Enterprise Architect (Sparx Systems): the modelling tool, not the TOGAF discipline</dd></div>
       <div><dt class="mono">Scale</dt><dd>Two hierarchy levels · seven layers · 30 diagrams</dd></div>
-      <div><dt class="mono">My scope</dt><dd><b>The Sheet Feed Controller in full</b> — all seven layers, every diagram, and the traceability back to the workstation requirements. At Work Station level I owned the Business, Function and Information layers; the WS PPR layer was joint. My teammate took the remaining WS layers and the Platen Force Controller.</dd></div>
+      <div><dt class="mono">My scope</dt><dd><b>The Sheet Feed Controller in full</b>: all seven layers, every diagram, and the traceability back to the workstation requirements. At Work Station level I owned the Business, Function and Information layers; the WS PPR layer was joint. My teammate took the remaining WS layers and the Platen Force Controller.</dd></div>
     </dl>
 
     <section class="case__section">
@@ -77,7 +77,7 @@
       <figure class="case__figure">
         <img src="../assets/projects/03-thermal-printer/ws-activity.png" width="989" height="652" loading="lazy" decoding="async"
              alt="Activity diagram of the printing workflow with decision points for paper availability and print success, and a branch to printing error" />
-        <figcaption>What the workstation does, including the branch where it fails. No motors, no PCBs — that's the discipline this level has to hold.</figcaption>
+        <figcaption>What the workstation does, including the branch where it fails. No motors, no PCBs: that's the discipline this level has to hold.</figcaption>
       </figure>
       <figure class="case__figure case__figure--sm">
         <img src="../assets/projects/03-thermal-printer/ws-data-flow.png" width="661" height="601" loading="lazy" decoding="async"
@@ -91,7 +91,7 @@
       <figure class="case__figure">
         <img src="../assets/projects/03-thermal-printer/sfc-use-case.jpg" width="812" height="619" loading="lazy" decoding="async"
              alt="Use case diagram for the Sheet Feed Controller with business cases for control sheet feeding, detect paper presence, handle feed error, report status and maintenance" />
-        <figcaption>The controller's own scope — sheet transport, jam prevention, safe handling — derived from the workstation above, not invented next to it.</figcaption>
+        <figcaption>The controller's own scope (sheet transport, jam prevention, safe handling) derived from the workstation above, not invented next to it.</figcaption>
       </figure>
       <figure class="case__figure">
         <img src="../assets/projects/03-thermal-printer/sfc-activity.png" width="1029" height="666" loading="lazy" decoding="async"
@@ -104,14 +104,14 @@
         <figcaption>End of the chain: control logic bound to a controller PCB, a motor driver, a feed motor and a paper-presence sensor.</figcaption>
       </figure>
       <div class="case__note">
-        Splitting the two control devices one each — rather than by layer — meant both were modelled to the same depth. Vertical integration comes from the refinement chain; horizontal integration between the controllers runs through the Information and Communication layers.
+        Splitting the two control devices one each, rather than by layer, meant both were modelled to the same depth. Vertical integration comes from the refinement chain; horizontal integration between the controllers runs through the Information and Communication layers.
       </div>
     </section>
 
     <section class="case__section">
       <h2 class="case__h">What I'd do differently</h2>
       <ul class="case__list">
-        <li><b>The third RAMI axis is missing.</b> Layers and Hierarchy Levels are covered; Life Cycle &amp; Value Stream isn't. Nothing separates type from instance, or development from field service — which is where RAMI earns its keep.</li>
+        <li><b>The third RAMI axis is missing.</b> Layers and Hierarchy Levels are covered; Life Cycle &amp; Value Stream isn't. Nothing separates type from instance, or development from field service, which is where RAMI earns its keep.</li>
         <li><b>Traceability is manual.</b> The links are drawn by hand, so a requirement can quietly lose its realisation as the model grows. A coverage report would make it a check instead of a claim.</li>
         <li><b>Described, not verified.</b> No interface data types or ranges, no state machine for the feed cycle. The model can't yet answer "what if the paper sensor fails mid-feed?"</li>
       </ul>
@@ -124,7 +124,7 @@
     <div class="footer__inner">
       <span class="footer__name">Navroop Singh</span>
       <span class="footer__meta mono">Systems Engineer · Magdeburg, DE</span>
-      <span class="footer__copy mono">© 2026 — Built with care.</span>
+      <span class="footer__copy mono">© 2026 · Built with care.</span>
     </div>
   </footer>
 

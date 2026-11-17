@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Produktionsplanung &amp; Losgrößen-Studie — Navroop Singh</title>
-  <meta name="description" content="Fünf Auftragsfreigabe-Strategien im Vergleich auf einer Linie mit sechs Produkten und fünf Stufen in Tecnomatix Plant Simulation — Durchlaufzeit, Verspätung und Termintreue über 100 Aufträge." />
+  <title>Produktionsplanung &amp; Losgrößen-Studie · Navroop Singh</title>
+  <meta name="description" content="Fünf Auftragsfreigabe-Strategien im Vergleich auf einer Linie mit sechs Produkten und fünf Stufen in Tecnomatix Plant Simulation: Durchlaufzeit, Verspätung und Termintreue über 100 Aufträge." />
   <meta name="author" content="Navroop Singh" />
   <meta name="theme-color" content="#0A0A0A" />
 
@@ -61,14 +61,14 @@
     <p class="case__thesis">Fünf Wege, Aufträge auf dieselbe Linie zu geben. Der Sieger beim Durchsatz verlor bei der Termintreue, und die einfachste Regel im Feld schlug bei der Zielfunktion alles andere.</p>
 
     <dl class="case__facts">
-      <div><dt class="mono">Kontext</dt><dd>Simulation Modeling in Logistics Planning — M.Sc. OVGU Magdeburg, Sommersemester 2026. Einzelarbeit.</dd></div>
+      <div><dt class="mono">Kontext</dt><dd>Simulation Modeling in Logistics Planning: M.Sc. OVGU Magdeburg, Sommersemester 2026. Einzelarbeit.</dd></div>
       <div><dt class="mono">Werkzeuge</dt><dd>Tecnomatix Plant Simulation 2404 · SimTalk</dd></div>
-      <div><dt class="mono">Aufgabe</dt><dd>Die Termintreue erhöhen — den Anteil der Aufträge, die am oder vor dem Wunschtermin des Kunden fertig werden.</dd></div>
+      <div><dt class="mono">Aufgabe</dt><dd>Die Termintreue erhöhen: den Anteil der Aufträge, die am oder vor dem Wunschtermin des Kunden fertig werden.</dd></div>
     </dl>
 
     <section class="case__section">
       <h2 class="case__h">Die Linie</h2>
-      <p>Sechs Produkte, fünf Stufen, und jedes Produkt überspringt die Stufen, die es nicht braucht. Profilieren läuft mit zwei Maschinen, wo alles andere drei hat — doch bei erwarteter Nachfrage trägt <b>Biegen</b> die höchste Last pro Maschine, das ist also der eigentliche Engpass.</p>
+      <p>Sechs Produkte, fünf Stufen, und jedes Produkt überspringt die Stufen, die es nicht braucht. Profilieren läuft mit zwei Maschinen, wo alles andere drei hat, doch bei erwarteter Nachfrage trägt <b>Biegen</b> die höchste Last pro Maschine, das ist also der eigentliche Engpass.</p>
       <figure class="case__figure case__figure--chart">
         <img src="../assets/projects/02-production-scheduling/conceptual-model.png" width="1400" height="646" loading="lazy" decoding="async"
              alt="Konzeptmodell der fünfstufigen Produktionslinie mit Presse, Laser, Biegen, Profilieren und Schweißen, mit Maschinenanzahl, Überspringpfaden der Produkte und Biegen als markiertem Engpass" />
@@ -98,19 +98,19 @@
           <caption>Simulationsergebnisse mit festen Startwerten; jedes erneute Ausführen reproduziert sie auf die Nachkommastelle genau.</caption>
         </table>
       </div>
-      <p>Jeden Auftrag einzeln freizugeben kostet rund 30 Stunden Durchlaufzeit, egal nach welchem Prioritätsschlüssel sortiert wird — die Linie schluckt statt fünf etwa 100 zusätzliche Rüstvorgänge pro Maschine. Die Durchlaufzeit wird also von der <em>Anzahl</em> der Rüstvorgänge bestimmt, nicht von ihrer Reihenfolge. EDD gibt diesen Aufwand sinnvoll aus und erkauft sich damit null Verspätung; SPT und LPT geben ihn für nichts aus.</p>
+      <p>Jeden Auftrag einzeln freizugeben kostet rund 30 Stunden Durchlaufzeit, egal nach welchem Prioritätsschlüssel sortiert wird: die Linie schluckt statt fünf etwa 100 zusätzliche Rüstvorgänge pro Maschine. Die Durchlaufzeit wird also von der <em>Anzahl</em> der Rüstvorgänge bestimmt, nicht von ihrer Reihenfolge. EDD gibt diesen Aufwand sinnvoll aus und erkauft sich damit null Verspätung; SPT und LPT geben ihn für nichts aus.</p>
       <figure class="case__figure case__figure--chart">
         <img src="../assets/projects/02-production-scheduling/pareto-makespan-tardiness.svg" width="1200" height="777" loading="lazy" decoding="async"
              alt="Punktdiagramm von Durchlaufzeit gegen Gesamtverspätung für fünf Auftragsfreigabe-Strategien. EDD liegt auf der Nulllinie der Verspätung bei 67 Stunden Durchlaufzeit; der beste losbasierte Suchlauf liegt bei 30 Stunden Durchlaufzeit und 163 Stunden Verspätung; LPT ist mit 1.046 Stunden Verspätung am schlechtesten" />
-        <figcaption>Die Kompromisskurve ist zwei Punkte breit: EDD erkauft Zuverlässigkeit mit Zeit, der losbasierte Lauf erkauft Zeit mit Verspätung. Der Rest wird dominiert. <span class="mono">Neu gezeichnet — die Abbildung im Bericht hat vertauschte Achsen.</span></figcaption>
+        <figcaption>Die Kompromisskurve ist zwei Punkte breit: EDD erkauft Zuverlässigkeit mit Zeit, der losbasierte Lauf erkauft Zeit mit Verspätung. Der Rest wird dominiert. <span class="mono">Neu gezeichnet: die Abbildung im Bericht hat vertauschte Achsen.</span></figcaption>
       </figure>
       <figure class="case__figure case__figure--chart">
         <img src="../assets/projects/02-production-scheduling/lot-size-response.svg" width="1200" height="777" loading="lazy" decoding="async"
              alt="Liniendiagramm der gewichteten Zielfunktion z über der einheitlichen Losgröße auf logarithmischer Skala, U-förmig mit dem Minimum bei Losgröße 50" />
-        <figcaption>Losgröße 200 reproduziert die Familienregel; Losgröße 5 lässt die Zahl der Rüstvorgänge explodieren. Optimum bei 50. Auch die Freigabereihenfolge zählt — umgekehrt alphabetisch schlug alphabetisch um 15 %.</figcaption>
+        <figcaption>Losgröße 200 reproduziert die Familienregel; Losgröße 5 lässt die Zahl der Rüstvorgänge explodieren. Optimum bei 50. Auch die Freigabereihenfolge zählt: umgekehrt alphabetisch schlug alphabetisch um 15 %.</figcaption>
       </figure>
       <div class="case__note">
-        <b>Empfehlung, gestuft.</b> Losbasierte Freigabe jetzt — sie schlägt die heutige Familienregel in jeder Kennzahl und kostet nichts. EDD nach einem SMED-Programm, denn EDDs gesamte Strafe ist Rüstzeit. Shingos ursprüngliche SMED-Arbeit brachte einen Werkzeugwechsel an einer Toyota-Presse von rund vier Stunden auf unter zehn Minuten.
+        <b>Empfehlung, gestuft.</b> Losbasierte Freigabe jetzt: sie schlägt die heutige Familienregel in jeder Kennzahl und kostet nichts. EDD nach einem SMED-Programm, denn EDDs gesamte Strafe ist Rüstzeit. Shingos ursprüngliche SMED-Arbeit brachte einen Werkzeugwechsel an einer Toyota-Presse von rund vier Stunden auf unter zehn Minuten.
       </div>
     </section>
 
@@ -130,7 +130,7 @@
     <div class="footer__inner">
       <span class="footer__name">Navroop Singh</span>
       <span class="footer__meta mono">Systems Engineer · Magdeburg, DE</span>
-      <span class="footer__copy mono">© 2026 — Mit Sorgfalt gebaut.</span>
+      <span class="footer__copy mono">© 2026 · Mit Sorgfalt gebaut.</span>
     </div>
   </footer>
 
