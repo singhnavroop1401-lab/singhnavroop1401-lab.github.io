@@ -16,9 +16,6 @@ Clicking a project card on the site then pops up a full-screen image gallery.
 | `08-crankshaft-drive/` | Crankshaft to Complete Drive Assembly | `"08-crankshaft-drive"` |
 | `09-needle-guidance/` | Needle Guidance Pipeline: CT Plan to Simulated Robot | `"09-needle-guidance"` |
 
-`08-cantilever-fea/` is gone: the Cantilever Beam FEA card was retired when
-P.06–P.08 were rebuilt from the coursework reports.
-
 ## How it works
 
 1. Copy image files into the right subfolder (e.g. `01-ppr-tool/overview.png`).

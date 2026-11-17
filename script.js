@@ -299,9 +299,9 @@
     var name = nameEl ? nameEl.textContent.trim() : "project";
     var count = items.length;
 
-    // Small text cue: replaces the "media soon" placeholder, or is appended.
-    // (No thumbnail: the whole card is the trigger; this keeps the gallery
-    // discoverable and gives keyboard/screen-reader users an accessible control.)
+    // Small text cue. No thumbnail: the whole card is the trigger, so this is
+    // what keeps the gallery discoverable and gives keyboard and screen-reader
+    // users an accessible control.
     var btn = document.createElement("button");
     btn.type = "button";
     btn.className = "project__gallery-btn mono";
@@ -309,16 +309,14 @@
     btn.setAttribute("aria-label", t.galleryFor(name));
     btn.addEventListener("click", function (e) { e.stopPropagation(); openLightbox(items, 0); });
 
-    var pending = card.querySelector(".project__pending");
     var linksWrap = card.querySelector(".project__links");
-    if (pending) { pending.replaceWith(btn); }
-    else if (linksWrap) { linksWrap.appendChild(btn); }
+    if (linksWrap) { linksWrap.appendChild(btn); }
     else { card.appendChild(btn); }
 
     // Clicking the card body follows the case study when there is one: that's
     // what a reader expects from a project card. The gallery stays available
-    // through the "View N images" button. Cards without a case study (the
-    // compact coursework ones) keep the gallery as their card action.
+    // through the "View N images" button. Every card has a case study today,
+    // so the gallery fallback below only matters if one is ever added without.
     var caseLink = card.querySelector('.project__links a[href^="projects/"]');
     card.addEventListener("click", function (e) {
       if (e.target.closest("a, button")) return;
